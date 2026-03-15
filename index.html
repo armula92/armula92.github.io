@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 이현성 논문연구실 워크샵</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --blue: #0071E3;
+    --blue-dark: #0051A8;
+    --blue-light: #EBF4FF;
+    --blue-mid: #C7E0FF;
+    --text: #1D1D1F;
+    --text-sub: #6E6E73;
+    --text-light: #AEAEB2;
+    --bg: #FFFFFF;
+    --bg-gray: #F5F5F7;
+    --border: #E5E5EA;
+    --shadow: 0 2px 16px rgba(0,0,0,0.07);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.11);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Apple SD Gothic Neo', 'Pretendard', 'Helvetica Neue', Arial, sans-serif;
+    background: #111;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+  }
+
+  /* ── PRESENTATION SHELL ── */
+  .presentation { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+
+  .slides-wrap {
+    display: flex;
+    height: 100vh;
+    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .slide {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── NAVIGATION ── */
+  .nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 200;
+    backdrop-filter: blur(20px);
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  }
+  .nav-btn:hover { transform: translateY(-50%) scale(1.08); box-shadow: 0 12px 48px rgba(0,0,0,0.18); }
+  .nav-btn.hidden { opacity: 0; pointer-events: none; }
+  .nav-prev { left: 18px; }
+  .nav-next { right: 18px; }
+  .nav-btn svg { width: 18px; height: 18px; stroke: var(--text); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ── DOTS ── */
+  .dots {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 7px;
+    z-index: 200;
+    align-items: center;
+  }
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.18);
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .dot.active { width: 22px; background: var(--blue); }
+
+  /* ── SLIDE HEADER BAR ── */
+  .slide-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 52px 0;
+  }
+  .slide-logo { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--text-light); }
+  .slide-num { font-size: 12px; color: var(--text-light); font-weight: 500; }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+
+  /* ── COMMON CARD ── */
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+  .card-blue {
+    background: var(--blue-light);
+    border: 1px solid var(--blue-mid);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+  }
+
+  /* ──────────────────────────────────────────
+     SLIDE 1 — COVER
+  ────────────────────────────────────────── */
+  #s1 { background: #FFFFFF; }
+
+  .s1-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #EBF4FF 0%, #FFFFFF 55%, #F5F5F7 100%);
+    z-index: 0;
+  }
+  .s1-circle1 {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,113,227,0.08) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    z-index: 0;
+  }
+  .s1-circle2 {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,113,227,0.05) 0%, transparent 70%);
+    bottom: 80px; left: 60px;
+    z-index: 0;
+  }
+
+  .s1-content {
+    position: relative; z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    padding: 0 10% 60px;
+  }
+
+  .s1-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue);
+    color: #fff;
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .s1-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.7); }
+
+  .s1-main-title {
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .s1-main-title span { color: var(--blue); }
+
+  .s1-sub {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text-sub);
+    margin-bottom: 48px;
+    line-height: 1.5;
+  }
+
+  .s1-meta {
+    display: flex; gap: 40px;
+  }
+  .s1-meta-item { }
+  .s1-meta-label { font-size: 11px; font-weight: 600; color: var(--text-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .s1-meta-value { font-size: 15px; font-weight: 600; color: var(--text); }
+
+  .s1-stats {
+    position: absolute; right: 10%; bottom: 15%;
+    display: flex; flex-direction: column; gap: 16px;
+    z-index: 1;
+  }
+  .s1-stat {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 28px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .s1-stat-num { font-size: 38px; font-weight: 800; color: var(--blue); letter-spacing: -0.02em; line-height: 1; }
+  .s1-stat-label { font-size: 12px; color: var(--text-sub); margin-top: 4px; font-weight: 500; }
+
+  /* ──────────────────────────────────────────
+     SLIDE 2 — 연구실 개요
+  ────────────────────────────────────────── */
+  .s2-content {
+    padding: 30px 60px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s2-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
+  .s2-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 32px; }
+
+  .s2-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .s2-main-card {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background: var(--blue);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+  }
+  .s2-main-card .label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-bottom: 12px; }
+  .s2-main-card h3 { font-size: 26px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+  .s2-main-card p { font-size: 14px; opacity: 0.85; line-height: 1.7; }
+  .s2-main-card .bottom { margin-top: 20px; }
+  .s2-main-card .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px; font-weight: 600;
+    margin-right: 6px; margin-bottom: 6px;
+  }
+
+  .s2-stat-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .s2-stat-num { font-size: 48px; font-weight: 800; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
+  .s2-stat-label { font-size: 14px; color: var(--text-sub); font-weight: 500; margin-top: 6px; }
+  .s2-stat-detail { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+  .s2-division-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-content: start;
+  }
+  .s2-div-title { grid-column: 1 / 3; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .s2-div-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12.5px; color: var(--text-sub);
+  }
+  .s2-div-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+  /* ──────────────────────────────────────────
+     SLIDE 3 — 논문구성원 누적
+  ────────────────────────────────────────── */
+  .s3-content {
+    padding: 30px 60px 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s3-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
+  .s3-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
+
+  .s3-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.8fr;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .s3-left { display: flex; flex-direction: column; gap: 14px; }
+
+  .s3-total-card {
+    background: var(--blue);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    color: #fff;
+    text-align: center;
+  }
+  .s3-total-num { font-size: 64px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
+  .s3-total-label { font-size: 13px; opacity: 0.8; margin-top: 6px; font-weight: 500; }
+
+  .s3-breakdown {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    flex: 1;
+  }
+  .s3-breakdown-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .s3-breakdown-item:last-child { border-bottom: none; }
+  .s3-breakdown-label { font-size: 13px; color: var(--text-sub); }
+  .s3-breakdown-num { font-size: 20px; font-weight: 800; color: var(--text); }
+  .s3-breakdown-bar {
+    height: 4px; border-radius: 2px;
+    margin-top: 6px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .s3-breakdown-fill { height: 100%; border-radius: 2px; background: var(--blue); }
+
+  .s3-right { display: flex; flex-direction: column; gap: 14px; }
+
+  .s3-section-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: 0.03em; }
+
+  .s3-grads-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .s3-member-chip {
+    background: var(--bg-gray);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--text);
+    text-align: center;
+    border: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .s3-member-chip .dept { font-size: 10px; color: var(--text-light); margin-top: 2px; }
+
+  .s3-current-section {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .s3-current-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .s3-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 5px 12px;
+    font-size: 11.5px; color: var(--text); font-weight: 500;
+  }
+  .s3-chip-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .s3-chip-dot.phd { background: var(--blue); }
+  .s3-chip-dot.ms { background: #5AC8FA; }
+
+  /* ──────────────────────────────────────────
+     SLIDE 4 — 학생분포현황
+  ────────────────────────────────────────── */
+  .s4-content {
+    padding: 30px 60px 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s4-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
+  .s4-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
+
+  .s4-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.6fr;
+    gap: 18px;
+    flex: 1;
+  }
+
+  .s4-donut-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .s4-donut-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 16px; text-align: center; }
+  .s4-donut-wrap { width: 140px; height: 140px; position: relative; }
+  .s4-donut-legend { margin-top: 16px; width: 100%; }
+  .s4-legend-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .s4-legend-item:last-child { border-bottom: none; }
+  .s4-legend-left { display: flex; align-items: center; gap: 8px; color: var(--text-sub); }
+  .s4-legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .s4-legend-num { font-weight: 700; color: var(--text); }
+
+  .s4-bar-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .s4-bar-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 18px; }
+
+  .s4-table-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .s4-table-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+
+  .s4-table { width: 100%; border-collapse: collapse; }
+  .s4-table th {
+    font-size: 10.5px; font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0 0 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .s4-table td {
+    font-size: 12px;
+    color: var(--text);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .s4-table tr:last-child td { border-bottom: none; }
+  .s4-badge {
+    display: inline-block;
+    border-radius: 100px;
+    padding: 2px 10px;
+    font-size: 10px; font-weight: 700;
+  }
+  .s4-badge.phd { background: var(--blue-light); color: var(--blue); }
+  .s4-badge.ms { background: #EBF4FF; color: #0071E3; }
+
+  /* ──────────────────────────────────────────
+     SLIDE 5 — 연구동향: 주제별
+  ────────────────────────────────────────── */
+  .s5-content {
+    padding: 30px 60px 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s5-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
+  .s5-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 24px; }
+
+  .s5-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+    flex: 1;
+  }
+
+  .s5-left { display: flex; flex-direction: column; gap: 8px; }
+
+  .s5-axis-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 4px solid var(--blue);
+  }
+  .s5-axis-num { font-size: 22px; font-weight: 900; color: var(--blue); width: 30px; flex-shrink: 0; }
+  .s5-axis-content { flex: 1; }
+  .s5-axis-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .s5-axis-keywords { font-size: 11px; color: var(--text-sub); margin-top: 3px; }
+  .s5-axis-bar {
+    width: 70px; flex-shrink: 0; text-align: right;
+  }
+  .s5-axis-pct { font-size: 18px; font-weight: 800; color: var(--text); }
+  .s5-axis-bar-bg {
+    width: 100%; height: 4px; background: var(--border); border-radius: 2px; margin-top: 4px;
+  }
+  .s5-axis-bar-fill { height: 100%; border-radius: 2px; background: var(--blue); }
+
+  .s5-right { display: flex; flex-direction: column; gap: 14px; }
+
+  .s5-chart-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s5-chart-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+
+  .s5-thesis-card {
+    background: var(--blue);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    color: #fff;
+  }
+  .s5-thesis-title { font-size: 13px; font-weight: 700; opacity: 0.8; margin-bottom: 12px; }
+  .s5-thesis-items { display: flex; flex-direction: column; gap: 8px; }
+  .s5-thesis-item { display: flex; align-items: center; gap: 10px; }
+  .s5-thesis-bar-wrap { flex: 1; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; }
+  .s5-thesis-bar-fill { height: 100%; border-radius: 3px; background: #fff; }
+  .s5-thesis-label { font-size: 12px; width: 120px; flex-shrink: 0; opacity: 0.9; }
+  .s5-thesis-pct { font-size: 12px; font-weight: 700; width: 30px; text-align: right; }
+
+  /* ──────────────────────────────────────────
+     SLIDE 6 — 연구동향: 연구방법
+  ────────────────────────────────────────── */
+  .s6-content {
+    padding: 30px 60px 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s6-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
+  .s6-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 24px; }
+
+  .s6-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 18px;
+    flex: 1;
+  }
+
+  .s6-left { display: flex; flex-direction: column; gap: 14px; }
+  .s6-right { display: flex; flex-direction: column; gap: 14px; }
+
+  .s6-method-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    flex: 1;
+  }
+  .s6-method-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+  .s6-method-list { display: flex; flex-direction: column; gap: 10px; }
+  .s6-method-item { }
+  .s6-method-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .s6-method-name { font-size: 13px; color: var(--text); font-weight: 600; }
+  .s6-method-desc { font-size: 11px; color: var(--text-sub); }
+  .s6-method-pct { font-size: 13px; font-weight: 800; color: var(--blue); }
+  .s6-bar-bg { width: 100%; height: 6px; background: var(--border); border-radius: 3px; }
+  .s6-bar-fill { height: 100%; border-radius: 3px; background: var(--blue); }
+
+  .s6-trend-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s6-trend-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+
+  .s6-highlight-card {
+    background: var(--blue);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    color: #fff;
+  }
+  .s6-highlight-title { font-size: 13px; font-weight: 700; opacity: 0.8; margin-bottom: 12px; }
+  .s6-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .s6-hl-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+  }
+  .s6-hl-icon { font-size: 20px; margin-bottom: 6px; }
+  .s6-hl-name { font-size: 12px; font-weight: 700; }
+  .s6-hl-desc { font-size: 10.5px; opacity: 0.75; margin-top: 2px; line-height: 1.4; }
+
+  /* ──────────────────────────────────────────
+     SLIDE 7 — 워크샵 및 세미나
+  ────────────────────────────────────────── */
+  .s7-content {
+    padding: 30px 60px 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s7-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
+  .s7-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
+
+  .s7-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .s7-event-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .s7-event-card.featured { background: var(--blue); color: #fff; }
+  .s7-event-year {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .s7-event-card.featured .s7-event-year { color: rgba(255,255,255,0.7); }
+  .s7-event-name { font-size: 20px; font-weight: 800; color: var(--text); line-height: 1.3; }
+  .s7-event-card.featured .s7-event-name { color: #fff; }
+  .s7-event-details { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
+  .s7-event-detail { display: flex; gap: 8px; font-size: 12.5px; color: var(--text-sub); align-items: flex-start; }
+  .s7-event-card.featured .s7-event-detail { color: rgba(255,255,255,0.8); }
+  .s7-event-detail-icon { font-size: 13px; flex-shrink: 0; }
+  .s7-event-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .s7-tag {
+    background: rgba(0,113,227,0.1);
+    color: var(--blue);
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 10.5px; font-weight: 600;
+  }
+  .s7-event-card.featured .s7-tag { background: rgba(255,255,255,0.18); color: #fff; }
+
+  .s7-upcoming-card {
+    background: var(--bg);
+    border: 2px dashed var(--blue-mid);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  .s7-upcoming-label { font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; }
+  .s7-upcoming-title { font-size: 20px; font-weight: 800; color: var(--text); }
+  .s7-upcoming-desc { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
+
+  /* ──────────────────────────────────────────
+     SLIDE 8 — 운영계획
+  ────────────────────────────────────────── */
+  .s8-content {
+    padding: 30px 60px 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .s8-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
+  .s8-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
+
+  .s8-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .s8-plan-card {
+    background: var(--bg-gray);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .s8-plan-card.accent { background: var(--blue); }
+
+  .s8-plan-header { display: flex; align-items: center; gap: 12px; }
+  .s8-plan-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .s8-plan-card.accent .s8-plan-icon { background: rgba(255,255,255,0.2); }
+  .s8-plan-name { font-size: 18px; font-weight: 800; color: var(--text); }
+  .s8-plan-card.accent .s8-plan-name { color: #fff; }
+  .s8-plan-tagline { font-size: 12px; color: var(--text-sub); margin-top: 1px; }
+  .s8-plan-card.accent .s8-plan-tagline { color: rgba(255,255,255,0.7); }
+
+  .s8-plan-items { display: flex; flex-direction: column; gap: 7px; }
+  .s8-plan-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 13px; color: var(--text-sub); line-height: 1.5;
+  }
+  .s8-plan-card.accent .s8-plan-item { color: rgba(255,255,255,0.85); }
+  .s8-plan-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--blue);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .s8-plan-card.accent .s8-plan-item::before { background: rgba(255,255,255,0.6); }
+
+</style>
+</head>
+<body>
+
+<div class="presentation">
+  <div class="slides-wrap" id="slidesWrap">
+
+    <!-- ══════════════════════════════════
+         SLIDE 1 — COVER
+    ══════════════════════════════════ -->
+    <div class="slide" id="s1">
+      <div class="s1-bg"></div>
+      <div class="s1-circle1"></div>
+      <div class="s1-circle2"></div>
+
+      <div class="s1-content">
+        <div class="s1-tag">
+          <span class="s1-tag-dot"></span>
+          Socio-Public Design Lab
+        </div>
+        <div class="s1-main-title">
+          이현성<br>
+          논문연구실<br>
+          <span>워크샵 2026</span>
+        </div>
+        <div class="s1-sub">
+          홍익대학교 공공디자인전공<br>
+          S.P.D Lab Annual Workshop
+        </div>
+        <div class="s1-meta">
+          <div class="s1-meta-item">
+            <div class="s1-meta-label">지도교수</div>
+            <div class="s1-meta-value">이현성 교수</div>
+          </div>
+          <div class="s1-meta-item">
+            <div class="s1-meta-label">일시</div>
+            <div class="s1-meta-value">2026년 1–2월</div>
+          </div>
+          <div class="s1-meta-item">
+            <div class="s1-meta-label">이메일</div>
+            <div class="s1-meta-value">armulastudy@gmail.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s1-stats">
+        <div class="s1-stat">
+          <div class="s1-stat-num">127</div>
+          <div class="s1-stat-label">누적 논문 편수</div>
+        </div>
+        <div class="s1-stat">
+          <div class="s1-stat-num">33</div>
+          <div class="s1-stat-label">현 지도학생</div>
+        </div>
+        <div class="s1-stat">
+          <div class="s1-stat-num">5</div>
+          <div class="s1-stat-label">핵심 연구 분야</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 2 — 연구실 개요
+    ══════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
+        <div class="slide-num">01 / 07</div>
+      </div>
+      <div class="s2-content">
+        <div class="eyebrow">Lab Overview</div>
+        <div class="s2-title">논문연구실 개요</div>
+        <div class="s2-sub">Socio-Public Design Lab — 공공디자인의 사회적 가치를 연구합니다</div>
+
+        <div class="s2-grid">
+          <!-- Main identity card -->
+          <div class="s2-main-card">
+            <div>
+              <div class="label">Research Identity</div>
+              <h3>S.P.D Lab<br>Socio-Public Design</h3>
+              <p>공공디자인이 사회적 가치를 창출하는 방식을 탐구합니다. 거버넌스, 시민참여, ESG, 데이터 기반 연구를 통해 공공 환경의 질과 사회적 지속가능성을 높입니다.</p>
+            </div>
+            <div class="bottom">
+              <span class="badge">공공디자인</span>
+              <span class="badge">거버넌스</span>
+              <span class="badge">사회적 가치</span>
+              <span class="badge">에비던스 기반</span>
+              <span class="badge">GSD Platform</span>
+            </div>
+          </div>
+
+          <!-- Stat 1 -->
+          <div class="s2-stat-card">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;">총 누적 논문</div>
+              <div class="s2-stat-num">127편</div>
+              <div class="s2-stat-label">학술논문 98편 · 학위논문 29편</div>
+              <div class="s2-stat-detail">2020년 이후 연간 약 25편 평균 발표</div>
+            </div>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="s2-stat-card">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;">현 지도학생</div>
+              <div class="s2-stat-num">33명</div>
+              <div class="s2-stat-label">석사 13명 · 박사 20명</div>
+              <div class="s2-stat-detail">2025학년도 2학기 기준</div>
+            </div>
+          </div>
+
+          <!-- Division structure -->
+          <div class="s2-division-card">
+            <div class="s2-div-title">🏛 연구실 4대 분과 구조</div>
+            <div class="s2-div-item"><span class="s2-div-dot"></span>기획분과 — 일정·아카이빙·세미나</div>
+            <div class="s2-div-item"><span class="s2-div-dot"></span>총무분과 — 워크샵·현장답사·회계</div>
+            <div class="s2-div-item"><span class="s2-div-dot"></span>연구분과 — 방법론·논문작성 지원</div>
+            <div class="s2-div-item"><span class="s2-div-dot"></span>정보분과 — D-Search·전문역량</div>
+          </div>
+
+          <!-- Activity card -->
+          <div class="s2-stat-card">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;">연간 주요 활동</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>월례 논문 세미나</div>
+                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>연간 워크샵 (1박2일)</div>
+                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>공공디자인 현장답사</div>
+                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>GSD Annual Research Book</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 3 — 논문구성원 누적
+    ══════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
+        <div class="slide-num">02 / 07</div>
+      </div>
+      <div class="s3-content">
+        <div class="eyebrow">Members — Cumulative</div>
+        <div class="s3-title">논문구성원 (누적 전체)</div>
+        <div class="s3-sub">현 재학생 33명 (석사 13 · 박사 20) + 졸업생 29명 (석사 25 · 박사 4) 전체 현황</div>
+
+        <div class="s3-grid">
+          <!-- Left: totals -->
+          <div class="s3-left">
+            <div class="s3-total-card">
+              <div class="s3-total-num">62명</div>
+              <div class="s3-total-label">누적 논문지도 구성원</div>
+            </div>
+            <div class="s3-breakdown" style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px;">구성원 분류</div>
+              <div class="s3-breakdown-item">
+                <div>
+                  <div class="s3-breakdown-label">🎓 박사 재학생</div>
+                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:100%"></div></div>
+                </div>
+                <div class="s3-breakdown-num">20</div>
+              </div>
+              <div class="s3-breakdown-item">
+                <div>
+                  <div class="s3-breakdown-label">📖 석사 재학생</div>
+                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:38%"></div></div>
+                </div>
+                <div class="s3-breakdown-num">13</div>
+              </div>
+              <div class="s3-breakdown-item">
+                <div>
+                  <div class="s3-breakdown-label">✅ 석사 졸업생</div>
+                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:75%"></div></div>
+                </div>
+                <div class="s3-breakdown-num">25</div>
+              </div>
+              <div class="s3-breakdown-item">
+                <div>
+                  <div class="s3-breakdown-label">🎓 박사 졸업생</div>
+                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:12%"></div></div>
+                </div>
+                <div class="s3-breakdown-num">4</div>
+              </div>
+              <div style="margin-top:14px;padding:12px 14px;background:var(--blue-light);border-radius:var(--radius-sm);font-size:12px;color:var(--blue);line-height:1.6;">
+                <strong>운영원칙:</strong> 학위 구분 없이 협동학습 기반 통합 관리. 재학·휴학·수료·졸업 모두 포함.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: member lists -->
+          <div class="s3-right">
+            <!-- 석사 졸업생 25명 -->
+            <div style="background:var(--bg-gray);border-radius:var(--radius);padding:16px 20px;">
+              <div class="s3-section-title">✅ 석사 졸업생 (25명)</div>
+              <div class="s3-grads-grid" style="grid-template-columns:repeat(5,1fr);">
+                <div class="s3-member-chip">홍태의<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김세련<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">오유경<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">모세범<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">조혜옥<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김상아<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">정희춘<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김승기<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김영<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김지연<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">이슬<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김세원<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">이주호<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">이재훈<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">이창현<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">임유영<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김세훈<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">심윤서<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">최정원<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">정선익<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">차인혁<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">김성훈<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">박한음<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">이우주<div class="dept">공공디자인</div></div>
+                <div class="s3-member-chip">윤서연<div class="dept">공공디자인</div></div>
+              </div>
+            </div>
+
+            <!-- 박사 졸업생 3명 + 박사 재학생 21명 -->
+            <div style="display:flex;gap:14px;flex:1;">
+              <div style="background:var(--bg-gray);border-radius:var(--radius);padding:14px 16px;min-width:0;flex:0 0 auto;">
+                <div class="s3-section-title">🎓 박사 졸업생 (3명)</div>
+                <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>홍태의</span>
+                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>이민영</span>
+                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>이보아</span>
+                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>주하나</span>
+                </div>
+              </div>
+              <div style="background:var(--bg-gray);border-radius:var(--radius);padding:14px 16px;flex:1;min-width:0;">
+                <div class="s3-section-title">🎓 박사 재학생 (20명)</div>
+                <div class="s3-current-row">
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>서모아</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>한주성</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이지영</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김경은</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>강민구</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이은영</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김상아</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>E Xintong</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>홍수경</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이주호</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김세련</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>유오식</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>유승종</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>강영진</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이희경</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김세훈</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김은희</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>Yao Huanyang</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이지수</span>
+                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>Liu Xingchen</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 석사 재학생 13명 -->
+            <div style="background:var(--bg-gray);border-radius:var(--radius);padding:14px 16px;">
+              <div class="s3-section-title">📖 석사 재학생 (13명)</div>
+              <div class="s3-current-row">
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>김성은 <small style="color:var(--text-light);font-size:10px;margin-left:2px;">공간</small></span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>송영호 <small style="color:var(--text-light);font-size:10px;margin-left:2px;">공간</small></span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>문형열</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이미정</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>조지영</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이영호</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>권인영</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이형근</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이다영</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>양정수</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>정성희</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>오선영</span>
+                <span class="s3-chip"><span class="s3-chip-dot ms"></span>김원근</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 4 — 학생분포현황
+    ══════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
+        <div class="slide-num">03 / 07</div>
+      </div>
+      <div class="s4-content">
+        <div class="eyebrow">Student Distribution</div>
+        <div class="s4-title">현 논문지도 학생분포현황</div>
+        <div class="s4-sub">2025학년도 2학기 기준 석·박사 재학생 분포 현황</div>
+
+        <div class="s4-grid">
+          <!-- Donut: MS vs PhD -->
+          <div class="s4-donut-card">
+            <div class="s4-donut-title">석·박사 비율</div>
+            <div class="s4-donut-wrap">
+              <canvas id="donutMsPhd"></canvas>
+            </div>
+            <div class="s4-donut-legend">
+              <div class="s4-legend-item">
+                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#0071E3"></span>박사과정</div>
+                <div class="s4-legend-num">20명 (61%)</div>
+              </div>
+              <div class="s4-legend-item">
+                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#5AC8FA"></span>석사과정</div>
+                <div class="s4-legend-num">13명 (39%)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bar: 국내외 -->
+          <div class="s4-donut-card">
+            <div class="s4-donut-title">국내·국제 학생 비율</div>
+            <div class="s4-donut-wrap">
+              <canvas id="donutNatInt"></canvas>
+            </div>
+            <div class="s4-donut-legend">
+              <div class="s4-legend-item">
+                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#0071E3"></span>국내 학생</div>
+                <div class="s4-legend-num">30명 (91%)</div>
+              </div>
+              <div class="s4-legend-item">
+                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#34AADC"></span>국제 학생</div>
+                <div class="s4-legend-num">3명 (9%)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table: PhD list -->
+          <div class="s4-table-card">
+            <div class="s4-table-title">박사 재학생 현황 (20명)</div>
+            <div style="overflow-y:auto;flex:1;">
+              <table class="s4-table">
+                <tr><th>이름</th><th>과정</th><th>전공</th></tr>
+                <tr><td>서모아</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>한주성</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>이지영</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>김경은</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>강민구</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>이은영</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>김상아</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>E Xintong</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>홍수경</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>이주호</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>김세련</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>유오식</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>유승종</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>강영진</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>이희경</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>김세훈</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>김은희</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>Yao Huanyang</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>이지수</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+                <tr><td>Liu Xingchen</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 5 — 연구동향: 주제별
+    ══════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
+        <div class="slide-num">04 / 07</div>
+      </div>
+      <div class="s5-content">
+        <div class="eyebrow">Research Trends — Topic Classification</div>
+        <div class="s5-title">논문연구동향 — 주제별 분류</div>
+        <div class="s5-sub">학술논문 98편 + 학위논문 29편 총 127편 분석 결과</div>
+
+        <div class="s5-grid">
+          <!-- Left: 5 axes -->
+          <div class="s5-left">
+            <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;">📌 학술논문 5대 연구축 (98편)</div>
+
+            <div class="s5-axis-card">
+              <div class="s5-axis-num">1</div>
+              <div class="s5-axis-content">
+                <div class="s5-axis-title">거버넌스 & 시민참여</div>
+                <div class="s5-axis-keywords">거버넌스 · 시민참여 · 공공-민간협력 · 협치 · 의사결정 구조</div>
+              </div>
+              <div class="s5-axis-bar">
+                <div class="s5-axis-pct">31%</div>
+                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:100%"></div></div>
+              </div>
+            </div>
+
+            <div class="s5-axis-card">
+              <div class="s5-axis-num">2</div>
+              <div class="s5-axis-content">
+                <div class="s5-axis-title">사회적 가치 & ESG</div>
+                <div class="s5-axis-keywords">사회적 가치 · 공공가치 · ESG · CSR · CSV · 사회적 기업</div>
+              </div>
+              <div class="s5-axis-bar">
+                <div class="s5-axis-pct">20%</div>
+                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:65%;"></div></div>
+              </div>
+            </div>
+
+            <div class="s5-axis-card">
+              <div class="s5-axis-num">3</div>
+              <div class="s5-axis-content">
+                <div class="s5-axis-title">장소성 & 활성화</div>
+                <div class="s5-axis-keywords">장소 브랜딩 · 마케팅 · 도시재생 · 산업유산 · 준공공공간</div>
+              </div>
+              <div class="s5-axis-bar">
+                <div class="s5-axis-pct">18%</div>
+                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:58%;"></div></div>
+              </div>
+            </div>
+
+            <div class="s5-axis-card">
+              <div class="s5-axis-num">4</div>
+              <div class="s5-axis-content">
+                <div class="s5-axis-title">데이터 & 과학적 분석</div>
+                <div class="s5-axis-keywords">텍스트마이닝 · 빅데이터 · 아이트래킹 · EEG · 스트레스지수</div>
+              </div>
+              <div class="s5-axis-bar">
+                <div class="s5-axis-pct">18%</div>
+                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:58%;"></div></div>
+              </div>
+            </div>
+
+            <div class="s5-axis-card">
+              <div class="s5-axis-num">5</div>
+              <div class="s5-axis-content">
+                <div class="s5-axis-title">안전 & 웰빙</div>
+                <div class="s5-axis-keywords">안전 · CPTED · 건강거리 · 바이오필릭 · 치유 · 회복탄력성</div>
+              </div>
+              <div class="s5-axis-bar">
+                <div class="s5-axis-pct">13%</div>
+                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:42%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="s5-right">
+            <!-- Radar Chart -->
+            <div class="s5-chart-card">
+              <div class="s5-chart-title">연구 주제 분포 (레이더)</div>
+              <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+                <canvas id="radarChart" style="max-height:200px;"></canvas>
+              </div>
+            </div>
+
+            <!-- Thesis breakdown -->
+            <div class="s5-thesis-card">
+              <div class="s5-thesis-title">📄 학위논문 주제 분류 (29편)</div>
+              <div class="s5-thesis-items">
+                <div class="s5-thesis-item">
+                  <div class="s5-thesis-label">평가지표 & 모델개발</div>
+                  <div class="s5-thesis-bar-wrap"><div class="s5-thesis-bar-fill" style="width:82%"></div></div>
+                  <div class="s5-thesis-pct">41%</div>
+                </div>
+                <div class="s5-thesis-item">
+                  <div class="s5-thesis-label">공간 & 서비스 디자인</div>
+                  <div class="s5-thesis-bar-wrap"><div class="s5-thesis-bar-fill" style="width:62%"></div></div>
+                  <div class="s5-thesis-pct">31%</div>
+                </div>
+                <div class="s5-thesis-item">
+                  <div class="s5-thesis-label">정책 & 제도 효과성</div>
+                  <div class="s5-thesis-bar-wrap"><div class="s5-thesis-bar-fill" style="width:56%"></div></div>
+                  <div class="s5-thesis-pct">28%</div>
+                </div>
+              </div>
+              <div style="margin-top:12px;font-size:11px;opacity:0.7;line-height:1.6;">
+                주요 연구 대상: 스마트병원 · 박물관 · 소셜처방 · 다세대놀이터 · 빈집재생 · 공공데이터활용
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 6 — 연구동향: 방법론
+    ══════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
+        <div class="slide-num">05 / 07</div>
+      </div>
+      <div class="s6-content">
+        <div class="eyebrow">Research Trends — Methodology</div>
+        <div class="s6-title">논문연구동향 — 연구방법 분류</div>
+        <div class="s6-sub">전체 연구실 논문의 연구방법론 분포 및 특성 분석</div>
+
+        <div class="s6-grid">
+          <!-- Left: method bars -->
+          <div class="s6-left">
+            <div class="s6-method-card">
+              <div class="s6-method-title">연구방법론 분포</div>
+              <div class="s6-method-list">
+
+                <div class="s6-method-item">
+                  <div class="s6-method-header">
+                    <div><div class="s6-method-name">텍스트 마이닝 / 빅데이터</div><div class="s6-method-desc">소셜빅데이터·키워드네트워크·트렌드분석</div></div>
+                    <div class="s6-method-pct">28%</div>
+                  </div>
+                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:100%"></div></div>
+                </div>
+
+                <div class="s6-method-item">
+                  <div class="s6-method-header">
+                    <div><div class="s6-method-name">정책 · 제도 비교분석</div><div class="s6-method-desc">한중·한네덜란드 비교, 국제사례 분석</div></div>
+                    <div class="s6-method-pct">22%</div>
+                  </div>
+                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:78%"></div></div>
+                </div>
+
+                <div class="s6-method-item">
+                  <div class="s6-method-header">
+                    <div><div class="s6-method-name">사례연구</div><div class="s6-method-desc">공공디자인 우수사례 분석 및 심층 탐구</div></div>
+                    <div class="s6-method-pct">20%</div>
+                  </div>
+                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:71%"></div></div>
+                </div>
+
+                <div class="s6-method-item">
+                  <div class="s6-method-header">
+                    <div><div class="s6-method-name">생체·신경심리 측정</div><div class="s6-method-desc">아이트래킹·EEG·스트레스지수·SD척도</div></div>
+                    <div class="s6-method-pct">15%</div>
+                  </div>
+                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:54%"></div></div>
+                </div>
+
+                <div class="s6-method-item">
+                  <div class="s6-method-header">
+                    <div><div class="s6-method-name">평가지표 개발 (AHP/Delphi)</div><div class="s6-method-desc">공공가치지수·ESG지표·사회적 가치 측정</div></div>
+                    <div class="s6-method-pct">10%</div>
+                  </div>
+                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:36%"></div></div>
+                </div>
+
+                <div class="s6-method-item">
+                  <div class="s6-method-header">
+                    <div><div class="s6-method-name">문헌연구 / 메타분석</div><div class="s6-method-desc">이론 고찰 및 개념 분석</div></div>
+                    <div class="s6-method-pct">5%</div>
+                  </div>
+                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:18%"></div></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="s6-right">
+            <!-- Bar chart: trend by year -->
+            <div class="s6-trend-card">
+              <div class="s6-trend-title">연도별 논문 발표 추이</div>
+              <div style="flex:1;">
+                <canvas id="yearlyChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Highlight features -->
+            <div class="s6-highlight-card">
+              <div class="s6-highlight-title">연구방법론 주요 특성</div>
+              <div class="s6-highlights">
+                <div class="s6-hl-item">
+                  <div class="s6-hl-icon">📊</div>
+                  <div class="s6-hl-name">에비던스 기반 연구</div>
+                  <div class="s6-hl-desc">생체측정·빅데이터로 디자인 효과를 과학적으로 검증</div>
+                </div>
+                <div class="s6-hl-item">
+                  <div class="s6-hl-icon">🌏</div>
+                  <div class="s6-hl-name">국제 비교 연구</div>
+                  <div class="s6-hl-desc">한·중·미·영·네덜란드 정책 비교 및 GPCI 상위국 분석</div>
+                </div>
+                <div class="s6-hl-item">
+                  <div class="s6-hl-icon">🔬</div>
+                  <div class="s6-hl-name">혼합방법 설계</div>
+                  <div class="s6-hl-desc">질적·양적 통합으로 공공디자인의 다층적 효과 규명</div>
+                </div>
+                <div class="s6-hl-item">
+                  <div class="s6-hl-icon">⚙️</div>
+                  <div class="s6-hl-name">실용적 산출 지향</div>
+                  <div class="s6-hl-desc">현장 적용 가능한 평가지표와 운영모델 개발에 집중</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 7 — 워크샵 및 세미나
+    ══════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
+        <div class="slide-num">06 / 07</div>
+      </div>
+      <div class="s7-content">
+        <div class="eyebrow">Workshop & Seminar History</div>
+        <div class="s7-title">논문연구실 워크샵 및 세미나</div>
+        <div class="s7-sub">연간 워크샵·현장답사·월례세미나 연혁 및 2026년 계획</div>
+
+        <div class="s7-grid">
+          <!-- 2023 Workshop -->
+          <div class="s7-event-card featured">
+            <div class="s7-event-year">2023 Workshop</div>
+            <div class="s7-event-name">논문방 워크샵<br>— 경기도 화성</div>
+            <div class="s7-event-details">
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📅</span>
+                2023년 2월 3–4일 (1박 2일)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📍</span>
+                옥란하우스 (화성시 서신면, 관서당·도락당·사랑채)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">👥</span>
+                16명 참가 · 8대 차량 이동
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">🗺</span>
+                현장답사: 화성 3.1독립운동길 (2020 한국공공디자인대상 수상작)
+              </div>
+            </div>
+            <div class="s7-event-tags">
+              <span class="s7-tag">논문 세미나</span>
+              <span class="s7-tag">현장답사</span>
+              <span class="s7-tag">연구토론</span>
+            </div>
+          </div>
+
+          <!-- 2024 Seminar Field Trip -->
+          <div class="s7-event-card">
+            <div class="s7-event-year">2024 Seminar & Field Trip</div>
+            <div class="s7-event-name">세미나 답사<br>— 충남 아산</div>
+            <div class="s7-event-details">
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📅</span>
+                2024년 1월 26–27일 (1박 2일)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📍</span>
+                외암민속마을 소롱골 게스트하우스 (천안아산역 10분)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">👥</span>
+                11명 참가 (1박2일 9명 + 당일 2명)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">💻</span>
+                Webex 세미나: 발표·토론·2024 운영계획 수립
+              </div>
+            </div>
+            <div class="s7-event-tags">
+              <span class="s7-tag">Webex 세미나</span>
+              <span class="s7-tag">외암민속마을</span>
+              <span class="s7-tag">운영계획</span>
+            </div>
+          </div>
+
+          <!-- 2025 Workshop -->
+          <div class="s7-event-card featured">
+            <div class="s7-event-year">2025 Workshop</div>
+            <div class="s7-event-name">학술 워크샵<br>— 강원도 영월</div>
+            <div class="s7-event-details">
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📅</span>
+                2025년 1월 10–11일 (1박 2일)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📍</span>
+                영월 동강시스타
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">👥</span>
+                약 20명 참가
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">🗺</span>
+                현장답사: 영월 공공미술 · 청령포
+              </div>
+            </div>
+            <div class="s7-event-tags">
+              <span class="s7-tag">학술워크샵</span>
+              <span class="s7-tag">공공미술 답사</span>
+              <span class="s7-tag">청령포</span>
+            </div>
+          </div>
+
+          <!-- Monthly Seminar -->
+          <div class="s7-event-card">
+            <div class="s7-event-year">Regular Monthly</div>
+            <div class="s7-event-name">월례 논문 세미나</div>
+            <div class="s7-event-details">
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📅</span>
+                매월 정기 개최 (기획분과 주관)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">📝</span>
+                논문연구 주제 발표 및 피어 피드백
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">🎯</span>
+                기초역량 세미나 (연구방법론 교육)
+              </div>
+              <div class="s7-event-detail">
+                <span class="s7-event-detail-icon">🔍</span>
+                D-Search: 분야 전문역량 트렌드 분석
+              </div>
+            </div>
+            <div class="s7-event-tags">
+              <span class="s7-tag">월례세미나</span>
+              <span class="s7-tag">D-Search</span>
+              <span class="s7-tag">기초역량</span>
+            </div>
+          </div>
+
+          <!-- 2026 Plan -->
+          <div class="s7-upcoming-card">
+            <div class="s7-upcoming-label">✦ 2026 Workshop Plan</div>
+            <div class="s7-upcoming-title">2026 논문연구실<br>워크샵 & 세미나</div>
+            <div class="s7-upcoming-desc">
+              연구 성과 공유 및 공동체 강화를 위한<br>
+              2026년 연간 워크샵 및 세미나 계획 수립.<br>
+              현장답사지 선정 · 참가 일정 조율 예정.
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+              <span style="background:var(--blue-light);color:var(--blue);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:600;">2026 워크샵</span>
+              <span style="background:var(--blue-light);color:var(--blue);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:600;">GSD 플랫폼</span>
+              <span style="background:var(--blue-light);color:var(--blue);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:600;">Annual Book</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 8 — 운영계획
+    ══════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
+        <div class="slide-num">07 / 07</div>
+      </div>
+      <div class="s8-content">
+        <div class="eyebrow">Operation Plan 2026</div>
+        <div class="s8-title">논문연구실 운영계획</div>
+        <div class="s8-sub">연구지원 · 논문심사지원 · 운영 · 세미나 — 2026년 4대 운영 방향</div>
+
+        <div class="s8-grid">
+
+          <!-- 1. 연구지원 (HIPD) -->
+          <div class="s8-plan-card accent">
+            <div class="s8-plan-header">
+              <div class="s8-plan-icon">📚</div>
+              <div>
+                <div class="s8-plan-name">연구지원</div>
+                <div class="s8-plan-tagline">Research Support — GSD / HIPD Platform</div>
+              </div>
+            </div>
+            <div class="s8-plan-items">
+              <div class="s8-plan-item">교수·학생 제작 기초 논문연구 교육영상 운영 및 업데이트</div>
+              <div class="s8-plan-item">형식·작성법 매뉴얼 정비 및 클라우드 공유 (armulastudy@gmail.com)</div>
+              <div class="s8-plan-item">박사논문 대규모 설문·연구 지원 (연구분과 주관)</div>
+              <div class="s8-plan-item">석사 피어튜터링 시스템 운영 (기수·주제별 소그룹)</div>
+              <div class="s8-plan-item">GSD Platform 및 Annual Research Book 발간</div>
+              <div class="s8-plan-item">D-Search: 분야 전문역량 트렌드·국제이슈 정기 업데이트</div>
+            </div>
+          </div>
+
+          <!-- 2. 논문심사지원 -->
+          <div class="s8-plan-card">
+            <div class="s8-plan-header">
+              <div class="s8-plan-icon" style="background:var(--bg-gray);font-size:20px;">✅</div>
+              <div>
+                <div class="s8-plan-name">논문심사지원</div>
+                <div class="s8-plan-tagline">Thesis Review Support</div>
+              </div>
+            </div>
+            <div class="s8-plan-items">
+              <div class="s8-plan-item">논문심사 일정 공유 및 예비심사·본심사 준비 지원</div>
+              <div class="s8-plan-item">KCI 등재지 논문 투고 지원 (한국공간디자인학회·디자인문화학회 등)</div>
+              <div class="s8-plan-item">투고 대상 학회: 도시설계학회·조경학회·한국디자인학회</div>
+              <div class="s8-plan-item">논문 작성 형식 가이드라인 제공 (파일명 규칙 준수)</div>
+              <div class="s8-plan-item">박사과정 단행본 집필 프로젝트 연계 지원</div>
+            </div>
+          </div>
+
+          <!-- 3. 운영 -->
+          <div class="s8-plan-card">
+            <div class="s8-plan-header">
+              <div class="s8-plan-icon" style="background:var(--bg-gray);font-size:20px;">⚙️</div>
+              <div>
+                <div class="s8-plan-name">연구실 운영</div>
+                <div class="s8-plan-tagline">Lab Management — 4개 분과 체계</div>
+              </div>
+            </div>
+            <div class="s8-plan-items">
+              <div class="s8-plan-item">일정관리·자료 DB화·아카이빙·기초역량 세미나</div>
+              <div class="s8-plan-item">워크샵·현장답사·커뮤니티 활동·회계</div>
+              <div class="s8-plan-item">방법론 교육·논문작성 지원·이론 기반 강화</div>
+              <div class="s8-plan-item">D-Search 관리·전문역량 개발</div>
+              <div class="s8-plan-item">학위·기수 차별 없는 협동학습 기반 통합 운영 원칙 유지</div>
+            </div>
+          </div>
+
+          <!-- 4. 세미나 -->
+          <div class="s8-plan-card">
+            <div class="s8-plan-header">
+              <div class="s8-plan-icon" style="background:var(--bg-gray);font-size:20px;">🎤</div>
+              <div>
+                <div class="s8-plan-name">세미나</div>
+                <div class="s8-plan-tagline">Seminar & Workshop Plan 2026</div>
+              </div>
+            </div>
+            <div class="s8-plan-items">
+              <div class="s8-plan-item">월례 논문세미나: 연구주제 발표·토론·상호 피드백</div>
+              <div class="s8-plan-item">연간 워크샵 (1박2일): 성과공유·공동체 강화·현장답사 연계</div>
+              <div class="s8-plan-item">공공디자인 현장세미나: 우수사례지 방문 및 현장 토론</div>
+              <div class="s8-plan-item">Webex 온라인 세미나: 원거리 참가자 포함 하이브리드 운영</div>
+              <div class="s8-plan-item">외부 전문가 특강 및 학술교류 프로그램 기획</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrap -->
+</div><!-- /presentation -->
+
+<!-- Navigation Buttons -->
+<button class="nav-btn nav-prev hidden" id="prevBtn" onclick="changeSlide(-1)" title="이전 슬라이드">
+  <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"></polyline></svg>
+</button>
+<button class="nav-btn nav-next" id="nextBtn" onclick="changeSlide(1)" title="다음 슬라이드">
+  <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"></polyline></svg>
+</button>
+
+<!-- Dots -->
+<div class="dots" id="dots"></div>
+
+<script>
+const TOTAL = 8;
+let current = 0;
+let chartsInitialized = {};
+
+const wrap = document.getElementById('slidesWrap');
+const dots = document.getElementById('dots');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Build dots
+for (let i = 0; i < TOTAL; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', () => goTo(i));
+  dots.appendChild(d);
+}
+
+function updateDots() {
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === current);
+  });
+}
+
+function updateNav() {
+  prevBtn.classList.toggle('hidden', current === 0);
+  nextBtn.classList.toggle('hidden', current === TOTAL - 1);
+}
+
+function goTo(n) {
+  current = Math.max(0, Math.min(TOTAL - 1, n));
+  wrap.style.transform = `translateX(-${current * 100}vw)`;
+  updateDots();
+  updateNav();
+  setTimeout(() => initChartsForSlide(current), 100);
+}
+
+function changeSlide(dir) { goTo(current + dir); }
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+});
+
+// Touch swipe
+let touchX = 0;
+document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+});
+
+// ── CHARTS ──
+function initChartsForSlide(idx) {
+  if (idx === 3 && !chartsInitialized[3]) {
+    chartsInitialized[3] = true;
+
+    // Donut MS vs PhD
+    new Chart(document.getElementById('donutMsPhd'), {
+      type: 'doughnut',
+      data: {
+        labels: ['박사과정', '석사과정'],
+        datasets: [{ data: [20, 13], backgroundColor: ['#0071E3', '#5AC8FA'], borderWidth: 0, hoverOffset: 4 }]
+      },
+      options: {
+        cutout: '70%',
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}명` } } },
+        animation: { duration: 800, easing: 'easeOutQuart' }
+      }
+    });
+
+    // Donut Nat vs Int
+    new Chart(document.getElementById('donutNatInt'), {
+      type: 'doughnut',
+      data: {
+        labels: ['국내 학생', '국제 학생'],
+        datasets: [{ data: [30, 3], backgroundColor: ['#0071E3', '#34AADC'], borderWidth: 0, hoverOffset: 4 }]
+      },
+      options: {
+        cutout: '70%',
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}명` } } },
+        animation: { duration: 800, easing: 'easeOutQuart' }
+      }
+    });
+  }
+
+  if (idx === 4 && !chartsInitialized[4]) {
+    chartsInitialized[4] = true;
+    new Chart(document.getElementById('radarChart'), {
+      type: 'radar',
+      data: {
+        labels: ['거버넌스\n& 참여', '사회적가치\n& ESG', '장소성\n& 활성화', '데이터\n& 분석', '안전\n& 웰빙'],
+        datasets: [{
+          label: '학술논문',
+          data: [31, 20, 18, 18, 13],
+          backgroundColor: 'rgba(0,113,227,0.15)',
+          borderColor: '#0071E3',
+          borderWidth: 2,
+          pointBackgroundColor: '#0071E3',
+          pointRadius: 4
+        }]
+      },
+      options: {
+        scales: {
+          r: {
+            min: 0, max: 35,
+            ticks: { stepSize: 10, font: { size: 9 }, color: '#AEAEB2' },
+            grid: { color: '#E5E5EA' },
+            pointLabels: { font: { size: 10, weight: '600' }, color: '#1D1D1F' }
+          }
+        },
+        plugins: { legend: { display: false } },
+        animation: { duration: 900 }
+      }
+    });
+  }
+
+  if (idx === 5 && !chartsInitialized[5]) {
+    chartsInitialized[5] = true;
+    new Chart(document.getElementById('yearlyChart'), {
+      type: 'bar',
+      data: {
+        labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+          label: '학술논문',
+          data: [12, 16, 18, 22, 16, 14],
+          backgroundColor: '#0071E3',
+          borderRadius: 6,
+          borderSkipped: false
+        }, {
+          label: '학위논문',
+          data: [3, 4, 5, 7, 6, 4],
+          backgroundColor: '#C7E0FF',
+          borderRadius: 6,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 }, color: '#6E6E73' } },
+          y: { stacked: true, grid: { color: '#F0F0F5' }, ticks: { font: { size: 10 }, color: '#AEAEB2' } }
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: { font: { size: 11 }, color: '#6E6E73', boxWidth: 12, borderRadius: 3 }
+          }
+        },
+        animation: { duration: 900, easing: 'easeOutQuart' }
+      }
+    });
+  }
+}
+
+// Init first slide
+updateNav();
+</script>
+</body>
+</html>
