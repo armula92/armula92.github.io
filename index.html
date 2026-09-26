@@ -1,1766 +1,618 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 이현성 논문연구실 워크샵</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<style>
-  :root {
-    --blue: #0071E3;
-    --blue-dark: #0051A8;
-    --blue-light: #EBF4FF;
-    --blue-mid: #C7E0FF;
-    --text: #1D1D1F;
-    --text-sub: #6E6E73;
-    --text-light: #AEAEB2;
-    --bg: #FFFFFF;
-    --bg-gray: #F5F5F7;
-    --border: #E5E5EA;
-    --shadow: 0 2px 16px rgba(0,0,0,0.07);
-    --shadow-lg: 0 8px 40px rgba(0,0,0,0.11);
-    --radius: 16px;
-    --radius-sm: 10px;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Apple SD Gothic Neo', 'Pretendard', 'Helvetica Neue', Arial, sans-serif;
-    background: #111;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-    user-select: none;
-  }
-
-  /* ── PRESENTATION SHELL ── */
-  .presentation { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
-
-  .slides-wrap {
-    display: flex;
-    height: 100vh;
-    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
-  }
-
-  .slide {
-    flex: 0 0 100vw;
-    width: 100vw;
-    height: 100vh;
-    background: var(--bg);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* ── NAVIGATION ── */
-  .nav-btn {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    background: rgba(255,255,255,0.92);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-lg);
-    z-index: 200;
-    backdrop-filter: blur(20px);
-    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  }
-  .nav-btn:hover { transform: translateY(-50%) scale(1.08); box-shadow: 0 12px 48px rgba(0,0,0,0.18); }
-  .nav-btn.hidden { opacity: 0; pointer-events: none; }
-  .nav-prev { left: 18px; }
-  .nav-next { right: 18px; }
-  .nav-btn svg { width: 18px; height: 18px; stroke: var(--text); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-
-  /* ── DOTS ── */
-  .dots {
-    position: fixed;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 7px;
-    z-index: 200;
-    align-items: center;
-  }
-  .dot {
-    width: 7px; height: 7px;
-    border-radius: 4px;
-    background: rgba(0,0,0,0.18);
-    cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .dot.active { width: 22px; background: var(--blue); }
-
-  /* ── SLIDE HEADER BAR ── */
-  .slide-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 52px 0;
-  }
-  .slide-logo { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--text-light); }
-  .slide-num { font-size: 12px; color: var(--text-light); font-weight: 500; }
-
-  /* ── EYEBROW ── */
-  .eyebrow {
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 10px;
-  }
-
-  /* ── COMMON CARD ── */
-  .card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: var(--shadow);
-  }
-  .card-blue {
-    background: var(--blue-light);
-    border: 1px solid var(--blue-mid);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-  }
-
-  /* ──────────────────────────────────────────
-     SLIDE 1 — COVER
-  ────────────────────────────────────────── */
-  #s1 { background: #FFFFFF; }
-
-  .s1-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, #EBF4FF 0%, #FFFFFF 55%, #F5F5F7 100%);
-    z-index: 0;
-  }
-  .s1-circle1 {
-    position: absolute;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,113,227,0.08) 0%, transparent 70%);
-    top: -100px; right: -100px;
-    z-index: 0;
-  }
-  .s1-circle2 {
-    position: absolute;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,113,227,0.05) 0%, transparent 70%);
-    bottom: 80px; left: 60px;
-    z-index: 0;
-  }
-
-  .s1-content {
-    position: relative; z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100%;
-    padding: 0 10% 60px;
-  }
-
-  .s1-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--blue);
-    color: #fff;
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-  }
-  .s1-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.7); }
-
-  .s1-main-title {
-    font-size: 72px;
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-bottom: 16px;
-  }
-  .s1-main-title span { color: var(--blue); }
-
-  .s1-sub {
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--text-sub);
-    margin-bottom: 48px;
-    line-height: 1.5;
-  }
-
-  .s1-meta {
-    display: flex; gap: 40px;
-  }
-  .s1-meta-item { }
-  .s1-meta-label { font-size: 11px; font-weight: 600; color: var(--text-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
-  .s1-meta-value { font-size: 15px; font-weight: 600; color: var(--text); }
-
-  .s1-stats {
-    position: absolute; right: 10%; bottom: 15%;
-    display: flex; flex-direction: column; gap: 16px;
-    z-index: 1;
-  }
-  .s1-stat {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px 28px;
-    text-align: center;
-    box-shadow: var(--shadow);
-  }
-  .s1-stat-num { font-size: 38px; font-weight: 800; color: var(--blue); letter-spacing: -0.02em; line-height: 1; }
-  .s1-stat-label { font-size: 12px; color: var(--text-sub); margin-top: 4px; font-weight: 500; }
-
-  /* ──────────────────────────────────────────
-     SLIDE 2 — 연구실 개요
-  ────────────────────────────────────────── */
-  .s2-content {
-    padding: 30px 60px 40px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .s2-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
-  .s2-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 32px; }
-
-  .s2-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 16px;
-    flex: 1;
-  }
-
-  .s2-main-card {
-    grid-column: 1;
-    grid-row: 1 / 3;
-    background: var(--blue);
-    border-radius: var(--radius);
-    padding: 36px 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #fff;
-  }
-  .s2-main-card .label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-bottom: 12px; }
-  .s2-main-card h3 { font-size: 26px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
-  .s2-main-card p { font-size: 14px; opacity: 0.85; line-height: 1.7; }
-  .s2-main-card .bottom { margin-top: 20px; }
-  .s2-main-card .badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 100px;
-    padding: 5px 14px;
-    font-size: 12px; font-weight: 600;
-    margin-right: 6px; margin-bottom: 6px;
-  }
-
-  .s2-stat-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .s2-stat-num { font-size: 48px; font-weight: 800; color: var(--blue); letter-spacing: -0.03em; line-height: 1; }
-  .s2-stat-label { font-size: 14px; color: var(--text-sub); font-weight: 500; margin-top: 6px; }
-  .s2-stat-detail { font-size: 12px; color: var(--text-light); margin-top: 4px; }
-
-  .s2-division-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px 28px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    align-content: start;
-  }
-  .s2-div-title { grid-column: 1 / 3; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .s2-div-item {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 12.5px; color: var(--text-sub);
-  }
-  .s2-div-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
-
-  /* ──────────────────────────────────────────
-     SLIDE 3 — 논문구성원 누적
-  ────────────────────────────────────────── */
-  .s3-content {
-    padding: 30px 60px 50px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s3-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
-  .s3-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
-
-  .s3-grid {
-    display: grid;
-    grid-template-columns: 1fr 2.8fr;
-    gap: 20px;
-    flex: 1;
-  }
-
-  .s3-left { display: flex; flex-direction: column; gap: 14px; }
-
-  .s3-total-card {
-    background: var(--blue);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    color: #fff;
-    text-align: center;
-  }
-  .s3-total-num { font-size: 64px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
-  .s3-total-label { font-size: 13px; opacity: 0.8; margin-top: 6px; font-weight: 500; }
-
-  .s3-breakdown {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    flex: 1;
-  }
-  .s3-breakdown-item {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .s3-breakdown-item:last-child { border-bottom: none; }
-  .s3-breakdown-label { font-size: 13px; color: var(--text-sub); }
-  .s3-breakdown-num { font-size: 20px; font-weight: 800; color: var(--text); }
-  .s3-breakdown-bar {
-    height: 4px; border-radius: 2px;
-    margin-top: 6px;
-    background: var(--border);
-    overflow: hidden;
-  }
-  .s3-breakdown-fill { height: 100%; border-radius: 2px; background: var(--blue); }
-
-  .s3-right { display: flex; flex-direction: column; gap: 14px; }
-
-  .s3-section-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: 0.03em; }
-
-  .s3-grads-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-  }
-
-  .s3-member-chip {
-    background: var(--bg-gray);
-    border-radius: var(--radius-sm);
-    padding: 10px 12px;
-    font-size: 12px;
-    color: var(--text);
-    text-align: center;
-    border: 1px solid var(--border);
-    font-weight: 500;
-  }
-  .s3-member-chip .dept { font-size: 10px; color: var(--text-light); margin-top: 2px; }
-
-  .s3-current-section {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-  }
-  .s3-current-row {
-    display: flex; gap: 8px; flex-wrap: wrap;
-  }
-  .s3-chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 5px 12px;
-    font-size: 11.5px; color: var(--text); font-weight: 500;
-  }
-  .s3-chip-dot { width: 6px; height: 6px; border-radius: 50%; }
-  .s3-chip-dot.phd { background: var(--blue); }
-  .s3-chip-dot.ms { background: #5AC8FA; }
-
-  /* ──────────────────────────────────────────
-     SLIDE 4 — 학생분포현황
-  ────────────────────────────────────────── */
-  .s4-content {
-    padding: 30px 60px 50px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s4-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
-  .s4-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
-
-  .s4-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1.6fr;
-    gap: 18px;
-    flex: 1;
-  }
-
-  .s4-donut-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .s4-donut-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 16px; text-align: center; }
-  .s4-donut-wrap { width: 140px; height: 140px; position: relative; }
-  .s4-donut-legend { margin-top: 16px; width: 100%; }
-  .s4-legend-item {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 12px;
-  }
-  .s4-legend-item:last-child { border-bottom: none; }
-  .s4-legend-left { display: flex; align-items: center; gap: 8px; color: var(--text-sub); }
-  .s4-legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .s4-legend-num { font-weight: 700; color: var(--text); }
-
-  .s4-bar-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-  }
-  .s4-bar-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 18px; }
-
-  .s4-table-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-  }
-  .s4-table-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
-
-  .s4-table { width: 100%; border-collapse: collapse; }
-  .s4-table th {
-    font-size: 10.5px; font-weight: 700;
-    color: var(--text-light);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-align: left;
-    padding: 0 0 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .s4-table td {
-    font-size: 12px;
-    color: var(--text);
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .s4-table tr:last-child td { border-bottom: none; }
-  .s4-badge {
-    display: inline-block;
-    border-radius: 100px;
-    padding: 2px 10px;
-    font-size: 10px; font-weight: 700;
-  }
-  .s4-badge.phd { background: var(--blue-light); color: var(--blue); }
-  .s4-badge.ms { background: #EBF4FF; color: #0071E3; }
-
-  /* ──────────────────────────────────────────
-     SLIDE 5 — 연구동향: 주제별
-  ────────────────────────────────────────── */
-  .s5-content {
-    padding: 30px 60px 50px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s5-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
-  .s5-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 24px; }
-
-  .s5-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 18px;
-    flex: 1;
-  }
-
-  .s5-left { display: flex; flex-direction: column; gap: 8px; }
-
-  .s5-axis-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius-sm);
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    border-left: 4px solid var(--blue);
-  }
-  .s5-axis-num { font-size: 22px; font-weight: 900; color: var(--blue); width: 30px; flex-shrink: 0; }
-  .s5-axis-content { flex: 1; }
-  .s5-axis-title { font-size: 14px; font-weight: 700; color: var(--text); }
-  .s5-axis-keywords { font-size: 11px; color: var(--text-sub); margin-top: 3px; }
-  .s5-axis-bar {
-    width: 70px; flex-shrink: 0; text-align: right;
-  }
-  .s5-axis-pct { font-size: 18px; font-weight: 800; color: var(--text); }
-  .s5-axis-bar-bg {
-    width: 100%; height: 4px; background: var(--border); border-radius: 2px; margin-top: 4px;
-  }
-  .s5-axis-bar-fill { height: 100%; border-radius: 2px; background: var(--blue); }
-
-  .s5-right { display: flex; flex-direction: column; gap: 14px; }
-
-  .s5-chart-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s5-chart-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
-
-  .s5-thesis-card {
-    background: var(--blue);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    color: #fff;
-  }
-  .s5-thesis-title { font-size: 13px; font-weight: 700; opacity: 0.8; margin-bottom: 12px; }
-  .s5-thesis-items { display: flex; flex-direction: column; gap: 8px; }
-  .s5-thesis-item { display: flex; align-items: center; gap: 10px; }
-  .s5-thesis-bar-wrap { flex: 1; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; }
-  .s5-thesis-bar-fill { height: 100%; border-radius: 3px; background: #fff; }
-  .s5-thesis-label { font-size: 12px; width: 120px; flex-shrink: 0; opacity: 0.9; }
-  .s5-thesis-pct { font-size: 12px; font-weight: 700; width: 30px; text-align: right; }
-
-  /* ──────────────────────────────────────────
-     SLIDE 6 — 연구동향: 연구방법
-  ────────────────────────────────────────── */
-  .s6-content {
-    padding: 30px 60px 50px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s6-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
-  .s6-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 24px; }
-
-  .s6-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 18px;
-    flex: 1;
-  }
-
-  .s6-left { display: flex; flex-direction: column; gap: 14px; }
-  .s6-right { display: flex; flex-direction: column; gap: 14px; }
-
-  .s6-method-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    flex: 1;
-  }
-  .s6-method-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
-  .s6-method-list { display: flex; flex-direction: column; gap: 10px; }
-  .s6-method-item { }
-  .s6-method-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-  .s6-method-name { font-size: 13px; color: var(--text); font-weight: 600; }
-  .s6-method-desc { font-size: 11px; color: var(--text-sub); }
-  .s6-method-pct { font-size: 13px; font-weight: 800; color: var(--blue); }
-  .s6-bar-bg { width: 100%; height: 6px; background: var(--border); border-radius: 3px; }
-  .s6-bar-fill { height: 100%; border-radius: 3px; background: var(--blue); }
-
-  .s6-trend-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s6-trend-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
-
-  .s6-highlight-card {
-    background: var(--blue);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    color: #fff;
-  }
-  .s6-highlight-title { font-size: 13px; font-weight: 700; opacity: 0.8; margin-bottom: 12px; }
-  .s6-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .s6-hl-item {
-    background: rgba(255,255,255,0.12);
-    border-radius: var(--radius-sm);
-    padding: 12px 14px;
-  }
-  .s6-hl-icon { font-size: 20px; margin-bottom: 6px; }
-  .s6-hl-name { font-size: 12px; font-weight: 700; }
-  .s6-hl-desc { font-size: 10.5px; opacity: 0.75; margin-top: 2px; line-height: 1.4; }
-
-  /* ──────────────────────────────────────────
-     SLIDE 7 — 워크샵 및 세미나
-  ────────────────────────────────────────── */
-  .s7-content {
-    padding: 30px 60px 50px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s7-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
-  .s7-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
-
-  .s7-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 16px;
-    flex: 1;
-  }
-
-  .s7-event-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    overflow: hidden;
-  }
-  .s7-event-card.featured { background: var(--blue); color: #fff; }
-  .s7-event-year {
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--blue);
-  }
-  .s7-event-card.featured .s7-event-year { color: rgba(255,255,255,0.7); }
-  .s7-event-name { font-size: 20px; font-weight: 800; color: var(--text); line-height: 1.3; }
-  .s7-event-card.featured .s7-event-name { color: #fff; }
-  .s7-event-details { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
-  .s7-event-detail { display: flex; gap: 8px; font-size: 12.5px; color: var(--text-sub); align-items: flex-start; }
-  .s7-event-card.featured .s7-event-detail { color: rgba(255,255,255,0.8); }
-  .s7-event-detail-icon { font-size: 13px; flex-shrink: 0; }
-  .s7-event-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-  .s7-tag {
-    background: rgba(0,113,227,0.1);
-    color: var(--blue);
-    border-radius: 100px;
-    padding: 3px 10px;
-    font-size: 10.5px; font-weight: 600;
-  }
-  .s7-event-card.featured .s7-tag { background: rgba(255,255,255,0.18); color: #fff; }
-
-  .s7-upcoming-card {
-    background: var(--bg);
-    border: 2px dashed var(--blue-mid);
-    border-radius: var(--radius);
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-  }
-  .s7-upcoming-label { font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; }
-  .s7-upcoming-title { font-size: 20px; font-weight: 800; color: var(--text); }
-  .s7-upcoming-desc { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
-
-  /* ──────────────────────────────────────────
-     SLIDE 8 — 운영계획
-  ────────────────────────────────────────── */
-  .s8-content {
-    padding: 30px 60px 50px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .s8-title { font-size: 42px; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 6px; }
-  .s8-sub { font-size: 17px; color: var(--text-sub); margin-bottom: 28px; }
-
-  .s8-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 16px;
-    flex: 1;
-  }
-
-  .s8-plan-card {
-    background: var(--bg-gray);
-    border-radius: var(--radius);
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .s8-plan-card.accent { background: var(--blue); }
-
-  .s8-plan-header { display: flex; align-items: center; gap: 12px; }
-  .s8-plan-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: var(--blue);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .s8-plan-card.accent .s8-plan-icon { background: rgba(255,255,255,0.2); }
-  .s8-plan-name { font-size: 18px; font-weight: 800; color: var(--text); }
-  .s8-plan-card.accent .s8-plan-name { color: #fff; }
-  .s8-plan-tagline { font-size: 12px; color: var(--text-sub); margin-top: 1px; }
-  .s8-plan-card.accent .s8-plan-tagline { color: rgba(255,255,255,0.7); }
-
-  .s8-plan-items { display: flex; flex-direction: column; gap: 7px; }
-  .s8-plan-item {
-    display: flex; align-items: flex-start; gap: 8px;
-    font-size: 13px; color: var(--text-sub); line-height: 1.5;
-  }
-  .s8-plan-card.accent .s8-plan-item { color: rgba(255,255,255,0.85); }
-  .s8-plan-item::before {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--blue);
-    margin-top: 7px;
-    flex-shrink: 0;
-  }
-  .s8-plan-card.accent .s8-plan-item::before { background: rgba(255,255,255,0.6); }
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPD Lab — Socio-Public Design Lab</title>
+  <meta name="description" content="홍익대학교 공공디자인전공 이현성 교수 연구실, Socio-Public Design Lab(SPD Lab). 거버넌스·공공가치·장소성·안전과 웰빙을 연구합니다.">
+  <meta property="og:title" content="SPD Lab — Socio-Public Design Lab">
+  <meta property="og:description" content="홍익대학교 공공디자인전공 이현성 교수 연구실">
+  <meta property="og:image" content="assets/img/hero-01.jpg">
+  <meta name="theme-color" content="#0a0a0b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="presentation">
-  <div class="slides-wrap" id="slidesWrap">
+<!-- ================= Header ================= -->
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="SPD Lab 홈"><b>SPD Lab</b><span>Socio-Public Design Lab</span></a>
+    <nav class="nav" aria-label="주 메뉴">
+      <a href="#about">About</a>
+      <a href="#professor">Professor</a>
+      <a href="#research">Research</a>
+      <a href="#members">Members</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#news">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="hipd.html" class="nav-hipd"><i></i>HIPD</a>
+    </nav>
+    <button class="menu-btn" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
 
-    <!-- ══════════════════════════════════
-         SLIDE 1 — COVER
-    ══════════════════════════════════ -->
-    <div class="slide" id="s1">
-      <div class="s1-bg"></div>
-      <div class="s1-circle1"></div>
-      <div class="s1-circle2"></div>
+<div class="mobile-menu" aria-hidden="true">
+  <nav>
+    <a href="#about">연구실 소개 <small>About</small></a>
+    <a href="#professor">교수 소개 <small>Professor</small></a>
+    <a href="#research">연구 분야 <small>Research</small></a>
+    <a href="#members">연구원 <small>Members</small></a>
+    <a href="#projects">연구 프로젝트 <small>Projects</small></a>
+    <a href="#publications">논문 <small>Publications</small></a>
+    <a href="#news">소식 <small>News</small></a>
+    <a href="gallery.html">사진첩 <small>Gallery</small></a>
+    <a href="hipd.html">HIPD <small>AI Research Platform</small></a>
+  </nav>
+  <p class="foot">Hongik University · Public Design</p>
+</div>
 
-      <div class="s1-content">
-        <div class="s1-tag">
-          <span class="s1-tag-dot"></span>
-          Socio-Public Design Lab
-        </div>
-        <div class="s1-main-title">
-          이현성<br>
-          논문연구실<br>
-          <span>워크샵 2026</span>
-        </div>
-        <div class="s1-sub">
-          홍익대학교 공공디자인전공<br>
-          S.P.D Lab Annual Workshop
-        </div>
-        <div class="s1-meta">
-          <div class="s1-meta-item">
-            <div class="s1-meta-label">지도교수</div>
-            <div class="s1-meta-value">이현성 교수</div>
-          </div>
-          <div class="s1-meta-item">
-            <div class="s1-meta-label">일시</div>
-            <div class="s1-meta-value">2026년 1–2월</div>
-          </div>
-          <div class="s1-meta-item">
-            <div class="s1-meta-label">이메일</div>
-            <div class="s1-meta-value">armulastudy@gmail.com</div>
-          </div>
-        </div>
+<main>
+
+<!-- ================= Hero ================= -->
+<section class="hero" aria-label="SPD Lab">
+  <div class="hero-slides">
+    <figure class="on"><img src="assets/img/hero-01.jpg" alt="대한민국 공공디자인 페스티벌에 모인 공공디자인전공 구성원"></figure>
+    <figure><img src="assets/img/hero-02.jpg" alt="공공디자인 세미나 강연장"></figure>
+    <figure><img src="assets/img/hero-03.jpg" alt="세미나를 마치고 모인 연구실 구성원"></figure>
+  </div>
+  <div class="hero-content wrap">
+    <p class="hero-kicker rv">Hongik University — Public Design</p>
+    <h1 class="h-display rv d1">Socio-Public<br>Design<span class="thin">Lab.</span></h1>
+    <div class="hero-ko rv d2">
+      <p><strong>공공의 가치를 설계합니다.</strong><br>홍익대학교 공공디자인전공 이현성 교수 연구실</p>
+      <div class="hero-count"><span id="heroIdx">01</span><span class="bar"><i></i></span><span>03</span></div>
+    </div>
+    <div class="hero-meta rv d3">
+      <div><b>60<small style="font-size:.5em">+</small></b><span>누적 구성원</span></div>
+      <div><b>130<small style="font-size:.5em">+</small></b><span>지도 논문</span></div>
+      <div><b>4</b><span>연구 축</span></div>
+      <div><b>2018</b><span>공공디자인전공 신설</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 01 About ================= -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow rv">About</p>
+        <h2 class="h-section rv d1">공유·공공·공동체,<br>디자인의 공공성을 묻다</h2>
       </div>
+      <p class="lead rv d2">SPD Lab은 공공디자인을 물리적 환경 개선에 머무르게 하지 않고, 정책과 제도, 협력의 구조, 그리고 사람들의 일상까지 확장하는 연구 공동체입니다.</p>
+    </div>
 
-      <div class="s1-stats">
-        <div class="s1-stat">
-          <div class="s1-stat-num">127</div>
-          <div class="s1-stat-label">누적 논문 편수</div>
-        </div>
-        <div class="s1-stat">
-          <div class="s1-stat-num">33</div>
-          <div class="s1-stat-label">현 지도학생</div>
-        </div>
-        <div class="s1-stat">
-          <div class="s1-stat-num">5</div>
-          <div class="s1-stat-label">핵심 연구 분야</div>
-        </div>
+    <div class="about-grid">
+      <p class="about-statement rv">우리는 <b>무엇을 디자인할 것인가</b>보다 <b>누구와, 어떤 과정으로</b> 결정하는가를 먼저 묻습니다.</p>
+      <div class="about-body rv d1">
+        <p>SPD Lab(Socio-Public Design Lab)은 홍익대학교 공공디자인전공 이현성 교수 논문연구실을 모태로 한 석·박사 연구 공동체입니다. 2018년 전공 신설 이후 <b>누적 약 60명의 석·박사 구성원</b>이 함께하며 <b>130여 편의 학술·학위 논문</b>을 축적해 왔습니다.</p>
+        <p>거버넌스와 주민참여, 공공가치와 ESG, 장소성과 데이터 기반 분석, 안전과 웰빙이라는 네 개의 축 위에서 <b>증거 기반 디자인(Evidence-based Design)</b>을 지향합니다. 국제공공디자인포럼(IPDF), 사회혁신 디자인 네트워크 DESIS와 연결되어 연구의 사회적 실천을 넓혀 가고 있습니다.</p>
       </div>
     </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 2 — 연구실 개요
-    ══════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
-        <div class="slide-num">01 / 07</div>
+    <div class="pillars">
+      <div class="pillar rv">
+        <span class="n">SYSTEM 01</span>
+        <h3>Group 제도<small>Peer Research Group</small></h3>
+        <p>주제가 유사한 구성원을 그룹으로 묶어 공동 사전 연구와 피어 크리틱을 진행합니다. 개별·즉흥적 연구를 지양하고 협동적 연구 환경을 만듭니다.</p>
       </div>
-      <div class="s2-content">
-        <div class="eyebrow">Lab Overview</div>
-        <div class="s2-title">논문연구실 개요</div>
-        <div class="s2-sub">Socio-Public Design Lab — 공공디자인의 사회적 가치를 연구합니다</div>
-
-        <div class="s2-grid">
-          <!-- Main identity card -->
-          <div class="s2-main-card">
-            <div>
-              <div class="label">Research Identity</div>
-              <h3>S.P.D Lab<br>Socio-Public Design</h3>
-              <p>공공디자인이 사회적 가치를 창출하는 방식을 탐구합니다. 거버넌스, 시민참여, ESG, 데이터 기반 연구를 통해 공공 환경의 질과 사회적 지속가능성을 높입니다.</p>
-            </div>
-            <div class="bottom">
-              <span class="badge">공공디자인</span>
-              <span class="badge">거버넌스</span>
-              <span class="badge">사회적 가치</span>
-              <span class="badge">에비던스 기반</span>
-              <span class="badge">GSD Platform</span>
-            </div>
-          </div>
-
-          <!-- Stat 1 -->
-          <div class="s2-stat-card">
-            <div>
-              <div style="font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;">총 누적 논문</div>
-              <div class="s2-stat-num">127편</div>
-              <div class="s2-stat-label">학술논문 98편 · 학위논문 29편</div>
-              <div class="s2-stat-detail">2020년 이후 연간 약 25편 평균 발표</div>
-            </div>
-          </div>
-
-          <!-- Stat 2 -->
-          <div class="s2-stat-card">
-            <div>
-              <div style="font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;">현 지도학생</div>
-              <div class="s2-stat-num">33명</div>
-              <div class="s2-stat-label">석사 13명 · 박사 20명</div>
-              <div class="s2-stat-detail">2025학년도 2학기 기준</div>
-            </div>
-          </div>
-
-          <!-- Division structure -->
-          <div class="s2-division-card">
-            <div class="s2-div-title">🏛 연구실 4대 분과 구조</div>
-            <div class="s2-div-item"><span class="s2-div-dot"></span>기획분과 — 일정·아카이빙·세미나</div>
-            <div class="s2-div-item"><span class="s2-div-dot"></span>총무분과 — 워크샵·현장답사·회계</div>
-            <div class="s2-div-item"><span class="s2-div-dot"></span>연구분과 — 방법론·논문작성 지원</div>
-            <div class="s2-div-item"><span class="s2-div-dot"></span>정보분과 — D-Search·전문역량</div>
-          </div>
-
-          <!-- Activity card -->
-          <div class="s2-stat-card">
-            <div>
-              <div style="font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;">연간 주요 활동</div>
-              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
-                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>월례 논문 세미나</div>
-                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>연간 워크샵 (1박2일)</div>
-                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>공공디자인 현장답사</div>
-                <div style="font-size:13px;color:var(--text-sub);display:flex;gap:6px;align-items:center;"><span style="color:var(--blue);font-weight:700;">→</span>GSD Annual Research Book</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="pillar rv d1">
+        <span class="n">SYSTEM 02</span>
+        <h3>튜터 제도<small>Doctoral Tutoring</small></h3>
+        <p>박사 졸업생 튜터가 재학생을 1:N으로 지도합니다. 연구 주제 첨삭, 방법론 안내, HIPD 활용까지 경험 기반의 연구 지도를 이어 갑니다.</p>
+      </div>
+      <div class="pillar rv d2">
+        <span class="n">SYSTEM 03</span>
+        <h3>HIPD<small>AI Research Platform</small></h3>
+        <p>연구실이 자체 개발한 AI 논문연구 플랫폼. 주제 선정부터 분석, 윤문까지 논문의 전 과정을 기술적으로 지원합니다. <a href="hipd.html" style="border-bottom:1px solid var(--ink-3)">자세히 보기</a></p>
       </div>
     </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 3 — 논문구성원 누적
-    ══════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
-        <div class="slide-num">02 / 07</div>
-      </div>
-      <div class="s3-content">
-        <div class="eyebrow">Members — Cumulative</div>
-        <div class="s3-title">논문구성원 (누적 전체)</div>
-        <div class="s3-sub">현 재학생 33명 (석사 13 · 박사 20) + 졸업생 29명 (석사 25 · 박사 4) 전체 현황</div>
+    <div class="about-photos">
+      <figure class="ph rv"><img src="assets/img/about-seminar.jpg" alt="공공디자인 학술 세미나에 참석한 연구자들" loading="lazy"></figure>
+      <figure class="ph rv d1"><img src="assets/img/about-forum.jpg" alt="국제 공공디자인 포럼 강연장" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
 
-        <div class="s3-grid">
-          <!-- Left: totals -->
-          <div class="s3-left">
-            <div class="s3-total-card">
-              <div class="s3-total-num">62명</div>
-              <div class="s3-total-label">누적 논문지도 구성원</div>
-            </div>
-            <div class="s3-breakdown" style="flex:1;">
-              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px;">구성원 분류</div>
-              <div class="s3-breakdown-item">
-                <div>
-                  <div class="s3-breakdown-label">🎓 박사 재학생</div>
-                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:100%"></div></div>
-                </div>
-                <div class="s3-breakdown-num">20</div>
-              </div>
-              <div class="s3-breakdown-item">
-                <div>
-                  <div class="s3-breakdown-label">📖 석사 재학생</div>
-                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:38%"></div></div>
-                </div>
-                <div class="s3-breakdown-num">13</div>
-              </div>
-              <div class="s3-breakdown-item">
-                <div>
-                  <div class="s3-breakdown-label">✅ 석사 졸업생</div>
-                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:75%"></div></div>
-                </div>
-                <div class="s3-breakdown-num">25</div>
-              </div>
-              <div class="s3-breakdown-item">
-                <div>
-                  <div class="s3-breakdown-label">🎓 박사 졸업생</div>
-                  <div class="s3-breakdown-bar"><div class="s3-breakdown-fill" style="width:12%"></div></div>
-                </div>
-                <div class="s3-breakdown-num">4</div>
-              </div>
-              <div style="margin-top:14px;padding:12px 14px;background:var(--blue-light);border-radius:var(--radius-sm);font-size:12px;color:var(--blue);line-height:1.6;">
-                <strong>운영원칙:</strong> 학위 구분 없이 협동학습 기반 통합 관리. 재학·휴학·수료·졸업 모두 포함.
-              </div>
-            </div>
-          </div>
+<!-- ================= 02 Professor ================= -->
+<section class="section prof" id="professor">
+  <div class="wrap">
+    <div class="prof-grid">
+      <figure class="prof-portrait rv">
+        <div class="ph"><img src="assets/img/professor.jpg" alt="이현성 교수" loading="lazy"></div>
+        <figcaption><span>LEE Hyunsung</span><span>Hongik University</span></figcaption>
+      </figure>
 
-          <!-- Right: member lists -->
-          <div class="s3-right">
-            <!-- 석사 졸업생 25명 -->
-            <div style="background:var(--bg-gray);border-radius:var(--radius);padding:16px 20px;">
-              <div class="s3-section-title">✅ 석사 졸업생 (25명)</div>
-              <div class="s3-grads-grid" style="grid-template-columns:repeat(5,1fr);">
-                <div class="s3-member-chip">홍태의<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김세련<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">오유경<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">모세범<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">조혜옥<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김상아<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">정희춘<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김승기<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김영<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김지연<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">이슬<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김세원<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">이주호<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">이재훈<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">이창현<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">임유영<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김세훈<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">심윤서<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">최정원<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">정선익<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">차인혁<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">김성훈<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">박한음<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">이우주<div class="dept">공공디자인</div></div>
-                <div class="s3-member-chip">윤서연<div class="dept">공공디자인</div></div>
-              </div>
-            </div>
+      <div>
+        <p class="eyebrow rv">Professor</p>
+        <div class="prof-name rv d1"><h2>이현성</h2><span>LEE Hyunsung</span></div>
+        <p class="prof-title rv d1">홍익대학교 공공디자인전공 교수 · 공공디자인연구센터 부소장<br>중국 노신미술대학(L.A.F.A.) 객원교수 · 에스이디자인그룹 SEDG 대표소장</p>
 
-            <!-- 박사 졸업생 3명 + 박사 재학생 21명 -->
-            <div style="display:flex;gap:14px;flex:1;">
-              <div style="background:var(--bg-gray);border-radius:var(--radius);padding:14px 16px;min-width:0;flex:0 0 auto;">
-                <div class="s3-section-title">🎓 박사 졸업생 (3명)</div>
-                <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
-                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>홍태의</span>
-                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>이민영</span>
-                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>이보아</span>
-                  <span class="s3-chip" style="justify-content:flex-start;"><span class="s3-chip-dot" style="background:#0051A8;"></span>주하나</span>
-                </div>
-              </div>
-              <div style="background:var(--bg-gray);border-radius:var(--radius);padding:14px 16px;flex:1;min-width:0;">
-                <div class="s3-section-title">🎓 박사 재학생 (20명)</div>
-                <div class="s3-current-row">
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>서모아</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>한주성</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이지영</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김경은</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>강민구</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이은영</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김상아</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>E Xintong</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>홍수경</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이주호</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김세련</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>유오식</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>유승종</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>강영진</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이희경</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김세훈</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>김은희</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>Yao Huanyang</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>이지수</span>
-                  <span class="s3-chip"><span class="s3-chip-dot phd"></span>Liu Xingchen</span>
-                </div>
-              </div>
-            </div>
+        <blockquote class="prof-quote rv d2">
+          <p>“공공의 가치를 디자인으로 만들고,<br>일상의 변화를 디자인으로 이끈다.”</p>
+          <cite>— LEE Hyunsung</cite>
+        </blockquote>
 
-            <!-- 석사 재학생 13명 -->
-            <div style="background:var(--bg-gray);border-radius:var(--radius);padding:14px 16px;">
-              <div class="s3-section-title">📖 석사 재학생 (13명)</div>
-              <div class="s3-current-row">
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>김성은 <small style="color:var(--text-light);font-size:10px;margin-left:2px;">공간</small></span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>송영호 <small style="color:var(--text-light);font-size:10px;margin-left:2px;">공간</small></span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>문형열</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이미정</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>조지영</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이영호</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>권인영</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이형근</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>이다영</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>양정수</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>정성희</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>오선영</span>
-                <span class="s3-chip"><span class="s3-chip-dot ms"></span>김원근</span>
-              </div>
-            </div>
+        <div class="cv">
+          <h4 class="rv">Research Interests</h4>
+          <p class="tags rv"><span>공공디자인 거버넌스</span><span>사회문제해결 디자인</span><span>ESG 공공디자인</span><span>공공가치 지표</span><span>Policy by Design</span><span>AI 기반 연구방법론</span></p>
+
+          <h4 class="rv">Selected Activities &amp; Honors</h4>
+          <ul>
+            <li class="rv"><time>2026</time><span>굿디자인코리아 도쿄 설명회 발제 <b>‘PbD_Public by DESIGN’</b></span></li>
+            <li class="rv"><time>2026</time><span>칭화대학교 Design·AI 교수 교류 컨퍼런스 발제 <b>“Agile Public Design for Social Innovation”</b></span></li>
+            <li class="rv"><time>2026</time><span>AI 논문연구 플랫폼 <b>HIPD</b> 설계 (AI Architect)</span></li>
+            <li class="rv"><time>2025</time><span>제27회 대한민국디자인대상 디자인 공로 부문 <b>산업통상부장관 표창</b></span></li>
+            <li class="rv"><time>2025</time><span>서울디자인국제포럼(SDIF) <b>총괄기획감독</b></span></li>
+            <li class="rv"><time>2024</time><span>공공기관 사회공헌 세미나 ‘ESG 공공디자인’ 발제</span></li>
+            <li class="rv"><time>2021</time><span>문화체육관광부 공공디자인 기획전시 <b>‘익숙한 미래’ 총괄기획감독</b></span></li>
+            <li class="rv"><time>2024</time><span>iF Design Award 서비스디자인 부문 Winner <b>‘SEOUL Design X’</b></span></li>
+            <li class="rv"><time>2022</time><span>대한민국 공공디자인대상 학술부문 특별상 ‘빅터 마골린상’ (지도교수)</span></li>
+            <li class="rv"><time>2019</time><span>문화체육관광부 장관 표창 (문화부문 : 공공디자인)</span></li>
+            <li class="rv"><time>2020–25</time><span>책임·공동 지도 학술논문 98편, 학위논문 29편</span></li>
+          </ul>
+          <div class="cv-open-row rv">
+            <button class="cta-link" id="cvOpen" aria-haspopup="dialog" aria-controls="cvSheet">전체 이력 보기 <span class="arrow"></span></button>
+            <p>현직 20 · 역임 13 · 수상 20 · 저서 9 · 프로젝트 90+</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- ══════════════════════════════════
-         SLIDE 4 — 학생분포현황
-    ══════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
-        <div class="slide-num">03 / 07</div>
+<!-- ================= 03 Research ================= -->
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow rv">Research Areas</p>
+        <h2 class="h-section rv d1">네 개의 연구 축</h2>
       </div>
-      <div class="s4-content">
-        <div class="eyebrow">Student Distribution</div>
-        <div class="s4-title">현 논문지도 학생분포현황</div>
-        <div class="s4-sub">2025학년도 2학기 기준 석·박사 재학생 분포 현황</div>
-
-        <div class="s4-grid">
-          <!-- Donut: MS vs PhD -->
-          <div class="s4-donut-card">
-            <div class="s4-donut-title">석·박사 비율</div>
-            <div class="s4-donut-wrap">
-              <canvas id="donutMsPhd"></canvas>
-            </div>
-            <div class="s4-donut-legend">
-              <div class="s4-legend-item">
-                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#0071E3"></span>박사과정</div>
-                <div class="s4-legend-num">20명 (61%)</div>
-              </div>
-              <div class="s4-legend-item">
-                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#5AC8FA"></span>석사과정</div>
-                <div class="s4-legend-num">13명 (39%)</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bar: 국내외 -->
-          <div class="s4-donut-card">
-            <div class="s4-donut-title">국내·국제 학생 비율</div>
-            <div class="s4-donut-wrap">
-              <canvas id="donutNatInt"></canvas>
-            </div>
-            <div class="s4-donut-legend">
-              <div class="s4-legend-item">
-                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#0071E3"></span>국내 학생</div>
-                <div class="s4-legend-num">30명 (91%)</div>
-              </div>
-              <div class="s4-legend-item">
-                <div class="s4-legend-left"><span class="s4-legend-dot" style="background:#34AADC"></span>국제 학생</div>
-                <div class="s4-legend-num">3명 (9%)</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Table: PhD list -->
-          <div class="s4-table-card">
-            <div class="s4-table-title">박사 재학생 현황 (20명)</div>
-            <div style="overflow-y:auto;flex:1;">
-              <table class="s4-table">
-                <tr><th>이름</th><th>과정</th><th>전공</th></tr>
-                <tr><td>서모아</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>한주성</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>이지영</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>김경은</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>강민구</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>이은영</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>김상아</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>E Xintong</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>홍수경</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>이주호</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>김세련</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>유오식</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>유승종</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>강영진</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>이희경</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>김세훈</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>김은희</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>Yao Huanyang</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>이지수</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-                <tr><td>Liu Xingchen</td><td><span class="s4-badge phd">박사</span></td><td>공공디자인</td></tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="lead rv d2">연구실의 학술·학위 논문 127편을 분석한 결과, 연구는 거버넌스와 참여를 중심으로 공공가치, 장소성과 데이터, 안전과 웰빙으로 확장되고 있습니다.</p>
     </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 5 — 연구동향: 주제별
-    ══════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
-        <div class="slide-num">04 / 07</div>
-      </div>
-      <div class="s5-content">
-        <div class="eyebrow">Research Trends — Topic Classification</div>
-        <div class="s5-title">논문연구동향 — 주제별 분류</div>
-        <div class="s5-sub">학술논문 98편 + 학위논문 29편 총 127편 분석 결과</div>
-
-        <div class="s5-grid">
-          <!-- Left: 5 axes -->
-          <div class="s5-left">
-            <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;">📌 학술논문 5대 연구축 (98편)</div>
-
-            <div class="s5-axis-card">
-              <div class="s5-axis-num">1</div>
-              <div class="s5-axis-content">
-                <div class="s5-axis-title">거버넌스 & 시민참여</div>
-                <div class="s5-axis-keywords">거버넌스 · 시민참여 · 공공-민간협력 · 협치 · 의사결정 구조</div>
-              </div>
-              <div class="s5-axis-bar">
-                <div class="s5-axis-pct">31%</div>
-                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:100%"></div></div>
-              </div>
-            </div>
-
-            <div class="s5-axis-card">
-              <div class="s5-axis-num">2</div>
-              <div class="s5-axis-content">
-                <div class="s5-axis-title">사회적 가치 & ESG</div>
-                <div class="s5-axis-keywords">사회적 가치 · 공공가치 · ESG · CSR · CSV · 사회적 기업</div>
-              </div>
-              <div class="s5-axis-bar">
-                <div class="s5-axis-pct">20%</div>
-                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:65%;"></div></div>
-              </div>
-            </div>
-
-            <div class="s5-axis-card">
-              <div class="s5-axis-num">3</div>
-              <div class="s5-axis-content">
-                <div class="s5-axis-title">장소성 & 활성화</div>
-                <div class="s5-axis-keywords">장소 브랜딩 · 마케팅 · 도시재생 · 산업유산 · 준공공공간</div>
-              </div>
-              <div class="s5-axis-bar">
-                <div class="s5-axis-pct">18%</div>
-                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:58%;"></div></div>
-              </div>
-            </div>
-
-            <div class="s5-axis-card">
-              <div class="s5-axis-num">4</div>
-              <div class="s5-axis-content">
-                <div class="s5-axis-title">데이터 & 과학적 분석</div>
-                <div class="s5-axis-keywords">텍스트마이닝 · 빅데이터 · 아이트래킹 · EEG · 스트레스지수</div>
-              </div>
-              <div class="s5-axis-bar">
-                <div class="s5-axis-pct">18%</div>
-                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:58%;"></div></div>
-              </div>
-            </div>
-
-            <div class="s5-axis-card">
-              <div class="s5-axis-num">5</div>
-              <div class="s5-axis-content">
-                <div class="s5-axis-title">안전 & 웰빙</div>
-                <div class="s5-axis-keywords">안전 · CPTED · 건강거리 · 바이오필릭 · 치유 · 회복탄력성</div>
-              </div>
-              <div class="s5-axis-bar">
-                <div class="s5-axis-pct">13%</div>
-                <div class="s5-axis-bar-bg"><div class="s5-axis-bar-fill" style="width:42%;"></div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right -->
-          <div class="s5-right">
-            <!-- Radar Chart -->
-            <div class="s5-chart-card">
-              <div class="s5-chart-title">연구 주제 분포 (레이더)</div>
-              <div style="flex:1;display:flex;align-items:center;justify-content:center;">
-                <canvas id="radarChart" style="max-height:200px;"></canvas>
-              </div>
-            </div>
-
-            <!-- Thesis breakdown -->
-            <div class="s5-thesis-card">
-              <div class="s5-thesis-title">📄 학위논문 주제 분류 (29편)</div>
-              <div class="s5-thesis-items">
-                <div class="s5-thesis-item">
-                  <div class="s5-thesis-label">평가지표 & 모델개발</div>
-                  <div class="s5-thesis-bar-wrap"><div class="s5-thesis-bar-fill" style="width:82%"></div></div>
-                  <div class="s5-thesis-pct">41%</div>
-                </div>
-                <div class="s5-thesis-item">
-                  <div class="s5-thesis-label">공간 & 서비스 디자인</div>
-                  <div class="s5-thesis-bar-wrap"><div class="s5-thesis-bar-fill" style="width:62%"></div></div>
-                  <div class="s5-thesis-pct">31%</div>
-                </div>
-                <div class="s5-thesis-item">
-                  <div class="s5-thesis-label">정책 & 제도 효과성</div>
-                  <div class="s5-thesis-bar-wrap"><div class="s5-thesis-bar-fill" style="width:56%"></div></div>
-                  <div class="s5-thesis-pct">28%</div>
-                </div>
-              </div>
-              <div style="margin-top:12px;font-size:11px;opacity:0.7;line-height:1.6;">
-                주요 연구 대상: 스마트병원 · 박물관 · 소셜처방 · 다세대놀이터 · 빈집재생 · 공공데이터활용
-              </div>
-            </div>
-          </div>
+    <article class="axis">
+      <figure class="ph rv"><img src="assets/img/res-governance.jpg" alt="참여형 워크숍에서 함께 토론하는 연구원들" loading="lazy"></figure>
+      <div class="axis-text">
+        <span class="axis-num rv">01</span>
+        <div>
+          <h3 class="rv"><small>Governance &amp; Participation</small>거버넌스와 참여</h3>
+          <p class="rv d1">공공디자인 진흥사업, 도시재생, 문화도시 조성에서의 협력적 거버넌스와 주민참여, 민관협력 체계를 연구합니다. 물리적 결과물보다 의사결정 구조와 프로세스를 중시합니다.</p>
+        </div>
+        <div>
+          <div class="tags rv"><span>협력적 거버넌스</span><span>주민참여</span><span>진흥계획·조례</span><span>공공디자인 법제</span></div>
+          <div class="share rv" style="margin-top:22px"><span>SHARE</span><span class="meter"><i style="width:33%"></i></span><span>약 1/3</span></div>
         </div>
       </div>
+    </article>
+
+    <article class="axis">
+      <figure class="ph rv"><img src="assets/img/res-esg.jpg" alt="대한민국 열린정부위원회 행사에서 발표하는 모습" loading="lazy"></figure>
+      <div class="axis-text">
+        <span class="axis-num rv">02</span>
+        <div>
+          <h3 class="rv"><small>Public Value &amp; ESG</small>공공가치와 ESG</h3>
+          <p class="rv d1">기업의 CSR·CSV·ESG 활동과 공공디자인을 연계해 사회문제를 해결하는 모델을 탐색하고, 공공디자인의 효과를 비재무적 가치로 환산하는 지표를 개발합니다.</p>
+        </div>
+        <div class="tags rv"><span>공공가치지표(PVI)</span><span>ESG 평가지표</span><span>CSV·CSR</span><span>소셜벤처</span><span>사회문제해결 디자인</span></div>
+      </div>
+    </article>
+
+    <article class="axis">
+      <figure class="ph rv"><img src="assets/img/res-place.jpg" alt="데이터 보드에 조사 결과를 기록하는 연구원" loading="lazy"></figure>
+      <div class="axis-text">
+        <span class="axis-num rv">03</span>
+        <div>
+          <h3 class="rv"><small>Place &amp; Data Science</small>장소성과 데이터 기반 분석</h3>
+          <p class="rv d1">도시 공공공간, 산업유산, 준공공공간을 대상으로 장소 브랜딩과 활성화를 연구합니다. 텍스트마이닝·소셜 빅데이터·시선추적 등 정량적 방법으로 인식과 반응을 과학적으로 검증합니다.</p>
+        </div>
+        <div class="tags rv"><span>장소 브랜딩</span><span>텍스트마이닝</span><span>빅데이터</span><span>시선추적</span><span>환경색채</span></div>
+      </div>
+    </article>
+
+    <article class="axis">
+      <figure class="ph rv"><img src="assets/img/res-safety.jpg" alt="공공디자인 페스티벌에서 공공공간 문제 해결을 발표하는 모습" loading="lazy"></figure>
+      <div class="axis-text">
+        <span class="axis-num rv">04</span>
+        <div>
+          <h3 class="rv"><small>Safety &amp; Well-being</small>안전과 웰빙</h3>
+          <p class="rv d1">범죄예방디자인(CPTED), 어린이 보호구역과 교통안전, 건강 거리, 바이오필릭 디자인에서 사회적 처방까지, 삶의 질과 직결된 공공디자인을 다룹니다.</p>
+        </div>
+        <div class="tags rv"><span>CPTED</span><span>교통안전</span><span>건강 거리</span><span>바이오필릭</span><span>사회적 처방</span><span>리질리언스</span></div>
+      </div>
+    </article>
+
+    <div class="methods">
+      <div>
+        <p class="eyebrow rv">Methodology</p>
+        <h3 class="h-sub rv d1" style="margin-top:22px">설문을 넘어,<br>증거 기반의 디자인 연구</h3>
+      </div>
+      <ol>
+        <li class="rv"><div><b>텍스트마이닝</b><span>N-gram · TF-IDF · 키워드 네트워크 분석</span></div></li>
+        <li class="rv"><div><b>소셜 빅데이터</b><span>이용자 후기·인식 조사, 연구 동향 분석</span></div></li>
+        <li class="rv"><div><b>생체·신경 반응</b><span>시선추적, 뇌파, 스트레스 지수 측정</span></div></li>
+        <li class="rv"><div><b>SD 척도법</b><span>환경색채에 대한 심리적 반응</span></div></li>
+        <li class="rv"><div><b>AHP · HDBSCAN</b><span>우선순위 도출과 클러스터 기반 요소 분석</span></div></li>
+        <li class="rv"><div><b>국제 비교 연구</b><span>한국·중국·미국·영국·네덜란드 정책 비교</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<figure class="band">
+  <img src="assets/img/band-lecture.jpg" alt="공공디자인 세미나에 참여한 연구원들" loading="lazy">
+  <figcaption><span>Public Design Seminar</span><span>Hongik Public Design</span></figcaption>
+</figure>
+
+<!-- ================= 04 Members ================= -->
+<section class="section" id="members">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow rv">Members</p>
+        <h2 class="h-section rv d1">함께 연구하는 사람들</h2>
+      </div>
+      <p class="lead rv d2">석·박사 재학생과 졸업생이 하나의 연구 공동체로 연결되어 있습니다. 정기 워크샵과 월간 세미나, 학술 답사로 함께 성장합니다.</p>
     </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 6 — 연구동향: 방법론
-    ══════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
-        <div class="slide-num">05 / 07</div>
+    <div class="mosaic">
+      <figure class="ph rv"><img src="assets/img/members-01.jpg" alt="The Public Design Forum X 단체 사진" loading="lazy"></figure>
+      <figure class="ph rv d1"><img src="assets/img/members-02.jpg" alt="세미나에서 함께한 연구원들" loading="lazy"></figure>
+      <figure class="ph rv d2"><img src="assets/img/members-06.jpg" alt="워크숍에 참여한 연구원들" loading="lazy"></figure>
+      <figure class="ph rv"><img src="assets/img/members-03.jpg" alt="답사 중 야경 앞에서 모인 구성원" loading="lazy"></figure>
+      <figure class="ph rv d1"><img src="assets/img/members-05.jpg" alt="워크샵 저녁 모닥불" loading="lazy"></figure>
+      <figure class="ph rv d2"><img src="assets/img/members-04.jpg" alt="워크샵 저녁 식사" loading="lazy"></figure>
+    </div>
+
+    <div class="stats-row" id="memberStats"></div>
+
+    <div class="committee">
+      <div>
+        <p class="eyebrow rv">2026 Organization</p>
+        <h3 class="h-sub rv d1" style="margin-top:22px">연구실 운영 조직</h3>
       </div>
-      <div class="s6-content">
-        <div class="eyebrow">Research Trends — Methodology</div>
-        <div class="s6-title">논문연구동향 — 연구방법 분류</div>
-        <div class="s6-sub">전체 연구실 논문의 연구방법론 분포 및 특성 분석</div>
+      <dl class="rv d1">
+        <div><dt>총괄 · 지도교수</dt><dd>이현성 교수</dd></div>
+        <div><dt>공동 지도</dt><dd>김주연 교수</dd></div>
+        <div><dt>운영 리더 (박사)</dt><dd>이지수</dd></div>
+        <div><dt>운영 리더 (석사)</dt><dd>김원근</dd></div>
+        <div><dt>운영 고문</dt><dd>김은희 · 유오식</dd></div>
+        <div><dt>HIPD 연구플랫폼</dt><dd>이현성 · 김성훈</dd></div>
+        <div><dt>DESIS 준비위원회</dt><dd>이다영 · 이은영</dd></div>
+        <div><dt>졸업위원회</dt><dd>홍태의</dd></div>
+        <div><dt>헌정위원회 위원장</dt><dd>이주호</dd></div>
+        <div><dt>튜터</dt><dd>박사 졸업생 4인</dd></div>
+      </dl>
+    </div>
 
-        <div class="s6-grid">
-          <!-- Left: method bars -->
-          <div class="s6-left">
-            <div class="s6-method-card">
-              <div class="s6-method-title">연구방법론 분포</div>
-              <div class="s6-method-list">
+    <div class="tabs" role="tablist" id="memberTabs">
+      <button class="on" data-g="all" role="tab">전체</button>
+      <button data-g="phd" role="tab">박사과정</button>
+      <button data-g="ms" role="tab">석사과정</button>
+      <button data-g="alumni" role="tab">졸업생</button>
+    </div>
+    <ul class="roster" id="roster"></ul>
+    <p class="roster-note">2025-2학기 논문연구실 명단 기준 · 책임지도 및 공동지도 구성원 포함</p>
+  </div>
+</section>
 
-                <div class="s6-method-item">
-                  <div class="s6-method-header">
-                    <div><div class="s6-method-name">텍스트 마이닝 / 빅데이터</div><div class="s6-method-desc">소셜빅데이터·키워드네트워크·트렌드분석</div></div>
-                    <div class="s6-method-pct">28%</div>
-                  </div>
-                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:100%"></div></div>
-                </div>
+<!-- ================= 05 Projects ================= -->
+<section class="section" id="projects" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow rv">Projects</p>
+        <h2 class="h-section rv d1">연구가<br>현장이 되는 곳</h2>
+      </div>
+      <p class="lead rv d2">연구실 구성원들은 홍익대학교 공공디자인연구센터와 함께 정책 수립, 공공디자인 실험, 전시와 출판으로 연구를 사회에 실천합니다.</p>
+    </div>
 
-                <div class="s6-method-item">
-                  <div class="s6-method-header">
-                    <div><div class="s6-method-name">정책 · 제도 비교분석</div><div class="s6-method-desc">한중·한네덜란드 비교, 국제사례 분석</div></div>
-                    <div class="s6-method-pct">22%</div>
-                  </div>
-                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:78%"></div></div>
-                </div>
-
-                <div class="s6-method-item">
-                  <div class="s6-method-header">
-                    <div><div class="s6-method-name">사례연구</div><div class="s6-method-desc">공공디자인 우수사례 분석 및 심층 탐구</div></div>
-                    <div class="s6-method-pct">20%</div>
-                  </div>
-                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:71%"></div></div>
-                </div>
-
-                <div class="s6-method-item">
-                  <div class="s6-method-header">
-                    <div><div class="s6-method-name">생체·신경심리 측정</div><div class="s6-method-desc">아이트래킹·EEG·스트레스지수·SD척도</div></div>
-                    <div class="s6-method-pct">15%</div>
-                  </div>
-                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:54%"></div></div>
-                </div>
-
-                <div class="s6-method-item">
-                  <div class="s6-method-header">
-                    <div><div class="s6-method-name">평가지표 개발 (AHP/Delphi)</div><div class="s6-method-desc">공공가치지수·ESG지표·사회적 가치 측정</div></div>
-                    <div class="s6-method-pct">10%</div>
-                  </div>
-                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:36%"></div></div>
-                </div>
-
-                <div class="s6-method-item">
-                  <div class="s6-method-header">
-                    <div><div class="s6-method-name">문헌연구 / 메타분석</div><div class="s6-method-desc">이론 고찰 및 개념 분석</div></div>
-                    <div class="s6-method-pct">5%</div>
-                  </div>
-                  <div class="s6-bar-bg"><div class="s6-bar-fill" style="width:18%"></div></div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- Right -->
-          <div class="s6-right">
-            <!-- Bar chart: trend by year -->
-            <div class="s6-trend-card">
-              <div class="s6-trend-title">연도별 논문 발표 추이</div>
-              <div style="flex:1;">
-                <canvas id="yearlyChart"></canvas>
-              </div>
-            </div>
-
-            <!-- Highlight features -->
-            <div class="s6-highlight-card">
-              <div class="s6-highlight-title">연구방법론 주요 특성</div>
-              <div class="s6-highlights">
-                <div class="s6-hl-item">
-                  <div class="s6-hl-icon">📊</div>
-                  <div class="s6-hl-name">에비던스 기반 연구</div>
-                  <div class="s6-hl-desc">생체측정·빅데이터로 디자인 효과를 과학적으로 검증</div>
-                </div>
-                <div class="s6-hl-item">
-                  <div class="s6-hl-icon">🌏</div>
-                  <div class="s6-hl-name">국제 비교 연구</div>
-                  <div class="s6-hl-desc">한·중·미·영·네덜란드 정책 비교 및 GPCI 상위국 분석</div>
-                </div>
-                <div class="s6-hl-item">
-                  <div class="s6-hl-icon">🔬</div>
-                  <div class="s6-hl-name">혼합방법 설계</div>
-                  <div class="s6-hl-desc">질적·양적 통합으로 공공디자인의 다층적 효과 규명</div>
-                </div>
-                <div class="s6-hl-item">
-                  <div class="s6-hl-icon">⚙️</div>
-                  <div class="s6-hl-name">실용적 산출 지향</div>
-                  <div class="s6-hl-desc">현장 적용 가능한 평가지표와 운영모델 개발에 집중</div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <article class="proj-feature">
+      <figure class="ph rv"><img src="assets/img/proj-green-safe.jpg" alt="공공디자인 실험실 Green Safe Territory 설치 전후" loading="lazy"></figure>
+      <div class="rv d1">
+        <span class="meta">Public Design Lab · 2025</span>
+        <h3>공공디자인 실험실<br>‘Green Safe Territory’</h3>
+        <p>SRT 역사 대기공간에 녹색 영역과 안전 정보를 결합한 실증 실험. 사용성이 낮던 대기공간을 사람이 머무는 공간으로 바꾸었으며, 설치 전후 이용 행태를 측정해 효과를 검증했습니다.</p>
+        <div class="figures">
+          <div><b>11 → 34</b><span>설치 전후 이용 건수</span></div>
+          <div><b>3×</b><span>이용성 증가</span></div>
         </div>
       </div>
+    </article>
+
+    <div class="proj-grid">
+      <article class="proj rv">
+        <figure class="ph"><img src="assets/img/proj-seoul-station.jpg" alt="KTX 서울역 공공매체 마스터플랜" loading="lazy"></figure>
+        <div class="info"><time>2025</time><h4>KTX 서울역 공공매체 마스터플랜</h4><p>일체형 광고 체계를 통한 쾌적한 역사 환경과 상징성 확보</p></div>
+      </article>
+      <article class="proj tall rv d1">
+        <figure class="ph"><img src="assets/img/proj-exhibition.jpg" alt="공공디자인 기획전시 익숙한 미래" loading="lazy"></figure>
+        <div class="info"><time>2021</time><h4>기획전시 ‘익숙한 미래: 공공디자인이 추구하는 가치’</h4><p>문화역서울284 · 문화체육관광부 · 총괄기획감독 이현성</p></div>
+      </article>
+      <article class="proj rv d2">
+        <figure class="ph"><img src="assets/img/proj-social-design-plan.jpg" alt="서울시 사회문제해결디자인 기본계획 책자" loading="lazy"></figure>
+        <div class="info"><time>2024</time><h4>서울시 사회문제해결디자인 기본계획</h4><p>2024–2028 사회문제해결 디자인 정책의 방향과 실행 체계 수립</p></div>
+      </article>
+      <article class="proj rv">
+        <figure class="ph"><img src="assets/img/proj-gachi.jpg" alt="택티컬 어바니즘 가치그려 프로젝트" loading="lazy"></figure>
+        <div class="info"><time>2023</time><h4>택티컬 어바니즘 ‘가치그려’</h4><p>Public NPO Testbed 공심이 × 서울환경연합, 시민과 함께 그린 보행 안전</p></div>
+      </article>
+      <article class="proj rv d1">
+        <figure class="ph"><img src="assets/img/proj-parkingday.jpg" alt="국제 Park(ing) Day 참가" loading="lazy"></figure>
+        <div class="info"><time>2022</time><h4>International Park(ing) Day</h4><p>주차 공간을 하루 동안 공공공간으로 전환한 사회적 실험</p></div>
+      </article>
+      <article class="proj rv d2">
+        <figure class="ph"><img src="assets/img/proj-safety-book.jpg" alt="공공디자인으로 안전만들기 도서" loading="lazy"></figure>
+        <div class="info"><time>2024</time><h4>『공공디자인으로 안전만들기』</h4><p>Safety by Public Design · 미세움 출간</p></div>
+      </article>
+      <article class="proj rv">
+        <figure class="ph"><img src="assets/img/proj-pd365.jpg" alt="공공디자인 뉴스레터 The Public Design 365" loading="lazy"></figure>
+        <div class="info"><time>2020–</time><h4>뉴스레터 The Public Design 365</h4><p>2020년 창간, 2024년 100호 발간</p></div>
+      </article>
+      <article class="proj rv d1">
+        <figure class="ph"><img src="assets/img/proj-festival.jpg" alt="2025 대한민국 공공디자인 페스티벌 공공스티커" loading="lazy"></figure>
+        <div class="info"><time>2025</time><h4>공공디자인 실험실 ‘공공스티커’</h4><p>대한민국 공공디자인 페스티벌 · SRT × 사회공헌센터 협업</p></div>
+      </article>
+      <article class="proj rv d2">
+        <figure class="ph"><img src="assets/img/proj-seminar-book.jpg" alt="Public Design Seminar 2025 기록집" loading="lazy"></figure>
+        <div class="info"><time>2025</time><h4>『Public Design Seminar 2025』</h4><p>한 해의 공공디자인 세미나 성과를 엮은 기록집</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 Publications ================= -->
+<section class="section" id="publications">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow rv">Publications</p>
+        <h2 class="h-section rv d1">논문 아카이브</h2>
+      </div>
+      <p class="lead rv d2">2020–2025년 이현성 교수 책임·공동지도 학술논문과 학위논문입니다. 분야별로 걸러 보거나 키워드로 검색할 수 있습니다.</p>
     </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 7 — 워크샵 및 세미나
-    ══════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
-        <div class="slide-num">06 / 07</div>
+    <div class="pub-top">
+      <div class="pub-nums rv">
+        <div><b>98</b><span>학술논문 Journal Articles</span></div>
+        <div><b>29</b><span>학위논문 Theses</span></div>
       </div>
-      <div class="s7-content">
-        <div class="eyebrow">Workshop & Seminar History</div>
-        <div class="s7-title">논문연구실 워크샵 및 세미나</div>
-        <div class="s7-sub">연간 워크샵·현장답사·월례세미나 연혁 및 2026년 계획</div>
+      <ul class="insight rv d1">
+        <li><i>01</i><div><b>주제의 확장</b><p>물리적 환경 개선을 넘어 거버넌스 · ESG · 데이터 실증형 연구로 다각화</p></div></li>
+        <li><i>02</i><div><b>방법론의 과학화</b><p>텍스트마이닝과 생체 반응 측정을 활용한 증거 기반 디자인 지향</p></div></li>
+        <li><i>03</i><div><b>성과물의 실용성</b><p>학위논문의 약 40%가 평가지표와 운영 모델 개발에 집중</p></div></li>
+      </ul>
+    </div>
 
-        <div class="s7-grid">
-          <!-- 2023 Workshop -->
-          <div class="s7-event-card featured">
-            <div class="s7-event-year">2023 Workshop</div>
-            <div class="s7-event-name">논문방 워크샵<br>— 경기도 화성</div>
-            <div class="s7-event-details">
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📅</span>
-                2023년 2월 3–4일 (1박 2일)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📍</span>
-                옥란하우스 (화성시 서신면, 관서당·도락당·사랑채)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">👥</span>
-                16명 참가 · 8대 차량 이동
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">🗺</span>
-                현장답사: 화성 3.1독립운동길 (2020 한국공공디자인대상 수상작)
-              </div>
-            </div>
-            <div class="s7-event-tags">
-              <span class="s7-tag">논문 세미나</span>
-              <span class="s7-tag">현장답사</span>
-              <span class="s7-tag">연구토론</span>
-            </div>
-          </div>
-
-          <!-- 2024 Seminar Field Trip -->
-          <div class="s7-event-card">
-            <div class="s7-event-year">2024 Seminar & Field Trip</div>
-            <div class="s7-event-name">세미나 답사<br>— 충남 아산</div>
-            <div class="s7-event-details">
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📅</span>
-                2024년 1월 26–27일 (1박 2일)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📍</span>
-                외암민속마을 소롱골 게스트하우스 (천안아산역 10분)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">👥</span>
-                11명 참가 (1박2일 9명 + 당일 2명)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">💻</span>
-                Webex 세미나: 발표·토론·2024 운영계획 수립
-              </div>
-            </div>
-            <div class="s7-event-tags">
-              <span class="s7-tag">Webex 세미나</span>
-              <span class="s7-tag">외암민속마을</span>
-              <span class="s7-tag">운영계획</span>
-            </div>
-          </div>
-
-          <!-- 2025 Workshop -->
-          <div class="s7-event-card featured">
-            <div class="s7-event-year">2025 Workshop</div>
-            <div class="s7-event-name">학술 워크샵<br>— 강원도 영월</div>
-            <div class="s7-event-details">
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📅</span>
-                2025년 1월 10–11일 (1박 2일)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📍</span>
-                영월 동강시스타
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">👥</span>
-                약 20명 참가
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">🗺</span>
-                현장답사: 영월 공공미술 · 청령포
-              </div>
-            </div>
-            <div class="s7-event-tags">
-              <span class="s7-tag">학술워크샵</span>
-              <span class="s7-tag">공공미술 답사</span>
-              <span class="s7-tag">청령포</span>
-            </div>
-          </div>
-
-          <!-- Monthly Seminar -->
-          <div class="s7-event-card">
-            <div class="s7-event-year">Regular Monthly</div>
-            <div class="s7-event-name">월례 논문 세미나</div>
-            <div class="s7-event-details">
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📅</span>
-                매월 정기 개최 (기획분과 주관)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">📝</span>
-                논문연구 주제 발표 및 피어 피드백
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">🎯</span>
-                기초역량 세미나 (연구방법론 교육)
-              </div>
-              <div class="s7-event-detail">
-                <span class="s7-event-detail-icon">🔍</span>
-                D-Search: 분야 전문역량 트렌드 분석
-              </div>
-            </div>
-            <div class="s7-event-tags">
-              <span class="s7-tag">월례세미나</span>
-              <span class="s7-tag">D-Search</span>
-              <span class="s7-tag">기초역량</span>
-            </div>
-          </div>
-
-          <!-- 2026 Plan -->
-          <div class="s7-upcoming-card">
-            <div class="s7-upcoming-label">✦ 2026 Workshop Plan</div>
-            <div class="s7-upcoming-title">2026 논문연구실<br>워크샵 & 세미나</div>
-            <div class="s7-upcoming-desc">
-              연구 성과 공유 및 공동체 강화를 위한<br>
-              2026년 연간 워크샵 및 세미나 계획 수립.<br>
-              현장답사지 선정 · 참가 일정 조율 예정.
-            </div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
-              <span style="background:var(--blue-light);color:var(--blue);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:600;">2026 워크샵</span>
-              <span style="background:var(--blue-light);color:var(--blue);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:600;">GSD 플랫폼</span>
-              <span style="background:var(--blue-light);color:var(--blue);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:600;">Annual Book</span>
-            </div>
-          </div>
+    <div class="pub-tools">
+      <div>
+        <div class="tabs" id="pubKind">
+          <button class="on" data-k="all">전체</button>
+          <button data-k="journal">학술논문</button>
+          <button data-k="thesis">학위논문</button>
+        </div>
+        <div class="filter-row" id="pubCat">
+          <button class="on" data-c="all">모든 분야</button>
+          <button data-c="gov">거버넌스·참여</button>
+          <button data-c="esg">공공가치·ESG</button>
+          <button data-c="place">장소성·데이터</button>
+          <button data-c="safety">안전·웰빙</button>
         </div>
       </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="pubSearch" placeholder="논문 제목 검색" aria-label="논문 제목 검색">
+      </label>
     </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 8 — 운영계획
-    ══════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="slide-logo">S.P.D Lab · 홍익대학교 공공디자인전공</div>
-        <div class="slide-num">07 / 07</div>
+    <ul class="pub-list" id="pubList"></ul>
+    <button class="more down" id="pubMore"><span id="pubMoreLabel">더 보기</span><span class="arrow"></span></button>
+  </div>
+</section>
+
+<!-- ================= HIPD teaser ================= -->
+<section class="section hipd-teaser" aria-label="HIPD">
+  <div class="wrap">
+    <div>
+      <h2 class="rv"><small>AI Research Platform</small>HIPD</h2>
+      <p class="rv d1"><b style="color:var(--ink);font-weight:500">Hongik Intelligent Public Design.</b> 연구실에 축적된 130여 편의 논문을 학습한 AI 기반 논문연구 지원 플랫폼입니다. Claude, GPT, Gemini를 연동해 논문의 전 과정을 지원합니다.</p>
+      <div class="hipd-steps rv d2"><span>주제 선정</span><span>레퍼런스</span><span>구조 설계</span><span>통계 분석</span><span>윤문 교정</span></div>
+      <a href="hipd.html" class="cta-link rv d3" style="margin-top:44px">HIPD 살펴보기 <span class="arrow"></span></a>
+    </div>
+    <a href="hipd.html" class="visual rv d1" aria-label="HIPD 페이지로 이동"><img src="assets/img/hipd-brand.jpg" alt="HIPD 브랜드 아이덴티티" loading="lazy"></a>
+  </div>
+</section>
+
+<!-- ================= 07 News ================= -->
+<section class="section news" id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow rv">News</p>
+        <h2 class="h-section rv d1">소식</h2>
       </div>
-      <div class="s8-content">
-        <div class="eyebrow">Operation Plan 2026</div>
-        <div class="s8-title">논문연구실 운영계획</div>
-        <div class="s8-sub">연구지원 · 논문심사지원 · 운영 · 세미나 — 2026년 4대 운영 방향</div>
-
-        <div class="s8-grid">
-
-          <!-- 1. 연구지원 (HIPD) -->
-          <div class="s8-plan-card accent">
-            <div class="s8-plan-header">
-              <div class="s8-plan-icon">📚</div>
-              <div>
-                <div class="s8-plan-name">연구지원</div>
-                <div class="s8-plan-tagline">Research Support — GSD / HIPD Platform</div>
-              </div>
-            </div>
-            <div class="s8-plan-items">
-              <div class="s8-plan-item">교수·학생 제작 기초 논문연구 교육영상 운영 및 업데이트</div>
-              <div class="s8-plan-item">형식·작성법 매뉴얼 정비 및 클라우드 공유 (armulastudy@gmail.com)</div>
-              <div class="s8-plan-item">박사논문 대규모 설문·연구 지원 (연구분과 주관)</div>
-              <div class="s8-plan-item">석사 피어튜터링 시스템 운영 (기수·주제별 소그룹)</div>
-              <div class="s8-plan-item">GSD Platform 및 Annual Research Book 발간</div>
-              <div class="s8-plan-item">D-Search: 분야 전문역량 트렌드·국제이슈 정기 업데이트</div>
-            </div>
-          </div>
-
-          <!-- 2. 논문심사지원 -->
-          <div class="s8-plan-card">
-            <div class="s8-plan-header">
-              <div class="s8-plan-icon" style="background:var(--bg-gray);font-size:20px;">✅</div>
-              <div>
-                <div class="s8-plan-name">논문심사지원</div>
-                <div class="s8-plan-tagline">Thesis Review Support</div>
-              </div>
-            </div>
-            <div class="s8-plan-items">
-              <div class="s8-plan-item">논문심사 일정 공유 및 예비심사·본심사 준비 지원</div>
-              <div class="s8-plan-item">KCI 등재지 논문 투고 지원 (한국공간디자인학회·디자인문화학회 등)</div>
-              <div class="s8-plan-item">투고 대상 학회: 도시설계학회·조경학회·한국디자인학회</div>
-              <div class="s8-plan-item">논문 작성 형식 가이드라인 제공 (파일명 규칙 준수)</div>
-              <div class="s8-plan-item">박사과정 단행본 집필 프로젝트 연계 지원</div>
-            </div>
-          </div>
-
-          <!-- 3. 운영 -->
-          <div class="s8-plan-card">
-            <div class="s8-plan-header">
-              <div class="s8-plan-icon" style="background:var(--bg-gray);font-size:20px;">⚙️</div>
-              <div>
-                <div class="s8-plan-name">연구실 운영</div>
-                <div class="s8-plan-tagline">Lab Management — 4개 분과 체계</div>
-              </div>
-            </div>
-            <div class="s8-plan-items">
-              <div class="s8-plan-item">일정관리·자료 DB화·아카이빙·기초역량 세미나</div>
-              <div class="s8-plan-item">워크샵·현장답사·커뮤니티 활동·회계</div>
-              <div class="s8-plan-item">방법론 교육·논문작성 지원·이론 기반 강화</div>
-              <div class="s8-plan-item">D-Search 관리·전문역량 개발</div>
-              <div class="s8-plan-item">학위·기수 차별 없는 협동학습 기반 통합 운영 원칙 유지</div>
-            </div>
-          </div>
-
-          <!-- 4. 세미나 -->
-          <div class="s8-plan-card">
-            <div class="s8-plan-header">
-              <div class="s8-plan-icon" style="background:var(--bg-gray);font-size:20px;">🎤</div>
-              <div>
-                <div class="s8-plan-name">세미나</div>
-                <div class="s8-plan-tagline">Seminar & Workshop Plan 2026</div>
-              </div>
-            </div>
-            <div class="s8-plan-items">
-              <div class="s8-plan-item">월례 논문세미나: 연구주제 발표·토론·상호 피드백</div>
-              <div class="s8-plan-item">연간 워크샵 (1박2일): 성과공유·공동체 강화·현장답사 연계</div>
-              <div class="s8-plan-item">공공디자인 현장세미나: 우수사례지 방문 및 현장 토론</div>
-              <div class="s8-plan-item">Webex 온라인 세미나: 원거리 참가자 포함 하이브리드 운영</div>
-              <div class="s8-plan-item">외부 전문가 특강 및 학술교류 프로그램 기획</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <p class="lead rv d2">수상, 협약, 포럼과 세미나. 연구실과 공공디자인전공의 최근 활동을 전합니다.</p>
     </div>
 
-  </div><!-- /slides-wrap -->
-</div><!-- /presentation -->
+    <div class="news-feature">
+      <a href="#news" class="rv">
+        <figure class="ph"><img src="assets/img/news-award-2025.jpg" alt="대한민국디자인대상 산업통상부장관 표창 시상" loading="lazy"></figure>
+        <time>2025.11<span class="cat">Award</span></time>
+        <h4>이현성 교수, 제27회 대한민국디자인대상 디자인 공로 부문 산업통상부장관 표창</h4>
+      </a>
+      <a href="#news" class="rv d1">
+        <figure class="ph"><img src="assets/img/news-desis.jpg" alt="DESIS@HONGIK 발표" loading="lazy"></figure>
+        <time>2026<span class="cat">Network</span></time>
+        <h4>사회혁신 디자인 네트워크 DESIS Network 승인, ‘HONGIK DESIS Lab’ 지정</h4>
+      </a>
+      <a href="#news" class="rv d2">
+        <figure class="ph"><img src="assets/img/news-kidp.jpg" alt="2025 산업안전디자인 세미나 발제" loading="lazy"></figure>
+        <time>2025.11<span class="cat">Talk</span></time>
+        <h4>KIDP 2025 산업안전디자인 세미나 발제</h4>
+      </a>
+    </div>
 
-<!-- Navigation Buttons -->
-<button class="nav-btn nav-prev hidden" id="prevBtn" onclick="changeSlide(-1)" title="이전 슬라이드">
-  <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"></polyline></svg>
-</button>
-<button class="nav-btn nav-next" id="nextBtn" onclick="changeSlide(1)" title="다음 슬라이드">
-  <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"></polyline></svg>
-</button>
+    <ul class="news-list">
+      <li class="rv"><time>2026</time><span class="cat">Award</span><p>2026 대한민국 공공디자인대상 학술부문 우수상 <small>주하나 박사</small></p></li>
+      <li class="rv"><time>2026.03</time><span class="cat">Workshop</span><p>SPD Lab 2026 정기 워크샵 개최 및 HIPD 베타 버전 런칭</p></li>
+      <li class="rv"><time>2026</time><span class="cat">Seminar</span><p>개강세미나 PUBLIC DESIGN SIX PERSPECTIVES “다음의 공공성: 여섯 개의 시선으로 바라본 공공디자인”</p></li>
+      <li class="rv"><time>2026</time><span class="cat">Project</span><p>공공디자인 실험실 ‘그린 세이프 브릿지’ <small>with 3M, SEDG, 이오디디자인</small></p></li>
+      <li class="rv"><time>2026</time><span class="cat">Talk</span><p>굿디자인코리아 도쿄 설명회 발제 ‘PbD_Public by DESIGN’ <small>이현성 교수</small></p></li>
+      <li class="rv"><time>2026.12</time><span class="cat">Book</span><p>김주연 교수 정년 기념 헌정 저서 발간 및 헌정 세미나 <small>예정</small></p></li>
+      <li class="rv"><time>2025.10</time><span class="cat">Forum</span><p>국제공공디자인포럼 IPDF 2025 주관 · 칭화대·허베이미대·노신미대·홍익대 ‘한중 공공디자인 워크샵’</p></li>
+      <li class="rv"><time>2025.10</time><span class="cat">MOU</span><p>국립 대만디자인연구소(TDRI) 업무협약 · PDF X ‘Design for Social-Changing in Taiwan &amp; Korea’</p></li>
+      <li class="rv"><time>2025.09</time><span class="cat">Forum</span><p>서울디자인국제포럼(SDIF) 총괄기획감독 <small>이현성 교수</small></p></li>
+      <li class="rv"><time>2025.04</time><span class="cat">MOU</span><p>수원시 × 공공디자인연구센터, 지역사회 심리·정서적 건강 지원을 위한 업무협약</p></li>
+      <li class="rv"><time>2024.12</time><span class="cat">Award</span><p>파주시 ‘모두의 순찰대’ 행정안전부 공공서비스디자인 우수과제 · 장관상 <small>김상아</small></p></li>
+      <li class="rv"><time>2024.10</time><span class="cat">Award</span><p>2024 대한민국 공공디자인대상 연구부문 우수상 <small>김세훈</small></p></li>
+      <li class="rv"><time>2023.10</time><span class="cat">Award</span><p>2023 대한민국 공공디자인대상 연구부문 최우수상(문체부 장관상)·특별상(빅터 마골린상) <small>김상아, 이주호</small></p></li>
+      <li class="rv"><time>2023.07</time><span class="cat">Forum</span><p>The Public Design Forum X ‘사회갈등 예방을 위한 디자인 Vol.1’ <small>광운대 공공소통연구소 공동</small></p></li>
+    </ul>
+  </div>
+</section>
 
-<!-- Dots -->
-<div class="dots" id="dots"></div>
+<!-- ================= 08 Gallery teaser ================= -->
+<section class="section gallery-teaser" id="gallery" aria-label="사진첩">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:48px">
+      <div>
+        <p class="eyebrow rv">Gallery</p>
+        <h2 class="h-section rv d1">사진첩</h2>
+      </div>
+      <div class="rv d2">
+        <p class="lead">워크샵과 세미나, 답사와 포럼. 연구원들이 함께 보낸 시간을 흑백으로 기록합니다.</p>
+        <a href="gallery.html" class="cta-link" style="margin-top:28px">사진첩 전체 보기 <span class="arrow"></span></a>
+      </div>
+    </div>
+  </div>
+  <a href="gallery.html" class="marquee" aria-label="사진첩으로 이동"><div class="marquee-track" id="marquee"></div></a>
+</section>
 
-<script>
-const TOTAL = 8;
-let current = 0;
-let chartsInitialized = {};
+</main>
 
-const wrap = document.getElementById('slidesWrap');
-const dots = document.getElementById('dots');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+<!-- ================= Footer ================= -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-big">SPD Lab<span>.</span></p>
+    <div class="footer-grid">
+      <div>
+        <h5>Socio-Public Design Lab</h5>
+        <p>홍익대학교 공공디자인전공 이현성 교수 연구실<br>서울특별시 마포구 와우산로 94 홍익대학교</p>
+      </div>
+      <div>
+        <h5>Menu</h5>
+        <a href="#professor">Professor</a>
+        <a href="#research">Research</a>
+        <a href="#members">Members</a>
+        <a href="#publications">Publications</a>
+      </div>
+      <div>
+        <h5>Platform</h5>
+        <a href="hipd.html">HIPD</a>
+        <a href="#news">News</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+      <div>
+        <h5>Network</h5>
+        <p>홍익대학교 공공디자인연구센터</p>
+        <p>IPDF 국제공공디자인포럼</p>
+        <p>DESIS Network</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SPD Lab, Hongik University. All rights reserved.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
 
-// Build dots
-for (let i = 0; i < TOTAL; i++) {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i === 0 ? ' active' : '');
-  d.addEventListener('click', () => goTo(i));
-  dots.appendChild(d);
-}
+<!-- ================= Professor CV (overlay) ================= -->
+<div class="cv-sheet" id="cvSheet" role="dialog" aria-modal="true" aria-labelledby="cvTitle" hidden>
+  <div class="cv-inner">
+    <header class="cv-top">
+      <div>
+        <p class="eyebrow">Curriculum Vitae</p>
+        <h2 id="cvTitle">이현성 <span>LEE Hyunsung</span></h2>
+      </div>
+      <button class="cv-close" id="cvClose" aria-label="이력 닫기"><span></span><span></span></button>
+    </header>
+    <div class="cv-layout">
+      <nav class="cv-index" aria-label="이력 목차"><a href="#cv-1"><span>01</span>현직</a><a href="#cv-2"><span>02</span>주요 역임</a><a href="#cv-3"><span>03</span>학회 활동</a><a href="#cv-4"><span>04</span>학력</a><a href="#cv-5"><span>05</span>수상</a><a href="#cv-6"><span>06</span>저서 · 전시</a><a href="#cv-7"><span>07</span>주요 프로젝트</a></nav>
+      <div class="cv-body">
+      <section class="cv-sec" id="cv-1">
+        <h3><span>01</span>현직<small>Current post</small></h3>
+        <ul class="cv-list"><li>교수. 홍익대학교 공공디자인전공</li><li>(中) 魯迅美術學院 L.A.F.A. Luxun Academy of Fine Arts, Guest Professor</li><li>객원교수. 중국 노신미술대학</li><li>대표소장  에스이디자인그룹 SEDG</li><li>제4기 대한민국 열린정부위원회 민간위원</li><li>2024 대한민국 공공디자인 페스티벌 조직위원</li><li>서울시 유니버설디자인센터 위원</li><li>서울시 강남구 정책자문위원 (도시디자인)</li><li>경기도 공공디자인진흥위원</li><li>의정부시 공공디자인 진흥위원</li><li>2023 대한민국 공공디자인 페스티벌 조직위원</li><li>영주시 도시건축 민간전문가 위촉</li><li>경기도시재생지원센터 자문위원</li><li>의왕시 미래위원회 위원</li><li>한국농어촌공사 공공디자인 자문위원</li><li>서울시 성동구 공공디자인 주민협의체 위원</li><li>서울시 성동구 옥외광고심의위원</li><li>고양시 공공디자인 진흥위원</li><li>수원시 공공디자인진흥위원회 심의위원</li><li>시흥시 건강도시추진 자문위원</li></ul>
+      </section>
+      <section class="cv-sec" id="cv-2">
+        <h3><span>02</span>주요 역임<small>Former post</small></h3>
+        <ul class="cv-list"><li>서울시 공공디자인진흥위원</li><li>서울시 공공디자이너</li><li>경기도 공공디자인 닥터</li><li>안양시 공공디자인진흥위원회 심의위원</li><li>한국도로공사 공공디자인 심의위원</li><li>수원시정연구원 운영자문위원</li><li>(사)국제디자인교류재단(외교부)전문위원</li><li>해상도시공간디자인 기획연구 전문자문위원 : 한국해양과학기술원, 국토해양부</li><li>광주디자인센터 정부과제 발굴기획위원</li><li>한국디자인진흥원 KIDP, 국내우수디자인(GD)인증심사 심의위원</li><li>국토해양부 해양디자인 기획연구</li><li>서울시 디자인총괄본부 공공디자인분야 초청작가</li><li>서울과학기술대학교 디자인학부, 중앙대 실내건축디자인, 고려대 디자인학과 출강</li></ul>
+      </section>
+      <section class="cv-sec" id="cv-3">
+        <h3><span>03</span>학회 활동<small>Academic activity</small></h3>
+        <ul class="cv-list"><li>부회장, (사) 더나은도시디자인포럼</li><li>부회장, (사) 한국공간디자인단체총연합회</li><li>부회장, (사) 한국공간디자인학회</li><li>상임이사, (사) 한국공공디자인학회</li><li>부위원장, (사) 한국도시설계학회 (회원번호 3041) 공공디자인 연구위원회</li><li>이사, (사)서비스디자인학회</li><li>정회원, (사) 한국건축학회 (회원번호 20503)</li><li>정회원, (사) 한국디자인문화학회</li></ul>
+      </section>
+      <section class="cv-sec" id="cv-4">
+        <h3><span>04</span>학력<small>Academic Education</small></h3>
+        <ul class="cv-list edu">
+          <li><b>도시설계학 박사수료, 서울대학교 공과대학</b><span>Doctorate course in Urban design, Seoul National University, Seoul, Korea</span></li>
+          <li><b>도시디자인 석사, 킹스턴대학교(영)</b><span>MA, Landscape Urbanism, Landscape Interface Studio, KINGSTON University, London, UK</span></li>
+          <li><b>건축학부 학사, 아주대 공대</b><span>BA, Architecture, Department of Architecture, AJOU University, KOREA.</span></li>
+          <li><b>Membership, RIBA (Royal Institute of British Architects) student member : 12611940</b></li>
+        </ul>
+      </section>
+      <section class="cv-sec" id="cv-5">
+        <h3><span>05</span>수상<small>Awards</small></h3>
+        <ul class="cv-list dated">
+          <li><time>2025</time><span>제27회 대한민국디자인대상 디자인 공로 부문, 산업통상부장관 표창</span></li>
+          <li><time>2024</time><span>IF Awards 서비스디자인 부문 winner &#x27;SEOUL Design X&#x27;</span></li>
+          <li><time>2023</time><span>제1회 더나은도시디자인대상 최우수상_ 그린어워드 수상</span></li>
+          <li><time>2022</time><span>IF Awards 프로페셔널 컨셉 부문 winner &#x27;RE;Wave&#x27;</span></li>
+          <li><time>2022</time><span>대한민국 공공디자인대상 학술부문 특별상 &#x27;빅터마골린상&#x27; 수상 (지도교수)</span></li>
+          <li><time>2019</time><span>문화체육관광부 장관 표창(문화부문:공공디자인)</span></li>
+          <li><time>2019</time><span>경기도 공공디자인 진흥 유공 표창 (경기도지사 표창)</span></li>
+          <li><time>2019</time><span>대한민국 공공디자인대상 학술부문 특별상 &#x27;빅터마골린상&#x27; 수상 (홍익대 공공디자인연구센터)</span></li>
+          <li><time>2018</time><span>한국도로공사 표창 (우수기술자문위원)</span></li>
+          <li><time>2016</time><span>대한민국 공공디자인대상 학술부문(수원시 안전디자인) 대상</span></li>
+          <li><time>2012</time><span>IPD 국제외교디자인어워드 (서울시 공공시설물) 금상</span></li>
+          <li><time>2012</time><span>IPD 국제외교디자인어워드 (영덕 조형물) 은상</span></li>
+          <li><time>2011</time><span>국제공공디자인대상 &#x27;부천시 공공시설물 표준디자인 개발&#x27; Best of the Best</span></li>
+          <li><time>2011</time><span>서울시 공공시설물 표준형디자인 현상설계 최우수상</span></li>
+          <li><time>2009</time><span>대한민국 공공디자인대상 공공공간부문 우수상</span></li>
+          <li><time>2009</time><span>국제공공디자인대상 2009 &#x27;서울시 통합가로등’ Best of the Best</span></li>
+          <li><time>2009</time><span>대한민국 공공디자인대상 우수상 (문화관광부 장관)</span></li>
+          <li><time>2009</time><span>공공디자인엑스포 2009 &#x27;공공공간부문&#x27; 우수상</span></li>
+          <li><time>2008</time><span>대한민국 공공디자인대상 ‘공공시설·용품·정보디자인부분’ 우수상 (문화관광부 장관)</span></li>
+          <li><time>2008</time><span>S.D.O.2008 (서울디자인올림피아드 2008) 입선</span></li>
+        </ul>
+      </section>
+      <section class="cv-sec" id="cv-6">
+        <h3><span>06</span>저서 · 전시<small>Publication &amp; Exhibition</small></h3>
+        <ul class="cv-list"><li>2025 서울디자인국제포럼 SDIF &#x27;디자인으로 만드는 글로벌 삶의 품격&#x27; 총괄감독 MP</li><li>저서, &#x27;함께 회복력 : 회복력을 위한 공공디자인&#x27; , 공공의제연구소 오름, 2026</li><li>저서, &#x27;공공디자인으로 안전만들기&#x27;, 미세움, 2024 : 문체부 세종우수학술도서</li><li>저서, &#x27;공공디자인이즘 Public Design Ism&#x27;, 미세움, 2024</li><li>2021 문화체육관광부 공공디자인기획전시 ‘익숙한 미래’ 총괄감독</li><li>2021 유네스코 지속가능교육(ESD) 인증수상 &#x27;공공디자인거버넌스 교육프로그램&#x27;</li><li>저서, &#x27;회복력과 전환&#x27; , 공공의제연구소 오름, 2022</li><li>저서, &#x27;공공디자인으로 대한민국 바꾸기&#x27; , 지구문화사, 2020</li><li>저서, &#x27;예술이 농촌을 디자인하다&#x27;, 미세움, 2018</li><li>저서, &#x27;안전디자인으로 대한민국 바꾸기&#x27; , 미세움, 2015 : 문체부 세종우수학술도서</li><li>저서, &#x27;해양공간디자인&#x27; 미세움, 2013</li><li>저서, &#x27;유럽의 도시 공공디자인을 입다&#x27; 가인출판사, 2007</li></ul>
+      </section>
+      <section class="cv-sec" id="cv-7">
+        <h3><span>07</span>주요 프로젝트<small>Professional</small></h3>
+        <div class="cv-year"><time>2026</time><ul><li>서울 광진구 공공디자인 진흥계획</li><li>산업단지 안전 표준 디자인 가이드라인 개발</li><li>사회공헌센터 매칭 플랫폼 브랜드 디자인</li><li>도심형 군부대 신축을 위한 디자인 기본계획</li><li>군산시 공공디자인 진흥계획</li></ul></div>
+        <div class="cv-year"><time>2025</time><ul><li>김포시 공공디자인 진흥계획</li><li>댐 로컬브랜딩 마스터플랜 수립용역</li><li>국립공원 공원시설 공공디자인 가이드라인 개발</li><li>충남 공공디자인 진흥계획</li><li>안양시 공공디자인 진흥계획 수립용역</li><li>대구광역시 중구 공공디자인 진흥계획 수립 용역</li><li>제2차 성동구 공공디자인 진흥계획 수립 용역</li><li>구미시 공공디자인 가이드라인 수립 용역</li><li>아산시 공공디자인 진흥계획 재정비 수립 용역</li><li>2025년 용산구 공공디자인 파일럿 프로젝트</li><li>강동권 산단 청년문화센터 조성계획 수립용역</li><li>강동권 산단 다목적체육관 조성계획 수립용역</li><li>함안 말이산고분군 역사문화권 정비사업 실시계획 수립 및 설계</li><li>대구광역시 공공디자인 진흥계획 수립용역</li><li>구미형 문화브랜드산단 종합계획 수립용역</li></ul></div>
+        <div class="cv-year"><time>2024</time><ul><li>동작구 경관개선 디자인 수립용역</li><li>노후공장 청년친화 리뉴얼 디자인컨설팅 연구용역</li><li>구미시 선주원남 일원 건축,도시경관 통합디자인 마스터플랜 수립용역</li><li>설화리도시재생눈꽃처럼밝은설화마을조성사업기본디자인및실시설계용역</li><li>시흥시 공공디자인 진흥계획 및 가이드라인 수립 용역</li><li>파주 동산길 범죄예방환경디자인 사업 디자인개발 및 설계용역</li><li>국제행사 개최도시 공공디자인 지원사업 마스터플랜 수립 및 자문위원회 운영 용역</li><li>2023 공공디자인으로 행복한 공간 만들기_ 멘탈케어디자인</li><li>의정부시 망월로 걷고 싶은 거리 디자인 개발</li><li>계양구 공공디자인 진흥계획</li></ul></div>
+        <div class="cv-year"><time>2023</time><ul><li>의정부 공간환경전략계획</li><li>2023년 디자인협력 프로젝트 ‘서울디자인 X [  ]’</li><li>인천시 시정홍보매체 디자인 시범사업</li><li>서초구 유니버설 공공공간 시범조성 용역</li><li>동대문구 공공디자인 진흥계획</li><li>LOUD 사회갈등예방디자인</li><li>강남구 공공디자인진흥계획 2차</li><li>노들섬 접근로 개선 기본계획</li><li>달성군 인문학 마을 기본 구상 수립 연구 용역</li></ul></div>
+        <div class="cv-year"><time>2022</time><ul><li>한국수력원자력발전소 넛지효과에 기반을 둔 안전 가이드라인 개발 및 실증 연구</li><li>인천시 계양구 공공디자인진흥계획</li><li>달성군 공공디자인 진흥계획</li><li>의왕시 경관기본계획</li><li>수원시 도시브랜드 기본계획</li><li>고양시 공간환경전략계획</li><li>시흥시 공간환경전략계획</li><li>사회문제해결을 위한 강남구 공공디자인 실험실</li><li>구미시 선주원남 일원 건축·도시경관 통합디자인마스터플랜</li><li>용인시 도시재생전략계획 변경 수립</li></ul></div>
+        <div class="cv-year"><time>2021</time><ul><li>전라남도 공공디자인진흥계획</li><li>파주시 공간환경전략계획</li><li>강동구 공간환경전략계획</li><li>시흥시 공공시설물 표준디자인 재개발 용역</li><li>동작구 공공디자인 진흥계획</li><li>대구 동구 공공디자인 진흥계획</li><li>고양 능곡 지하보도 CPTED 기본계획</li><li>송파구 공공디자인 진흥계획</li><li>용인시 중앙동 도시재생활성화계획</li></ul></div>
+        <div class="cv-year"><time>2020</time><ul><li>서울시 공공디자인 가이드라인 3.0 연구</li><li>비룡공감 2080 BI 및 공공디자인개발</li><li>동작구 공공시각매체 디자인</li><li>동작구 아동이 안전한 통학로 디자인</li><li>부천 공공디자인 진흥계획</li><li>수원시 공공디자인 진흥계획</li><li>고양시 공공디자인 진흥계획</li><li>강남 공공정보디자인 체계 연구</li><li>국악길 유니버설 디자인거리 조성 용역</li><li>성동구 도시디자인 기본계획 수립 용역</li><li>구미 공간환경전략계획</li><li>돈화문로 서피맛길 재생사업 실행계획</li><li>ECO JOB CITY 태백 도시재생 활성화실행계획</li><li>강동구 구천면로 걷고싶은 거리조성 기본계획</li><li>구미시 공단동 도시재생 활성화계획</li><li>서울시 동작구 공공디자인 진흥계획</li><li>구미시 금오시장 일원 도시재생 건축경관 마스터플랜 수립</li><li>안산시 시각정보 안내체계 실시설계</li></ul></div>
+        <div class="cv-year"><time>2019</time><ul><li>2019 서울시 공공시설물 표준형디자인(서울 하천수변공간 안내체계)개발</li><li>제2차 경기도 범죄예방환경디자인 기본계획 및 가이드라인</li><li>안산 공공디자인 진흥계획</li><li>서울시 강남구 공공디자인 진흥계획 연구</li><li>서울 하천 수변공간 표준형시설 정보체계 연구</li><li>어촌어항뉴딜 300 &#x27;후포항&#x27; 주민역량 프로그램 연구</li><li>2019 문화적 도시재생사업 _대구 달성군 (문화체육관광부 지원사업)</li><li>구미시 재생활성화 계획 연구 용역</li><li>구미시 도시재생 경관특화 연구 용역</li><li>서울시 성북구 공공디자인 진흥종합계획 수립</li><li>경안동 도시재생 뉴딜사업 건축경관 통합디자인마스터플랜 수립용역</li><li>도시재생 뉴딜사업 당선 광주시 우리동네살리기형 &#x27;우전께 상생마을만들기&quot;</li><li>도시재생 뉴딜사업 당선 광주시 주거지지원형 &#x27;송정동 열린마을만들기&quot;</li></ul></div>
+      </section>
+      </div>
+    </div>
+  </div>
+</div>
 
-function updateDots() {
-  document.querySelectorAll('.dot').forEach((d, i) => {
-    d.classList.toggle('active', i === current);
-  });
-}
-
-function updateNav() {
-  prevBtn.classList.toggle('hidden', current === 0);
-  nextBtn.classList.toggle('hidden', current === TOTAL - 1);
-}
-
-function goTo(n) {
-  current = Math.max(0, Math.min(TOTAL - 1, n));
-  wrap.style.transform = `translateX(-${current * 100}vw)`;
-  updateDots();
-  updateNav();
-  setTimeout(() => initChartsForSlide(current), 100);
-}
-
-function changeSlide(dir) { goTo(current + dir); }
-
-// Keyboard
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
-});
-
-// Touch swipe
-let touchX = 0;
-document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
-document.addEventListener('touchend', e => {
-  const diff = touchX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-});
-
-// ── CHARTS ──
-function initChartsForSlide(idx) {
-  if (idx === 3 && !chartsInitialized[3]) {
-    chartsInitialized[3] = true;
-
-    // Donut MS vs PhD
-    new Chart(document.getElementById('donutMsPhd'), {
-      type: 'doughnut',
-      data: {
-        labels: ['박사과정', '석사과정'],
-        datasets: [{ data: [20, 13], backgroundColor: ['#0071E3', '#5AC8FA'], borderWidth: 0, hoverOffset: 4 }]
-      },
-      options: {
-        cutout: '70%',
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}명` } } },
-        animation: { duration: 800, easing: 'easeOutQuart' }
-      }
-    });
-
-    // Donut Nat vs Int
-    new Chart(document.getElementById('donutNatInt'), {
-      type: 'doughnut',
-      data: {
-        labels: ['국내 학생', '국제 학생'],
-        datasets: [{ data: [30, 3], backgroundColor: ['#0071E3', '#34AADC'], borderWidth: 0, hoverOffset: 4 }]
-      },
-      options: {
-        cutout: '70%',
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}명` } } },
-        animation: { duration: 800, easing: 'easeOutQuart' }
-      }
-    });
-  }
-
-  if (idx === 4 && !chartsInitialized[4]) {
-    chartsInitialized[4] = true;
-    new Chart(document.getElementById('radarChart'), {
-      type: 'radar',
-      data: {
-        labels: ['거버넌스\n& 참여', '사회적가치\n& ESG', '장소성\n& 활성화', '데이터\n& 분석', '안전\n& 웰빙'],
-        datasets: [{
-          label: '학술논문',
-          data: [31, 20, 18, 18, 13],
-          backgroundColor: 'rgba(0,113,227,0.15)',
-          borderColor: '#0071E3',
-          borderWidth: 2,
-          pointBackgroundColor: '#0071E3',
-          pointRadius: 4
-        }]
-      },
-      options: {
-        scales: {
-          r: {
-            min: 0, max: 35,
-            ticks: { stepSize: 10, font: { size: 9 }, color: '#AEAEB2' },
-            grid: { color: '#E5E5EA' },
-            pointLabels: { font: { size: 10, weight: '600' }, color: '#1D1D1F' }
-          }
-        },
-        plugins: { legend: { display: false } },
-        animation: { duration: 900 }
-      }
-    });
-  }
-
-  if (idx === 5 && !chartsInitialized[5]) {
-    chartsInitialized[5] = true;
-    new Chart(document.getElementById('yearlyChart'), {
-      type: 'bar',
-      data: {
-        labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
-        datasets: [{
-          label: '학술논문',
-          data: [12, 16, 18, 22, 16, 14],
-          backgroundColor: '#0071E3',
-          borderRadius: 6,
-          borderSkipped: false
-        }, {
-          label: '학위논문',
-          data: [3, 4, 5, 7, 6, 4],
-          backgroundColor: '#C7E0FF',
-          borderRadius: 6,
-          borderSkipped: false
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 }, color: '#6E6E73' } },
-          y: { stacked: true, grid: { color: '#F0F0F5' }, ticks: { font: { size: 10 }, color: '#AEAEB2' } }
-        },
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: { font: { size: 11 }, color: '#6E6E73', boxWidth: 12, borderRadius: 3 }
-          }
-        },
-        animation: { duration: 900, easing: 'easeOutQuart' }
-      }
-    });
-  }
-}
-
-// Init first slide
-updateNav();
-</script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/gallery-data.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
