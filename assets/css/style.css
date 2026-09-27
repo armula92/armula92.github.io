@@ -623,6 +623,10 @@ body.cv-lock { overflow: hidden; }
 .cv-year ul { list-style: none; columns: 2; column-gap: 40px; }
 .cv-year li { break-inside: avoid; font-size: 14px; color: var(--ink-2); font-weight: 300; padding: 4px 0 4px 14px; position: relative; }
 .cv-year li::before { content: ""; position: absolute; left: 0; top: 14px; width: 5px; height: 1px; background: var(--ink-3); }
+.cv-note { font-size: 12.5px; color: var(--ink-3); letter-spacing: .04em; margin: 14px 0 4px; }
+.cv-list.proj { columns: auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
+.cv-list.proj li { font-size: 14.5px; padding: 11px 0; color: var(--ink-2); }
+@media (max-width: 960px) { .cv-list.proj { grid-template-columns: 1fr; } }
 @media (max-width: 960px) {
   .cv-layout { grid-template-columns: 1fr; margin-top: 28px; }
   .cv-index { position: static; flex-direction: row; flex-wrap: wrap; gap: 4px 18px; }
