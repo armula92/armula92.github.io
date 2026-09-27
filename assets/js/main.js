@@ -45,14 +45,14 @@
   /* ---------- Hero slideshow ---------- */
   var slides = $$(".hero-slides figure");
   if (slides.length > 1) {
-    var cur = 0, idxEl = $("#heroIdx"), bar = $(".hero-count .bar i");
+    var cur = 0, dots = $$(".hero-dots i"), bar = $(".hero-count .bar i");
     var runBar = function () { if (!bar) return; bar.classList.remove("run"); void bar.offsetWidth; bar.classList.add("run"); };
     runBar();
     setInterval(function () {
       slides[cur].classList.remove("on");
       cur = (cur + 1) % slides.length;
       slides[cur].classList.add("on");
-      if (idxEl) idxEl.textContent = ("0" + (cur + 1)).slice(-2);
+      dots.forEach(function (d, k) { d.classList.toggle("on", k === cur); });
       runBar();
     }, 6000);
   }
@@ -126,7 +126,7 @@
             var at = p.t.toLowerCase().indexOf(q);
             t = esc(p.t.slice(0, at)) + "<mark>" + esc(p.t.slice(at, at + q.length)) + "</mark>" + esc(p.t.slice(at + q.length));
           }
-          return '<li><span class="idx">' + ("00" + (i + 1)).slice(-3) + '</span><span class="t">' + t +
+          return '<li><span class="idx" aria-hidden="true"></span><span class="t">' + t +
             '</span><span class="k">' + (p.k === "journal" ? "학술논문" : "학위논문") + " · " + catName[p.c[0]] + "</span></li>";
         }).join("");
       }
@@ -170,7 +170,7 @@
   if (G && stage) {
     var img = $("#gImg"), strip = $("#gStrip"), grid = $("#gGrid");
     var curEl = $("#gCur"), prog = $("#gProg"), playBtn = $("#gPlay");
-    var pad = function (n) { return ("0" + n).slice(-2); };
+    var pad = function (n) { return String(n); };
     var i = 0, timer = null, playing = true, DELAY = 4500;
     $("#gTotal").textContent = pad(G.length);
 
