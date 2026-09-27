@@ -12,6 +12,7 @@
   --ink-2: #a6a6a8;
   --ink-3: #6c6c70;
   --ink-4: #3f3f44;
+  --orange: #ff6b1a;
   --line: rgba(255, 255, 255, 0.12);
   --line-strong: rgba(255, 255, 255, 0.28);
   --accent: #d6d3cc;
@@ -417,9 +418,18 @@ section { position: relative; }
 .course svg { width: 44px; height: 44px; color: var(--ink); margin-bottom: 22px; }
 .course b { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.4; }
 .course span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; }
-.course em { font-style: normal; font-size: 12px; color: var(--ink-3); margin-top: 18px; }
-.course[href] { cursor: pointer; }
-.course[href]:hover b { text-decoration: underline; text-underline-offset: 4px; }
+.course { position: relative; cursor: pointer; }
+.course::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
+.course + .course::before { left: 0; }
+.course svg, .course b, .course em { transition: color .25s; }
+.course em { display: inline-flex; align-items: center; gap: 12px; font-style: normal; font-size: 12.5px; font-weight: 500; color: var(--ink-2); margin-top: 18px; letter-spacing: .04em; }
+.course em small { font-size: 11px; font-weight: 400; color: var(--ink-3); }
+.course em .arrow { width: 28px; height: 1px; background: currentColor; position: relative; transition: width .35s var(--ease); }
+.course em .arrow::after { content: ""; position: absolute; right: 0; top: -3px; width: 6px; height: 6px; border-right: 1px solid currentColor; border-top: 1px solid currentColor; transform: rotate(45deg); }
+.course:hover::before, .course:focus-visible::before { transform: scaleX(1); }
+.course:hover svg, .course:hover b, .course:hover em,
+.course:focus-visible svg, .course:focus-visible b, .course:focus-visible em { color: var(--orange); }
+.course:hover em .arrow, .course:focus-visible em .arrow { width: 48px; }
 .notice-list { list-style: none; margin-top: 32px; border-top: 1px solid var(--line-strong); }
 .notice-list li { display: grid; grid-template-columns: 112px 1fr auto; gap: 20px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
 .notice-list time b { font-size: 14px; font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; }
@@ -701,3 +711,33 @@ body.cv-lock { overflow: hidden; }
 
 .cv-close:focus { outline: none; }
 .cv-close:focus-visible { outline: 1px solid var(--ink-3); outline-offset: 2px; border-radius: 50%; }
+
+/* ---------- Accent hover (오렌지 강조) ---------- */
+.nav a:hover { color: var(--orange); }
+.nav a:hover::after { background: var(--orange); }
+.nav .nav-hipd:hover { color: var(--orange); }
+.nav .nav-hipd:hover i { background: var(--orange); }
+.mobile-menu nav a { transition: color .25s; }
+.mobile-menu nav a:hover { color: var(--orange); }
+.cta-link, .cta-link .arrow { transition: color .25s, border-color .25s, background-color .25s, width .35s var(--ease); }
+.cta-link:hover { color: var(--orange); border-bottom-color: var(--orange); }
+.cta-link:hover .arrow { background: var(--orange); }
+.cta-link:hover .arrow::after { border-color: var(--orange); }
+.more { transition: color .25s; }
+.more:hover { color: var(--orange); }
+.more:hover .arrow { background: var(--orange); }
+.more:hover .arrow::after { border-color: var(--orange); }
+.tabs button:hover, .filter-row button:hover { color: var(--orange); }
+.pub-list li:hover .t { color: var(--orange); }
+.pub-list .t { transition: color .25s; }
+.news-feature h4 { transition: color .25s; }
+.news-feature a:hover h4 { color: var(--orange); }
+.notice-list li { transition: padding-left .3s var(--ease); }
+.notice-list li p { transition: color .25s; }
+.notice-list li:hover { padding-left: 10px; }
+.notice-list li:hover p { color: var(--orange); }
+.footer-grid a { transition: color .25s; }
+.footer-grid a:hover { color: var(--orange); }
+.nl-qr { transition: box-shadow .25s; }
+.nl-qr:hover { box-shadow: 0 0 0 2px var(--orange); }
+.cv-index a:hover { color: var(--orange); }
