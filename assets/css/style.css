@@ -399,6 +399,42 @@ section { position: relative; }
 .footer-grid a:hover { color: var(--ink); }
 .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 64px; font-size: 12px; color: var(--ink-3); letter-spacing: .06em; }
 
+.footer-newsletter { display: flex; align-items: center; gap: 32px; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line); }
+.footer-newsletter h5 { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 10px; }
+.footer-newsletter .nl-title { font-size: 20px; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 18px; }
+.footer-newsletter .cta-link { font-size: 13px; }
+.nl-qr { flex: none; display: block; width: 120px; height: 120px; padding: 8px; background: #fff; }
+.nl-qr img { width: 100%; height: 100%; display: block; }
+
+/* ---------- Board: 강의 + 세미나 공지 ---------- */
+.board { padding: clamp(72px, 9vw, 120px) 0; }
+.board-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px clamp(48px, 7vw, 110px); }
+.course-list { display: grid; grid-template-columns: 1fr 1fr; margin-top: 32px; border-top: 1px solid var(--line-strong); }
+.course { display: flex; flex-direction: column; padding: 28px 24px 24px 0; cursor: default; }
+.course + .course { padding-left: 24px; border-left: 1px solid var(--line); }
+.course svg { width: 44px; height: 44px; color: var(--ink); margin-bottom: 22px; }
+.course b { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.4; }
+.course span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; }
+.course em { font-style: normal; font-size: 12px; color: var(--ink-3); margin-top: 18px; }
+.course[href] { cursor: pointer; }
+.course[href]:hover b { text-decoration: underline; text-underline-offset: 4px; }
+.notice-list { list-style: none; margin-top: 32px; border-top: 1px solid var(--line-strong); }
+.notice-list li { display: grid; grid-template-columns: 112px 1fr auto; gap: 20px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.notice-list time b { font-size: 14px; font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.notice-list .cat { font-size: 11px; letter-spacing: .16em; color: var(--ink-3); margin-right: 12px; }
+.notice-list div p { display: inline; font-size: 16.5px; }
+.notice-list .place { font-size: 13px; color: var(--ink-2); letter-spacing: .04em; }
+.notice-list .place::before { content: "장소 "; color: var(--ink-3); }
+@media (max-width: 960px) {
+  .board-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .notice-list li { grid-template-columns: 1fr auto; gap: 6px 16px; }
+  .notice-list time { grid-column: 1 / -1; }
+  .footer-newsletter { gap: 20px; }
+  .nl-qr { width: 96px; height: 96px; }
+}
+
 /* ---------- Reveal ---------- */
 .rv { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
 .rv.in { opacity: 1; transform: none; }

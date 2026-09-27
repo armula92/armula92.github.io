@@ -107,7 +107,7 @@
   var list = $("#pubList");
   if (P && list) {
     var state = { k: "all", c: "all", q: "", limit: 15 };
-    var catName = { gov: "거버넌스·참여", esg: "공공가치·ESG", place: "장소성·데이터", safety: "안전·웰빙" };
+    var catName = { gov: "거버넌스·참여", esg: "공공가치·ESG", place: "장소성·데이터", safety: "안전·정서" };
     var moreBtn = $("#pubMore"), moreLabel = $("#pubMoreLabel");
     var esc = function (s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
     var render = function () {
