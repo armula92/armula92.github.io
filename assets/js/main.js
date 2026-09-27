@@ -77,8 +77,7 @@
         [phd.length, "박사과정 Doctoral"],
         [ms.length, "석사과정 Master"],
         [M.alumni.length - alumPhd, "석사 졸업 Alumni"],
-        [alumPhd, "박사 졸업 Ph.D."],
-        ["9%", "외국인 연구자"]
+        [alumPhd, "박사 졸업 Ph.D."]
       ].map(function (s) { return '<div class="rv"><b>' + s[0] + "</b><span>" + s[1] + "</span></div>"; }).join("");
       observeReveal($$(".rv", stats));
     }
