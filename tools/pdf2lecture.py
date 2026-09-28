@@ -310,7 +310,7 @@ PAGE = """<!DOCTYPE html>
   <meta property="og:site_name" content="SPD Lab">
   <meta property="og:title" content="{subtitle} — {course} 강의 보조교재">
   <meta property="og:description" content="{deck}">
-  <meta property="og:image" content="https://www.armula.com/lectures/{cover_src}">
+  <meta property="og:image" content="{og_image}">
   <meta name="theme-color" content="#0a0a0b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -337,21 +337,18 @@ PAGE = """<!DOCTYPE html>
 
 <main>
   <section class="lx-cover">
-    <div class="wrap lx-cover-grid">
+    <div class="wrap lx-cover-grid{cover_mod}">
       <div>
         <p class="eyebrow">{course_en} · Lecture Note</p>
         <p class="lx-course">{kicker}</p>
-        <p class="lx-series">{title}</p>
-        <h1>{subtitle}</h1>
-        <p class="lx-deck">{deck}</p>
-        <p class="lx-author">{author_html}</p>
+{series_html}        <h1>{subtitle}</h1>
+{deck_html}        <p class="lx-author">{author_html}</p>
         <div class="lx-actions">
-          <a class="cta-link" href="pdf/{slug}.pdf" target="_blank" rel="noopener">PDF 원본 보기 <span class="arrow"></span></a>
+          {src_link_top}
           <a class="lx-back" href="../index.html#board">강의 목록으로</a>
         </div>
       </div>
-      <figure class="lx-cover-fig"><img src="{cover_src}" alt="{title} 표지 슬라이드" width="{cw}" height="{ch}"></figure>
-    </div>
+{cover_fig}    </div>
   </section>
 
   <div class="wrap lx-layout">
@@ -363,7 +360,7 @@ PAGE = """<!DOCTYPE html>
 {body}
       <footer class="lx-end">
         <p>{course} · {subtitle}</p>
-        <a class="cta-link" href="pdf/{slug}.pdf" target="_blank" rel="noopener">PDF 원본 ({pages}쪽) <span class="arrow"></span></a>
+        {src_link_end}
       </footer>
     </article>
   </div>
@@ -395,10 +392,20 @@ def render(d, ver):
     au = d["author"]
     m = re.match(r"(.+?)\s*_\s*(\S+@\S+)", au)
     author_html = (f'{esc(m.group(1).replace(" ", "") if len(m.group(1).replace(" ", "")) <= 4 else m.group(1))} <a href="mailto:{m.group(2)}">{m.group(2)}</a>') if m else esc(au)
-    cover_src, (cw, ch) = d["cover"]
+    if d.get("cover"):
+        cover_src, (cw, ch) = d["cover"]
+        cover_fig = f'      <figure class="lx-cover-fig"><img src="{cover_src}" alt="{esc(d["title"] or d["subtitle"])} 표지 슬라이드" width="{cw}" height="{ch}"></figure>\n'
+        og_image, cover_mod = f"https://www.armula.com/lectures/{cover_src}", ""
+    else:
+        cover_fig, og_image, cover_mod = "", "https://www.armula.com/assets/img/hero-01.jpg", " lx-cover-text"
+    series_html = f'        <p class="lx-series">{esc(d["title"])}</p>\n' if d.get("title") else ""
+    deck_html = f'        <p class="lx-deck">{esc(d["deck"])}</p>\n' if d.get("deck") else ""
     d["body"] = re.sub(r">([^<]+)<", lambda m: ">" + unpad(m.group(1)) + "<", d["body"])   # no zero-padded ordinals in text
-    return PAGE.format(subtitle=esc(d["subtitle"]), course=esc(d["course"]), course_en=esc(d["course_en"]), deck=esc(d["deck"]),
-                       kicker=esc(d["kicker"]), title=esc(d["title"]), slug=d["slug"], cover_src=cover_src, cw=cw, ch=ch,
+    return PAGE.format(subtitle=esc(d["subtitle"]), course=esc(d["course"]), course_en=esc(d["course_en"]), deck=esc(d.get("deck") or d.get("meta") or ""),
+                       kicker=esc(d["kicker"]), slug=d["slug"], og_image=og_image, cover_fig=cover_fig, cover_mod=cover_mod,
+                       src_link_top=d.get("src_link_top", f'<a class="cta-link" href="pdf/{d["slug"]}.pdf" target="_blank" rel="noopener">PDF 원본 보기 <span class="arrow"></span></a>'),
+                       src_link_end=d.get("src_link_end", f'<a class="cta-link" href="pdf/{d["slug"]}.pdf" target="_blank" rel="noopener">PDF 원본 ({d["pages"]}쪽) <span class="arrow"></span></a>'),
+                       series_html=series_html, deck_html=deck_html, src_label=d.get("src_label", "PDF 원본"),
                        author_html=author_html, toc="\n      ".join(toc), body=d["body"], pages=d["pages"], ver=ver)
 
 
