@@ -411,8 +411,8 @@ section { position: relative; }
 
 /* ---------- Board: 강의 + 세미나 공지 ---------- */
 .board { padding: clamp(72px, 9vw, 120px) 0; }
-.board-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px clamp(48px, 7vw, 110px); }
-.course-list { display: grid; grid-template-columns: 1fr 1fr; margin-top: 32px; border-top: 1px solid var(--line-strong); }
+.board-grid { display: grid; grid-template-columns: 1.25fr 1.2fr; gap: 40px clamp(48px, 7vw, 110px); }
+.course-list { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 32px; border-top: 1px solid var(--line-strong); }
 .course { display: flex; flex-direction: column; padding: 28px 24px 24px 0; cursor: default; }
 .course + .course { padding-left: 24px; border-left: 1px solid var(--line); }
 .course svg { width: 44px; height: 44px; color: var(--ink); margin-bottom: 22px; }
@@ -445,6 +445,8 @@ section { position: relative; }
   .notice-list time { grid-column: 1 / -1; }
   .footer-newsletter { gap: 20px; }
   .nl-qr { width: 96px; height: 96px; }
+  .course-list { grid-template-columns: 1fr; }
+  .course, .course + .course { padding: 24px 0; border-left: 0; border-bottom: 1px solid var(--line); }
 }
 
 /* ---------- Reveal ---------- */
