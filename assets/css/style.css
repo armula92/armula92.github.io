@@ -666,6 +666,8 @@ body.cv-lock { overflow: hidden; }
   .pub-list li { grid-template-columns: 6px 1fr; }
 }
 
+.hipd-quote-sub { margin-top: clamp(72px, 9vw, 120px); padding-top: clamp(48px, 6vw, 72px); border-top: 1px solid var(--line); }
+
 /* =========================================================
    Responsive
    ========================================================= */
