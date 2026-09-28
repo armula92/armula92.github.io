@@ -217,7 +217,7 @@ section { position: relative; }
 .prof-portrait .ph img { object-position: 30% center; }
 .prof-portrait figcaption { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-3); letter-spacing: normal; padding-top: 14px; border-top: 1px solid var(--line); margin-top: 14px; }
 .prof-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 22px; margin: 26px 0 8px; }
-.prof-name h2 { font-size: clamp(52px, 6vw, 96px); font-weight: 800; letter-spacing: normal; line-height: 1; }
+.prof-name h2 { font-size: clamp(52px, 6vw, 96px); font-weight: 500; letter-spacing: normal; line-height: 1; }
 .prof-name span { font-size: clamp(18px, 1.8vw, 24px); font-weight: 200; letter-spacing: normal; color: var(--ink-2); }
 .prof-title { font-size: 17px; color: var(--ink-2); font-weight: 300; }
 .prof-quote { margin: clamp(48px, 6vw, 72px) 0; padding-left: 28px; border-left: 2px solid var(--ink); }
@@ -594,7 +594,7 @@ body.cv-lock { overflow: hidden; }
 .cv-inner { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter) 120px; transform: translateY(24px); transition: transform .6s var(--ease); }
 .cv-sheet.open .cv-inner { transform: none; }
 .cv-top { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; padding: 36px 0 26px; background: linear-gradient(180deg, rgba(6,6,7,1) 75%, rgba(6,6,7,0)); border-bottom: 1px solid var(--line-strong); }
-.cv-top h2 { font-size: clamp(36px, 5vw, 72px); font-weight: 800; letter-spacing: normal; line-height: 1; margin-top: 18px; }
+.cv-top h2 { font-size: clamp(36px, 5vw, 72px); font-weight: 500; letter-spacing: normal; line-height: 1; margin-top: 18px; }
 .cv-top h2 span { font-size: .34em; font-weight: 200; letter-spacing: normal; color: var(--ink-2); margin-left: 14px; }
 .cv-close { width: 48px; height: 48px; position: relative; flex: 0 0 auto; }
 .cv-close span { position: absolute; left: 8px; right: 8px; top: 23px; height: 1.5px; background: var(--ink); transition: transform .35s var(--ease); }
