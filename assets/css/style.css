@@ -411,9 +411,9 @@ section { position: relative; }
 
 /* ---------- Board: 강의 + 세미나 공지 ---------- */
 .board { padding: clamp(72px, 9vw, 120px) 0; }
-.board-grid { display: grid; grid-template-columns: 1.25fr 1.2fr; gap: 40px clamp(48px, 7vw, 110px); }
+.board-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 40px clamp(48px, 7vw, 110px); }
 .course-list { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 32px; border-top: 1px solid var(--line-strong); }
-.course { display: flex; flex-direction: column; padding: 28px 24px 24px 0; cursor: default; }
+.course { display: flex; flex-direction: column; min-width: 0; padding: 28px 24px 24px 0; cursor: default; }
 .course + .course { padding-left: 24px; border-left: 1px solid var(--line); }
 .course svg { width: 44px; height: 44px; color: var(--ink); margin-bottom: 22px; }
 .course b { font-size: 17px; font-weight: 600; letter-spacing: normal; line-height: 1.4; }
@@ -431,7 +431,7 @@ section { position: relative; }
 .course:focus-visible svg, .course:focus-visible b, .course:focus-visible em { color: var(--orange); }
 .course:hover em .arrow, .course:focus-visible em .arrow { width: 48px; }
 .notice-list { list-style: none; margin-top: 32px; border-top: 1px solid var(--line-strong); }
-.notice-list li { display: grid; grid-template-columns: 112px 1fr auto; gap: 20px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.notice-list li { display: grid; grid-template-columns: 92px 1fr auto; gap: 14px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
 .notice-list time b { font-size: 14px; font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .notice-list .cat { font-size: 11px; letter-spacing: normal; color: var(--ink-3); margin-right: 12px; }
 .notice-list div p { display: inline; font-size: 16.5px; }
