@@ -111,11 +111,24 @@
   .lx-box { padding: 20px 18px; }
 }
 
-/* ---------- view-only protection ---------- */
-.lx-protected main { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-touch-callout: none; }
-.lx-protected img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
-.lx-protected .lx-toc a, .lx-protected .lx-back, .lx-protected .lx-refs a, .lx-protected .lx-body p a { pointer-events: auto; }
+/* lecture images are shown inline only (no raw-file links); text can be copied and pages printed */
+.lx-protected img { -webkit-user-drag: none; }
+
+/* ---------- print: black on white, content only ---------- */
 @media print {
-  .lx-protected main, .lx-protected .site-header, .lx-protected .site-footer, .lx-protected .lx-progress { display: none !important; }
-  .lx-protected::before { content: "이 강의 자료는 인쇄할 수 없습니다 · SPD Lab"; display: block; padding: 40px; font-size: 16px; color: #000; }
+  @page { margin: 18mm 16mm; }
+  body, .lecture-page { background: #fff !important; color: #111 !important; }
+  .site-header, .site-footer, .lx-progress, .lx-toc, .lx-actions, .lx-back, .gt-host { display: none !important; }
+  .lx-cover { padding: 0 0 24px; border-bottom: 1px solid #999; }
+  .lx-cover-grid, .lx-layout { display: block; padding: 0; }
+  .lx-cover h1, .lx-part h2, .lx-body h3, .lx-body h4, .lx-cards dt, .lx-cards dd b, .lx-box b, .lx-quote p, .lx-table th, .lx-table td:first-child { color: #000 !important; }
+  .lx-body, .lx-body > p, .lx-list li, .lx-box li, .lx-table td, .lx-cards dd span, .lx-refs li, .lx-deck, .lx-lead, .lx-course, .lx-series, .lx-author { color: #222 !important; }
+  .lx-src, .lx-fig figcaption, .lx-kicker, .eyebrow, .lx-box-k { color: #555 !important; }
+  .lx-box { background: #f3f3f3 !important; border-left-color: #666 !important; }
+  .lx-quote { border-left-color: #000 !important; }
+  .lx-part { border-top-color: #999; margin-top: 28px; }
+  .lx-fig, .lx-table, .lx-box, .lx-cards > div { break-inside: avoid; }
+  .lx-part, .lx-body h3 { break-after: avoid; }
+  .lx-body a { color: #000 !important; }
+  .rv { opacity: 1 !important; transform: none !important; }
 }
