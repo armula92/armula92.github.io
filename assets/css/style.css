@@ -694,6 +694,22 @@ body.cv-lock { overflow: hidden; }
   .pv-thumb i::after { left: 8px; top: 6px; border-width: 5px 0 5px 7px; }
 }
 
+
+/* ---------- Language switch (Google translate) ---------- */
+.nav .lang { display: inline-flex; align-items: center; gap: 12px; }
+.lang button { font-size: 12.5px; font-weight: 500; color: var(--ink-3); padding: 2px 0; border-bottom: 1px solid transparent; transition: color .25s, border-color .25s; }
+.lang button:hover { color: var(--ink); }
+.lang button.on { color: var(--ink); border-bottom-color: var(--ink); }
+.lang-mobile { display: flex; gap: 22px; margin-top: 28px; }
+.lang-mobile button { font-size: 15px; }
+.gt-host { position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; overflow: hidden; }
+/* hide Google's own bar, tooltip and highlights so the site design stays intact */
+iframe.skiptranslate, .skiptranslate > iframe, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame,
+.VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf, .VIpgJd-yAWNEb-L7lbkb { display: none !important; }
+html, body { top: 0 !important; }
+.goog-text-highlight, .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q { background: none !important; box-shadow: none !important; }
+@media (max-width: 640px) { .nav .lang { display: none; } }
+
 /* =========================================================
    Responsive
    ========================================================= */

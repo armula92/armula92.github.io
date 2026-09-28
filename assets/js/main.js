@@ -269,4 +269,36 @@
       $$(".cv-sec", sheet).forEach(function (s) { cvSpy.observe(s); });
     }
   }
+  /* ---------- Site translation (Google Website Translator) ---------- */
+  var langBtns = $$(".lang button");
+  if (langBtns.length) {
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=\/ko\/([A-Za-z-]+)/);
+    var curLang = m ? m[1] : "ko";
+    langBtns.forEach(function (b) {
+      var on = b.dataset.lang === curLang;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", on);
+      b.addEventListener("click", function () {
+        var lang = b.dataset.lang;
+        if (lang === curLang) return;
+        var host = location.hostname, base = host.replace(/^www\./, "");
+        var domains = ["", "; domain=" + host, "; domain=." + base];
+        domains.forEach(function (d) {
+          document.cookie = lang === "ko"
+            ? "googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT" + d
+            : "googtrans=/ko/" + lang + "; path=/" + d;
+        });
+        location.reload();
+      });
+    });
+    if (curLang !== "ko") {
+      window.googleTranslateElementInit = function () {
+        new google.translate.TranslateElement({ pageLanguage: "ko", includedLanguages: "en,ja,zh-CN", autoDisplay: false }, "google_translate_element");
+      };
+      var gt = document.createElement("script");
+      gt.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      gt.async = true;
+      document.body.appendChild(gt);
+    }
+  }
 })();
