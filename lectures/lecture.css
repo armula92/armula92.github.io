@@ -110,3 +110,12 @@
   .lx-cards > div { grid-template-columns: 1fr; gap: 6px; }
   .lx-box { padding: 20px 18px; }
 }
+
+/* ---------- view-only protection ---------- */
+.lx-protected main { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.lx-protected img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+.lx-protected .lx-toc a, .lx-protected .lx-back, .lx-protected .lx-refs a, .lx-protected .lx-body p a { pointer-events: auto; }
+@media print {
+  .lx-protected main, .lx-protected .site-header, .lx-protected .site-footer, .lx-protected .lx-progress { display: none !important; }
+  .lx-protected::before { content: "이 강의 자료는 인쇄할 수 없습니다 · SPD Lab"; display: block; padding: 40px; font-size: 16px; color: #000; }
+}

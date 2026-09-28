@@ -27,9 +27,7 @@ def link(text):
 
 def build(src, slug, course, course_en):
     d = docx.Document(src)
-    os.makedirs("lectures/pdf", exist_ok=True)
-    ext = os.path.splitext(src)[1].lower()
-    shutil.copyfile(src, f"lectures/pdf/{slug}{ext}")
+    # view-only policy: the original document is never copied into the site
 
     blocks = []
     for el in d.element.body.iterchildren():
@@ -120,11 +118,8 @@ def build(src, slug, course, course_en):
         out.append(f"<p>{esc(t)}</p>")
         i += 1
 
-    src_name = f"pdf/{slug}{ext}"
     return dict(kicker=kicker, title="", subtitle=title, deck="", meta=meta, author=author, cover=None,
-                body="\n".join(out), toc=toc, pages=0, course=course, course_en=course_en, slug=slug,
-                src_link_top=f'<a class="cta-link" href="{src_name}" download>원본 문서 내려받기 (Word) <span class="arrow"></span></a>',
-                src_link_end=f'<a class="cta-link" href="{src_name}" download>원본 문서 (Word) <span class="arrow"></span></a>')
+                body="\n".join(out), toc=toc, pages=0, course=course, course_en=course_en, slug=slug)
 
 
 if __name__ == "__main__":

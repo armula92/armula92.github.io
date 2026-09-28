@@ -89,9 +89,7 @@ def build(pdf, slug, course, course_en):
     items = lines_of(doc)
     imgdir = f"lectures/img/{slug}"
     os.makedirs(imgdir, exist_ok=True)
-    os.makedirs("lectures/pdf", exist_ok=True)
-    if os.path.abspath(pdf) != os.path.abspath(f"lectures/pdf/{slug}.pdf"):
-        shutil.copyfile(pdf, f"lectures/pdf/{slug}.pdf")
+    # Lecture originals are never published (view-only policy): no copy of the PDF goes into the site.
 
     # ---- cover (page 1) ----
     cover = [i for i in items if i["pn"] == 0]
@@ -142,7 +140,7 @@ def build(pdf, slug, course, course_en):
             if i + 1 < n and rest[i + 1]["k"] == "txt" and rest[i + 1]["size"] == 9.0 and rest[i + 1]["color"] == GRAY:
                 cap = rest[i + 1]["t"].strip()
                 i += 1
-            out.append(f'<figure class="lx-fig"><a href="{src}" target="_blank" rel="noopener"><img src="{src}" alt="{esc(cap or "강의 슬라이드")}" width="{w}" height="{h}" loading="lazy"></a>'
+            out.append(f'<figure class="lx-fig"><img src="{src}" alt="{esc(cap or "강의 슬라이드")}" width="{w}" height="{h}" loading="lazy" draggable="false">'
                        + (f"<figcaption>{esc(cap)}</figcaption>" if cap else "") + "</figure>")
             i += 1
             continue
@@ -311,6 +309,7 @@ PAGE = """<!DOCTYPE html>
   <meta property="og:title" content="{subtitle} — {course} 강의 보조교재">
   <meta property="og:description" content="{deck}">
   <meta property="og:image" content="{og_image}">
+  <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#0a0a0b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -318,7 +317,7 @@ PAGE = """<!DOCTYPE html>
   <link rel="stylesheet" href="../assets/css/style.css?v={ver}">
   <link rel="stylesheet" href="lecture.css?v={ver}">
 </head>
-<body class="lecture-page">
+<body class="lecture-page lx-protected">
 
 <header class="site-header scrolled" id="top">
   <div class="wrap">
@@ -344,7 +343,6 @@ PAGE = """<!DOCTYPE html>
 {series_html}        <h1>{subtitle}</h1>
 {deck_html}        <p class="lx-author">{author_html}</p>
         <div class="lx-actions">
-          {src_link_top}
           <a class="lx-back" href="../index.html#board">강의 목록으로</a>
         </div>
       </div>
@@ -360,7 +358,7 @@ PAGE = """<!DOCTYPE html>
 {body}
       <footer class="lx-end">
         <p>{course} · {subtitle}</p>
-        {src_link_end}
+        <a class="lx-back" href="../index.html#board">강의 목록으로</a>
       </footer>
     </article>
   </div>
@@ -394,7 +392,7 @@ def render(d, ver):
     author_html = (f'{esc(m.group(1).replace(" ", "") if len(m.group(1).replace(" ", "")) <= 4 else m.group(1))} <a href="mailto:{m.group(2)}">{m.group(2)}</a>') if m else esc(au)
     if d.get("cover"):
         cover_src, (cw, ch) = d["cover"]
-        cover_fig = f'      <figure class="lx-cover-fig"><img src="{cover_src}" alt="{esc(d["title"] or d["subtitle"])} 표지 슬라이드" width="{cw}" height="{ch}"></figure>\n'
+        cover_fig = f'      <figure class="lx-cover-fig"><img src="{cover_src}" draggable="false" alt="{esc(d["title"] or d["subtitle"])} 표지 슬라이드" width="{cw}" height="{ch}"></figure>\n'
         og_image, cover_mod = f"https://www.armula.com/lectures/{cover_src}", ""
     else:
         cover_fig, og_image, cover_mod = "", "https://www.armula.com/assets/img/hero-01.jpg", " lx-cover-text"
@@ -403,8 +401,6 @@ def render(d, ver):
     d["body"] = re.sub(r">([^<]+)<", lambda m: ">" + unpad(m.group(1)) + "<", d["body"])   # no zero-padded ordinals in text
     return PAGE.format(subtitle=esc(d["subtitle"]), course=esc(d["course"]), course_en=esc(d["course_en"]), deck=esc(d.get("deck") or d.get("meta") or ""),
                        kicker=esc(d["kicker"]), slug=d["slug"], og_image=og_image, cover_fig=cover_fig, cover_mod=cover_mod,
-                       src_link_top=d.get("src_link_top", f'<a class="cta-link" href="pdf/{d["slug"]}.pdf" target="_blank" rel="noopener">PDF 원본 보기 <span class="arrow"></span></a>'),
-                       src_link_end=d.get("src_link_end", f'<a class="cta-link" href="pdf/{d["slug"]}.pdf" target="_blank" rel="noopener">PDF 원본 ({d["pages"]}쪽) <span class="arrow"></span></a>'),
                        series_html=series_html, deck_html=deck_html, src_label=d.get("src_label", "PDF 원본"),
                        author_html=author_html, toc="\n      ".join(toc), body=d["body"], pages=d["pages"], ver=ver)
 

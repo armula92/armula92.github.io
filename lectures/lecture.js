@@ -25,4 +25,22 @@
       if (t) io.observe(t);
     });
   }
+  /* ---------- view-only protection (lecture materials) ----------
+     Deters casual copying/saving/printing. It cannot stop screenshots or developer tools. */
+  if (document.body.classList.contains("lx-protected")) {
+    var block = function (e) { e.preventDefault(); return false; };
+    ["contextmenu", "copy", "cut", "dragstart", "selectstart"].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (ev === "selectstart" && e.target.closest && e.target.closest("input, textarea")) return;
+        block(e);
+      });
+    });
+    document.addEventListener("keydown", function (e) {
+      var k = (e.key || "").toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && ["c", "x", "s", "p", "a", "u"].indexOf(k) > -1) block(e);
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c", "s"].indexOf(k) > -1) block(e);
+    });
+    window.addEventListener("beforeprint", function () { document.body.classList.add("lx-printing"); });
+    window.addEventListener("afterprint", function () { document.body.classList.remove("lx-printing"); });
+  }
 })();
