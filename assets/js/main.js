@@ -73,12 +73,12 @@
     var stats = $("#memberStats");
     if (stats) {
       var alumPhd = M.alumni.filter(function (m) { return m.d === "박사"; }).length;
-      stats.innerHTML = [
-        [phd.length, "박사과정 Doctoral"],
-        [ms.length, "석사과정 Master"],
-        [M.alumni.length - alumPhd, "석사 졸업 Alumni"],
-        [alumPhd, "박사 졸업 Ph.D."]
-      ].map(function (s) { return '<div class="rv"><b>' + s[0] + "</b><span>" + s[1] + "</span></div>"; }).join("");
+      stats.innerHTML = '<p class="rv">' + [
+        ["박사과정", phd.length],
+        ["석사과정", ms.length],
+        ["석사 졸업", M.alumni.length - alumPhd],
+        ["박사 졸업", alumPhd]
+      ].map(function (s) { return "<span>" + s[0] + " " + s[1] + "</span>"; }).join('<i aria-hidden="true">I</i>') + "</p>";
       observeReveal($$(".rv", stats));
     }
 
