@@ -1,7 +1,4 @@
-"""Parse the Facebook "book" PDFs (armula facebook folder) into posts.json — used to build Design Trend Research.
-
-Book I uses a two-column layout, Book II a single column; posts are split at their date lines.
-Classification into the 9 themes was done by reading each post (see the handbook), then assets/js/trends-data.js was written."""
+"""Parse the two Facebook book PDFs into posts.json (reading order aware, both layouts)."""
 import fitz, re, json, collections, sys
 
 SRC = "/Users/armula/Library/CloudStorage/GoogleDrive-armula@gmail.com/내 드라이브/이현성교수 연구실/armula facebook/"
@@ -23,7 +20,11 @@ def items_of(page, two_col):
             if t:
                 s = l["spans"][0]
                 out.append({"k": "txt", "bb": l["bbox"], "t": t, "size": round(s["size"], 1), "color": s["color"]})
-    mid = page.rect.width / 2 + 20
+    # Column boundary per page: left and right pages have different margins (left column at x≈46 or x≈73),
+    # and the right column always starts ≈214pt to the right of the left margin.
+    xs = [i["bb"][0] for i in out if i["k"] == "txt" and i["color"] != 3342336 and i["size"] >= 6]
+    left = min(xs) if xs else 46
+    mid = left + 200
     def key(it):
         x0, y0 = it["bb"][0], it["bb"][1]
         col = (1 if x0 >= mid else 0) if two_col else 0
@@ -34,7 +35,7 @@ def items_of(page, two_col):
 
 def parse(book, fname, two_col):
     d = fitz.open(SRC + fname)
-    posts, cur = [], None
+    posts, cur, skip = [], None, False
     for pn in range(len(d)):
         page = d[pn]
         its = items_of(page, two_col)
@@ -44,11 +45,16 @@ def parse(book, fname, two_col):
         for it in its:
             if it["k"] == "txt":
                 t, size, color = it["t"], it["size"], it["color"]
+                # chapter-end "best of chapter" box (a reprinted top post) and "MY LOG" chapter headers are
+                # book furniture, not part of the preceding post: skip everything until the next real post.
+                if re.match(r"^(best of|MY LOG\b|To more see)", t, re.I):
+                    skip = True; continue
                 if DATE.match(t) and color == 0 and size >= 9.5:
+                    skip = False
                     cur = {"book": book, "date": t, "page": pn + 1, "time": "", "action": "", "text": [], "title": [],
                            "domain": "", "desc": [], "counts": [], "imgs": [], "_after_domain": False}
                     posts.append(cur); continue
-                if cur is None:
+                if cur is None or skip:
                     continue
                 if color == 3342336 or (size == 8.0 and color == 0 and it["bb"][1] < 25):
                     continue                          # page number / running month header
@@ -70,7 +76,7 @@ def parse(book, fname, two_col):
                     cur["desc"].append(t); continue
                 cur["text"].append(t)
             else:
-                if cur is None:
+                if cur is None or skip:
                     continue
                 x0, y0, x1, y1 = it["bb"]
                 if min(it["w"], it["h"]) < 120 or (x1 - x0) < 45:
