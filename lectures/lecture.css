@@ -132,3 +132,10 @@
   .lx-body a { color: #000 !important; }
   .rv { opacity: 1 !important; transform: none !important; }
 }
+
+/* accent hover (orange) — lecture links */
+.lx-toc a:hover { color: var(--orange); }
+.lx-toc a:hover::before { background: var(--orange); }
+.lx-back { transition: color .25s, border-color .25s; }
+.lx-back:hover { color: var(--orange); border-bottom-color: var(--orange); }
+.lx-author a:hover, .lx-refs a:hover, .lx-body p a:hover { color: var(--orange); border-bottom-color: var(--orange); }

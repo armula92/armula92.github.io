@@ -910,4 +910,34 @@ html, body { top: 0 !important; }
 .nl-qr { transition: box-shadow .25s; }
 .nl-qr:hover { box-shadow: 0 0 0 2px var(--orange); }
 .cv-index a:hover { color: var(--orange); }
+/* accent hover — everything else that links or acts like a menu */
+.brand b, .brand span { transition: color .25s; }
+.brand:hover b, .brand:hover span { color: var(--orange); }
+.lang button:hover, .lang button.on:hover { color: var(--orange); border-bottom-color: var(--orange); }
+.footer-bottom a { transition: color .25s; }
+.footer-bottom a:hover { color: var(--orange); }
+.pillar p a { transition: color .25s, border-color .25s; }
+.pillar p a:hover { color: var(--orange); border-bottom-color: var(--orange) !important; }
+.cv-index a:hover::before { background: var(--orange); }
+.cv-close span { transition: transform .35s var(--ease), background-color .25s; }
+.cv-close:hover span { background: var(--orange); }
+.hipd-teaser .visual img { transition: opacity .3s; }
+.hipd-teaser .visual:hover { outline: 1px solid var(--orange); outline-offset: 6px; }
+/* gallery */
+.g-nav:hover span, .g-nav:hover span::after { background-color: var(--orange); border-color: var(--orange); }
+.g-nav span::after { background: transparent !important; }
+.g-play:hover { color: var(--orange); border-bottom-color: var(--orange); }
+.g-strip button:hover { opacity: 1; }
+.g-strip button:hover::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--orange); }
+.g-cell:hover { outline: 1px solid var(--orange); outline-offset: 3px; }
+.marquee:hover .marquee-track img:hover { outline: 1px solid var(--orange); outline-offset: -1px; }
+/* Design Trend Research */
+.prof-trend-grid a:hover, .prof-trend-grid a:hover svg, .prof-trend-grid a:hover em { color: var(--orange); }
+.tr-cat:hover, .tr-cat:hover em, .tr-cat.on:hover { color: var(--orange); }
+.tr-cat:hover::after { background: var(--orange); transform: scaleX(1); }
+.tr-years button:hover { color: var(--orange); border-bottom-color: var(--orange); }
+.tr-card b, .tr-meta { transition: color .25s; }
+.tr-card:hover b, .tr-card:hover .tr-meta { color: var(--orange); }
+.tr-card:hover .tr-ph-empty { color: var(--orange); border-color: var(--orange); }
+.tr-s-text a:hover { color: var(--orange); border-bottom-color: var(--orange); }
 @media (max-width: 640px) { .stats-row p { font-size: 15px; } .stats-row i { margin: 0 12px; } }
