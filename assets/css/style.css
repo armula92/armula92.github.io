@@ -784,9 +784,9 @@ html, body { top: 0 !important; }
 .prof-trend { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line-strong); }
 .prof-trend .eyebrow { margin-bottom: 8px; }
 .prof-trend p { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
-.prof-trend-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 18px; border-top: 1px solid var(--line); }
+.prof-trend-grid { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 18px; border-top: 1px solid var(--line); }
 .prof-trend-grid a { display: flex; flex-direction: column; gap: 8px; padding: 14px 10px 14px 0; border-bottom: 1px solid var(--line); color: var(--ink-3); transition: color .25s; min-width: 0; }
-.prof-trend-grid a:nth-child(3n+2), .prof-trend-grid a:nth-child(3n) { padding-left: 10px; border-left: 1px solid var(--line); }
+.prof-trend-grid a:nth-child(2n) { padding-left: 14px; border-left: 1px solid var(--line); }
 .prof-trend-grid svg { width: 26px; height: 26px; color: var(--ink-2); transition: color .25s; }
 .prof-trend-grid b { font-size: 11.5px; font-weight: 500; line-height: 1.35; }
 .prof-trend-grid em { font-style: normal; font-size: 11px; color: var(--ink-4); }
