@@ -316,3 +316,26 @@
     observeReveal($$(".rv", $("#fbLatest")));
   }
 })();
+
+/* 문의 폼 (FormSubmit → armula@hongik.ac.kr) */
+(function () {
+  var form = document.getElementById("contact");
+  if (!form) return;
+  var file = document.getElementById("cfFile"), fileName = document.getElementById("cfFileName"), msg = document.getElementById("cfMsg");
+  var MAX = 10 * 1024 * 1024;
+  if (/[?&]sent=1/.test(location.search)) {
+    msg.textContent = "문의가 전송되었습니다. 회신 이메일로 답변드리겠습니다.";
+    history.replaceState(null, "", location.pathname + "#contact");
+  }
+  file.addEventListener("change", function () {
+    var f = file.files[0];
+    if (f && f.size > MAX) { file.value = ""; fileName.textContent = "파일 선택 (10MB 이하)"; msg.textContent = "첨부 파일은 10MB 이하만 보낼 수 있습니다."; return; }
+    fileName.textContent = f ? f.name : "파일 선택 (10MB 이하)";
+    msg.textContent = "";
+  });
+  form.addEventListener("submit", function () {
+    var type = form.querySelector('input[name="문의유형"]:checked');
+    form.elements._subject.value = "[SPD Lab 문의] " + (type ? type.value + " · " : "") + form.elements["제목"].value;
+    msg.textContent = "보내는 중…";
+  });
+})();
