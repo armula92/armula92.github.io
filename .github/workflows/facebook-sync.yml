@@ -1,0 +1,47 @@
+# Facebook 페이지 최근 게시물 6개를 홈페이지(About 위 "최근 소식")에 자동 반영
+# 필요한 저장소 Secrets: FB_PAGE_ID, FB_PAGE_TOKEN
+name: Facebook sync
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"     # 3시간마다 (UTC 기준 매 3시간 17분)
+  workflow_dispatch: {}          # Actions 탭에서 "Run workflow"로 바로 실행 가능
+
+permissions:
+  contents: write
+
+concurrency:
+  group: facebook-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install --quiet pillow
+
+      - name: Fetch latest posts
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: python tools/fb_sync.py
+
+      - name: Commit if changed
+        run: |
+          git add assets/js/fb-data.js assets/img/fb
+          if git diff --cached --quiet; then
+            echo "No new posts."
+          else
+            git config user.name "spd-lab-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git commit -m "Facebook 최근 게시물 자동 갱신"
+            git pull --rebase --quiet
+            git push
+          fi

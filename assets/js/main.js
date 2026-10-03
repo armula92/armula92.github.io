@@ -301,4 +301,18 @@
       document.body.appendChild(gt);
     }
   }
+  /* ---------- Facebook 최근 소식 (data: assets/js/fb-data.js) ---------- */
+  var FB = window.SPD_FB, fbGrid = $("#fbGrid");
+  if (FB && fbGrid && FB.posts && FB.posts.length) {
+    var escH = function (s) { return String(s || "").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+    fbGrid.innerHTML = FB.posts.map(function (p, k) {
+      var d = ["", " d1", " d2", " d3"][k % 4];
+      return '<li class="rv' + d + '"><a href="' + escH(p.u) + '" target="_blank" rel="noopener">' +
+        '<div class="pv-thumb">' + (p.i ? '<img src="assets/img/fb/' + escH(p.i) + '" alt="" loading="lazy">' : "") + "<i></i></div>" +
+        "<b>" + escH(p.t) + "</b><span class=\"pv-date\">" + escH(p.d) + "</span></a></li>";
+    }).join("");
+    if (FB.page) $("#fbPageLink").href = FB.page;
+    $("#fbLatest").hidden = false;
+    observeReveal($$(".rv", $("#fbLatest")));
+  }
 })();

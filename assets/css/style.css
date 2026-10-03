@@ -813,6 +813,15 @@ html, body { top: 0 !important; }
   .tr-sheet-in { padding: 64px 20px 80px; }
 }
 
+/* ---------- Facebook 최근 소식 (YouTube 그리드와 같은 형식) ---------- */
+.fb-latest { padding: clamp(64px, 8vw, 104px) 0 0; }
+.fb-latest + .section { border-top: 0; }
+.pv-fb .pv-thumb img { transform: none; filter: grayscale(1) contrast(1.05) brightness(.9); }
+.pv-fb a:hover .pv-thumb img, .pv-fb a:focus-visible .pv-thumb img { transform: scale(1.04); filter: grayscale(1) contrast(1.1) brightness(1); }
+.pv-fb .pv-thumb i::after { content: "f"; border: 0; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1; }
+.pv-fb a:hover .pv-thumb i::after { color: #0a0a0b; }
+.pv-date { display: block; margin-top: 4px; font-size: 11.5px; color: var(--ink-4); font-variant-numeric: tabular-nums; }
+
 /* =========================================================
    Responsive
    ========================================================= */
