@@ -1,0 +1,3642 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<script src="deck_files/libs/clipboard/clipboard.min.js"></script>
+<script src="deck_files/libs/quarto-html/tabby.min.js"></script>
+<script src="deck_files/libs/quarto-html/popper.min.js"></script>
+<script src="deck_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="deck_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="deck_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="deck_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <title>제5강 Stewardship in Design</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="deck_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="deck_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="deck_files/libs/revealjs/dist/theme/quarto-99549774098bccb948e7e444fd618b98.css">
+  <link href="deck_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="deck_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="deck_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="deck_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="deck_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="deck_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="cover" class="slide level2 photo veil-l" data-background-image="img/forest_steward.jpg" data-background-color="#0B140B">
+<h2></h2>
+<div class="rise d1 kicker">
+<p>홍익대학교 공공디자인 전공 · 공공거버넌스와 리더십 2026-2</p>
+</div>
+<div class="rise d2 lead" style="margin-top:70px">
+<p>제5강</p>
+</div>
+<div class="hero t-chars auto" style="--d0:.5s;--step:45ms">
+<p>Stewardship<br>in Design</p>
+</div>
+<div class="rise d6 lead" style="margin-top:34px">
+<p>위계의 관리자가 아닌 <span class="g shimmer">변혁의 청지기</span>로서의 디자이너<br>디자인 거버넌스의 전략적 요소로서의 스튜어드십</p>
+</div>
+<div class="rise d6 abs" style="left:104px;bottom:92px">
+<p><span class="xs">Reference · Dr.&nbsp;Jan Eckert, <em>Stewardship in Design</em> / www.nominute.city</span></p>
+<p><span class="t" style="font-size:24px">이현성</span> <span class="sm">홍익대학교 공공디자인</span></p>
+</div>
+<aside class="notes">
+<p>표지. Keynote 기능: Ken Burns(배경 사진 확대) · 글자 단위 빌드(제목) · Shimmer(‘변혁의 청지기’). 오늘의 핵심어는 ‘청지기(steward)’. (해설서 1장)</p>
+<p>조작: → 다음 · S 발표자 화면 · L 레이저 포인터 · O 전체 보기 · ? 단축키 목록</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today" class="slide level2 plane" data-background-gradient="linear-gradient(90deg,#FFFFFF 0 50%,#F5F5F7 50% 100%)" data-vt="scale">
+<h2><span class="kicker">Today’s Question</span> 디자이너는 누구의 <span class="g">관리인(steward)</span>인가?</h2>
+<div class="split">
+<div>
+<div class="lead rise d1" style="font-size:25px">
+<p>거버넌스를 <strong>‘누가 누구를 통제하는가’</strong>의 위계 구조로만 본다면, 디자이너는 발주처의 지시를 형태로 옮기는 <span class="fragment e-strike" data-fragment-index="1"><strong>수행자(agent)</strong></span>에 머문다.</p>
+</div>
+<div class="lead fragment rise-f mt3" data-fragment-index="2" style="font-size:25px">
+<p>그러나 오늘의 공공 문제는 단일한 권한으로 풀리지 않는 <strong>사악한 문제(wicked problem)</strong>이다. 이때 필요한 것은 명령이 아니라, 관계와 생태계를 <span class="fragment e-mark" data-fragment-index="3">맡아서 돌보며 변화를 이끄는 역할</span>, 곧 스튜어드십이다.</p>
+</div>
+<div class="note fragment b-wipe mt3" data-fragment-index="4">
+<p>스튜어드십 = 위계적 통제가 아닌, 혁신의 주체로서 디자이너가 거버넌스에 개입하는 <span style="text-decoration:underline">전략적 개념</span></p>
+</div>
+</div>
+<div class="rows stagger">
+<div>
+<div class="label">
+<p>Part 1</p>
+</div>
+<div class="t">
+<p><a href="#//part-1">스튜어드십의 계보 ›</a></p>
+</div>
+<div class="sm">
+<p>어원 · 스튜어드십 이론 · Papanek에서 2017 선언들까지</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Part 2</p>
+</div>
+<div class="t">
+<p><a href="#//part-2">Jan Eckert의 Stewardship in Design ›</a></p>
+</div>
+<div class="sm">
+<p>Y자형 디자이너 · 4개 영역 · 12원칙 · 도넛 커리큘럼</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Part 3</p>
+</div>
+<div class="t">
+<p><a href="#//part-3">거버넌스 요소로서의 스튜어드십 ›</a></p>
+</div>
+<div class="sm">
+<p>위계형 vs 스튜어드십형 거버넌스 · 디자이너의 새로운 역할</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Part 4</p>
+</div>
+<div class="t">
+<p><a href="#//part-4">사례로 읽는 디자인 스튜어드십 ›</a></p>
+</div>
+<div class="sm">
+<p>암스테르담 · 바르셀로나 · 볼로냐 · 웨일스 · 메데인 · 공공혁신랩 등</p>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Scale 전환 · 취소선 강조(수행자) · 형광펜 강조 · Wipe 빌드 · 하이퍼링크(오른쪽 Part 제목을 누르면 해당 간지로 이동).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="quote" class="slide level2 photo veil" data-background-image="img/whanganui.jpg" data-background-color="#0B140B" data-vt="blur">
+<h2></h2>
+<div style="margin-top:150px">
+<div class="quote t-words auto" style="--d0:.4s;--step:110ms">
+<p>디자이너는 자신이 디자인하는 <strong>인간과 인간이 아닌 존재, 커뮤니티</strong>는 물론<br>자신이 살고 있는 <strong>생태계의 관리인(steward)</strong>이라는 사실에<br>자부심을 가져야 한다.</p>
+</div>
+<div class="fragment mt4" style="text-align:center">
+<p><span class="en t-type" style="font-size:21px;--step:22ms">“Designers should be proud of being stewards of the humans and non-humans, the communities, and the ecosystems they design for and live in.”</span></p>
+</div>
+<div class="fragment b-blur" data-after="3300" style="text-align:center">
+<p><span class="label" style="display:block;margin-top:26px">Dr.&nbsp;Jan Eckert, <em>Stewardship in Design</em></span></p>
+</div>
+</div>
+<div class="cap" style="left:104px;bottom:34px">
+<p>Whanganui River, New Zealand · 2017년 법적 인격을 부여받은 강 (Te Awa Tupua)</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Blur 전환 · 단어 단위 빌드(한글 인용) · 타자기(영문) · 연속 빌드(타자기가 끝나면 출처가 자동으로 흐림 효과로 등장).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="part-1" class="slide level2 dark part" data-background-color="#013D00" data-vt="cube">
+<h2></h2>
+<div class="ph zoom" style="right:0;top:0;width:700px;height:900px">
+<p><img data-src="img/codesign_workshop.jpg"></p>
+</div>
+<div style="margin-top:210px;width:700px">
+<div class="partno rise d1">
+<p>Part 1 · Genealogy</p>
+</div>
+<div class="ttl t-chars auto" style="--d0:.35s">
+<p>스튜어드십의<br>계보</p>
+</div>
+<div class="lead rise d5">
+<p>‘맡겨진 것을 돌보는 자’에서<br>‘시스템 변화를 이끄는 자’로</p>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Cube 전환 · 글자 단위 빌드.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="etymology" class="slide level2" data-vt="push">
+<h2><span class="kicker">Etymology &amp; Definition</span> Steward, <span class="g">소유하지 않고 맡아서 돌보는 사람</span></h2>
+<div class="split wide-r">
+<div>
+<div class="label">
+<p>Old English</p>
+</div>
+<div class="etym">
+<p><span class="fragment b-drop" data-fragment-index="1">stīg</span> <span class="fragment b-pop" data-fragment-index="2" data-after="250" style="color:var(--ink-3)">+</span> <span class="fragment b-anvil g" data-fragment-index="3" data-after="200">weard</span></p>
+</div>
+<div class="fragment b-wipe sm" data-fragment-index="4">
+<p>집·홀(stig, hall) + 지키는 이(weard, keeper)<br>= 집안 살림을 맡아 관리하는 사람 → 영지 관리인(14C)</p>
+</div>
+<div class="fragment stagger mt3" data-fragment-index="5">
+<div class="prin">
+<p><strong>소유(ownership)가 아닌 위임(trust)</strong><br><span class="sm">자원·공동체·환경은 내 것이 아니라 다음 세대로부터 맡겨진 것</span></p>
+</div>
+<div class="prin">
+<p><strong>통제(control)가 아닌 돌봄(care)</strong><br><span class="sm">결과를 지시하기보다 관계와 조건을 가꾸는 일</span></p>
+</div>
+<div class="prin">
+<p><strong>단기 성과가 아닌 장기적 책무(accountability)</strong><br><span class="sm">시간 축을 확장해 판단</span></p>
+</div>
+</div>
+</div>
+<div class="rows fragment b-blur" data-fragment-index="6">
+<div>
+<div class="label">
+<p>Peter Block, 1993</p>
+</div>
+<div class="t" style="font-size:23px">
+<p>Stewardship: Choosing Service over Self-Interest</p>
+</div>
+<div class="sm mt1">
+<p>스튜어드십은 <strong>“주변 사람들을 통제(control)하기보다 그들에게 봉사(service)함으로써, 더 큰 조직의 안녕에 책임을 지려는 의지”</strong>이다. 리더십이 ‘앞에서 이끄는 것’이라면, 스튜어드십은 권한을 아래로·바깥으로 나누면서도 <strong>결과에 대한 책임은 놓지 않는 것</strong>이다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>공공디자인 맥락의 해석</p>
+</div>
+<div class="t" style="font-size:23px">
+<p>디자인 스튜어드십</p>
+</div>
+<div class="sm mt1">
+<p>디자이너가 만든 결과물(사물·공간·서비스·정책)이 사람·비인간·공동체·생태계에 미치는 영향을 <strong>예측하고 책임지며, 참여를 조직해 지속적으로 돌보는</strong> 실천적 태도와 역량.</p>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Push 전환 · Drop → Pop → Anvil 빌드를 클릭 한 번으로 연속 실행(After Previous) · Wipe · 순차 등장 · Blur.</p>
+<p>stīg(집) + weard(지키는 이). 소유가 아닌 위임, 통제가 아닌 돌봄, 단기 성과가 아닌 장기 책무. (해설서 2.1–2.2)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="paradigms" class="slide level2" data-background-color="#F5F5F7" data-vt="wipe">
+<h2><span class="kicker">Governance Paradigms</span> 위계 → 시장 → 네트워크 → <span class="g">스튜어드십</span></h2>
+<table class="tb para caption-top">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="width: 190px">구분</th>
+<th class="fragment b-flip" data-quarto-table-cell-role="th" data-fragment-index="1">위계형 행정<span>Traditional Public Admin.</span></th>
+<th class="fragment b-flip" data-quarto-table-cell-role="th" data-fragment-index="2">신공공관리<span>New Public Management</span></th>
+<th class="fragment b-flip" data-quarto-table-cell-role="th" data-fragment-index="3">뉴거버넌스<span>Network Governance</span></th>
+<th class="fragment b-drop hi" data-quarto-table-cell-role="th" data-fragment-index="4">스튜어드십 거버넌스<span>Stewardship / System Stewardship</span></th>
+</tr>
+<tr class="even">
+<td>작동 원리</td>
+<td class="fragment b-flip" data-fragment-index="1">규칙·명령·통제</td>
+<td class="fragment b-flip" data-fragment-index="2">경쟁·성과·인센티브</td>
+<td class="fragment b-flip" data-fragment-index="3">협력·신뢰·네트워크</td>
+<td class="fragment b-drop hi" data-fragment-index="4">목적·돌봄·학습·장기 책무</td>
+</tr>
+<tr class="odd">
+<td>시민의 위치</td>
+<td class="fragment b-flip" data-fragment-index="1">피통치자</td>
+<td class="fragment b-flip" data-fragment-index="2">고객(customer)</td>
+<td class="fragment b-flip" data-fragment-index="3">파트너</td>
+<td class="fragment b-drop hi" data-fragment-index="4">공동 생산자·공동 관리인</td>
+</tr>
+<tr class="even">
+<td>국가의 역할</td>
+<td class="fragment b-flip" data-fragment-index="1">노 젓기 (rowing)</td>
+<td class="fragment b-flip" data-fragment-index="2">방향 잡기 (steering)</td>
+<td class="fragment b-flip" data-fragment-index="3">조정·중개 (brokering)</td>
+<td class="fragment b-drop hi" data-fragment-index="4">조건 가꾸기 (tending the system)</td>
+</tr>
+<tr class="odd">
+<td>디자이너의 역할</td>
+<td class="fragment b-flip" data-fragment-index="1">도면·형태 수행자</td>
+<td class="fragment b-flip" data-fragment-index="2">서비스 공급자·브랜딩</td>
+<td class="fragment b-flip" data-fragment-index="3">퍼실리테이터</td>
+<td class="fragment b-drop hi" data-fragment-index="4">시스템 관리인·오케스트레이터·번역자</td>
+</tr>
+<tr class="even">
+<td>성과의 기준</td>
+<td class="fragment b-flip" data-fragment-index="1">절차 준수</td>
+<td class="fragment b-flip" data-fragment-index="2">효율·산출</td>
+<td class="fragment b-flip" data-fragment-index="3">합의·참여</td>
+<td class="fragment b-drop hi" data-fragment-index="4">웰빙·회복력·미래세대·비인간 존재</td>
+</tr>
+</tbody>
+</table>
+<div class="src">
+<p>Osborne &amp; Gaebler(1992) <em>Reinventing Government</em> · Rhodes(1996) · Osborne(2006) <em>The New Public Governance?</em> · Hallsworth(2011) <em>System Stewardship</em>, Institute for Government 를 바탕으로 재구성</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Wipe 전환 · 열 단위 Flip 빌드(같은 순서 번호의 셀이 동시에) · 마지막 열은 Drop.</p>
+<p>마지막 열(스튜어드십)에서 ’조건 가꾸기(tending the system)’와 성과 기준의 확장을 강조. (해설서 2.3)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="agency" class="slide level2" data-vt="swap">
+<h2><span class="kicker">Agency Theory vs Stewardship Theory</span> 감시받는 대리인인가, <span class="g">신뢰받는 청지기</span>인가</h2>
+<div class="cols" style="--n:2">
+<div class="fragment semi-fade-out" data-fragment-index="1">
+<div class="label" style="color:var(--ink-3)">
+<p>대리인 이론 · Agency Theory</p>
+</div>
+<div class="t">
+<p>“디자이너는 감독해야 할 수행자”</p>
+</div>
+<div class="mt2 ln">
+<ul>
+<li>인간관: 자기 이익을 추구하는 <strong>경제적 인간</strong></li>
+<li>주인–대리인 사이의 이해 충돌을 전제</li>
+<li>통제 수단: 계약·감사·성과지표·처벌</li>
+<li>공공디자인: 과업지시서·단가·납품 검수 중심</li>
+<li>결과: 최소한의 책임, <span class="fragment e-strike" data-fragment-index="2" style="font-weight:700;color:var(--ink)">혁신 회피</span></li>
+</ul>
+</div>
+</div>
+<div class="fragment b-wipe" data-fragment-index="1">
+<div class="label">
+<p>청지기 이론 · Stewardship Theory</p>
+</div>
+<div class="t g">
+<p>“디자이너는 공동 목적을 맡은 주체”</p>
+</div>
+<div class="mt2 ln">
+<ul>
+<li>인간관: 집단의 목적에서 동기를 얻는 <strong>자기실현적 인간</strong></li>
+<li>조직·공공의 목표와 개인 목표의 정렬을 전제</li>
+<li>작동 수단: 신뢰·권한 위임·참여·학습</li>
+<li>공공디자인: 리빙랩·공동설계·장기 파트너십</li>
+<li>결과: 확장된 책임, <span class="fragment e-pulse" data-fragment-index="2" style="font-weight:700">혁신의 주체화</span></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="src">
+<p>Davis, Schoorman &amp; Donaldson (1997). Toward a Stewardship Theory of Management. <em>Academy of Management Review</em>, 22(1), 20–47.</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Swap 전환 · 빌드 아웃(Dim: 왼쪽 열이 흐려지며 오른쪽 열이 Wipe로 등장) · 취소선과 Pulse 강조를 동시에.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="timeline" class="slide level2" data-vt="iris">
+<h2><span class="kicker">Genealogy 1970 — 2026</span> 디자인의 사회적·생태적 책임 담론이 <span class="g">스튜어드십</span>에 이르기까지</h2>
+<div class="tl">
+<div class="ax">
+
+</div>
+<div class="evs stagger">
+<div class="ev">
+<div class="y">
+<p>1970</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Maldonado</strong> <span><em>La Speranza Progettuale</em>, 기획의 희망, 환경과 디자인</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>1971</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Papanek</strong> <span><em>Design for the Real World</em>, 디자이너의 사회적·도덕적 책임</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>1992</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Buchanan</strong> <span>Wicked Problems in Design Thinking, 디자인의 4개 질서</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2007</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Brighton 05-06-07</strong> <span>디자인을 통한 웰빙, 책임 있는 관리(stewardship)</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2009</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Ostrom 노벨상</strong> <span>공유자원(commons)의 공동체 자치 관리</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2011–13</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>System Stewardship · HDL</strong> <span>정책의 시스템 관리 / 전략디자인과 스튜어드십</span></p>
+</div>
+</div>
+</div>
+<div class="fragment tl" style="margin-top:30px">
+<div class="ax">
+
+</div>
+<div class="evs stagger">
+<div class="ev">
+<div class="y">
+<p>2012/17</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Raworth</strong> <span>도넛 경제, 사회적 기초와 지구적 한계</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2015</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>웨일스 미래세대법</strong> <span>미래세대의 웰빙을 법적 책무로</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2017</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>AIGA · Montréal · Lancaster</strong> <span>디자인 선언 3종, 책임과 돌봄</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2017</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Eckert</strong> <span>The Y-Shaped Designer, 연결 역량</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2018</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Eckert, Cumulus Paris</strong> <span>Leading the Conversation, 리더십과 스튜어드십</span></p>
+</div>
+<div class="ev">
+<div class="y">
+<p>2021–26</p>
+</div>
+<div class="pt">
+
+</div>
+<p><strong>Systemic Design · nominute.city</strong> <span>Design Council 프레임워크 / Hortopia(2024) / Eckert 단행본(2026)</span></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Iris 전환 · 선 그리기(축선) · 순차 빌드(사건이 차례로).</p>
+<p>윗줄은 자동으로 펼쳐지고, 클릭하면 아랫줄이 이어진다. (해설서 3.1)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="papanek" class="slide level2 photo" data-background-color="#0B0B0C" data-vt="fall">
+<h2></h2>
+<div class="ph zoom" style="left:0;top:0;width:700px;height:900px">
+<p><img data-src="img/maldonado.jpg" style="object-position:50% 30%"></p>
+</div>
+<div class="ph rise d3" style="left:440px;top:560px;width:220px;height:300px;border:6px solid #fff;filter:grayscale(1)">
+<p><img data-src="img/papanek.jpg"></p>
+</div>
+<div style="margin-left:680px;margin-top:10px">
+<div class="kicker rise d1">
+<p>Origin · 1970–1971</p>
+</div>
+<div class="t t-type auto" style="font-size:46px;line-height:1.18;--d0:.6s;--step:70ms">
+<p>“디자인보다 더 해로운<br>직업은 몇 안 된다”</p>
+</div>
+<div class="en rise d6 mt2" style="font-size:19px">
+<p>“There are professions more harmful than industrial design, but only a very few of them.”</p>
+</div>
+<div class="xs rise d6 mt1">
+<p>Victor Papanek, <em>Design for the Real World</em> (1971)</p>
+</div>
+<div class="rows fragment stagger mt3">
+<div>
+<div class="label">
+<p>Papanek의 문제 제기</p>
+</div>
+<div class="sm">
+<p>디자인이 소비를 부추기는 장식이 되었을 때, 디자이너는 <strong>사회·생태적 결과에 대한 도덕적 책임</strong>을 져야 한다. 제3세계·장애인·노인 등 시장이 외면한 사람들을 위한 디자인.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Maldonado의 문제 제기</p>
+</div>
+<div class="sm">
+<p><em>La Speranza Progettuale</em>(1970), 환경 위기 앞에서 ‘기획(progettazione)’은 여전히 <strong>희망의 정치적 실천</strong>이 될 수 있는가.</p>
+</div>
+</div>
+</div>
+<div class="note fragment b-wipe mt2" style="font-size:19px">
+<p>Eckert: “50년 넘게 논의되었지만, 디자인 실무와 교육에서는 제대로 구현되지 못했다.”</p>
+</div>
+</div>
+<div class="cap" style="left:24px;bottom:22px">
+<p>Tomás Maldonado (1922–2018) · inset: Victor Papanek (1923–1998)</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Fall 전환 · 타자기 빌드(헤드라인이 슬라이드 진입과 함께 자동으로 타이핑됨).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="brighton" class="slide level2 brighton" data-vt="blinds">
+<h2><span class="kicker">Design Issues 24(1), 2008 · MIT Press</span> Brighton 05-06-07, <span class="m">디자인을 통한 웰빙</span></h2>
+<div class="ph zoom" style="left:0;top:0;width:1600px;height:400px">
+<p><img data-src="img/brighton.jpg"></p>
+</div>
+<div class="abs" style="left:0;top:0;width:1600px;height:400px;background:rgba(4,16,4,.5)">
+
+</div>
+<div class="split below">
+<div>
+<div class="t rise d2" style="font-size:32px;line-height:1.42">
+<p>“디자인은 경제를 위한 것이 아니라,<br><span class="g">인간의 행복(wellbeing)</span>을 위한 것이다.”</p>
+</div>
+<div class="sm rise d3 mt2">
+<p>2007년 6월 5일, 브라이튼 근교 서섹스에 모인 디자이너·교육자 그룹(Margolin, Doordan, Brown, Cooper, Woodham)의 공동 성명. 20세기 디자인이 산업 경쟁력·정치 선전에 편중되었다는 반성에서 출발.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>디자이너가 행동해야 할 네 개의 세계</p>
+</div>
+<div class="rows">
+<div class="row fragment b-flip" style="grid-template-columns:130px 1fr;padding:9px 0">
+<p><strong>자연 세계</strong> <span class="sm">균형·생명주기·기후와 조화</span></p>
+</div>
+<div class="row fragment b-flip" data-after="180" style="grid-template-columns:130px 1fr;padding:9px 0">
+<p><strong>기술 세계</strong> <span class="sm">웰빙을 높이는 수단을 요구</span></p>
+</div>
+<div class="row fragment b-flip" data-after="180" style="grid-template-columns:130px 1fr;padding:9px 0">
+<p><strong>정치 세계</strong> <span class="sm">긍정적 행동을 동원하도록 참여</span></p>
+</div>
+<div class="row fragment b-flip" data-after="180" style="grid-template-columns:130px 1fr;padding:9px 0">
+<p><strong>내면 세계</strong> <span class="sm">정체성·문화·영성 존중</span></p>
+</div>
+</div>
+<div class="note fragment b-wipe mt2" style="font-size:18px">
+<p>“이 힘은 존엄성, 유머, 지혜, 그리고 <span style="text-decoration:underline">책임 있는 관리(stewardship)</span>를 수반하여 신중하게 행사되어야 한다.”</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Blinds 전환 · 연속 Flip 빌드(클릭 한 번에 네 개의 세계가 0.18초 간격으로).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="declarations" class="slide level2 photo veil" data-background-image="img/montreal.jpg" data-background-color="#0B140B" data-vt="dissolve">
+<h2><span class="kicker">Three Declarations · 2017</span> Eckert가 스튜어드십 원칙을 세운 <span class="g">세 개의 원천</span></h2>
+<div class="cols" style="--n:3">
+<div class="fragment b-drop">
+<div class="label">
+<p>AIGA · 2017</p>
+</div>
+<div class="t">
+<p>Designer 2025</p>
+</div>
+<div class="en">
+<p>American Institute of Graphic Arts</p>
+</div>
+<div class="sm mt2">
+<p>미래 디자이너의 7대 트렌드: 복잡한 문제, 집적과 큐레이션, 물리·디지털 경험의 연결, 회복력 있는 조직, 핵심 가치의 중요성, 데이터 경제 속 의미 만들기, 그리고 <strong>디자인 결과를 예측할 책임(accountability for anticipating design outcomes)</strong>.</p>
+</div>
+</div>
+<div class="fragment b-iris">
+<div class="label">
+<p>World Design Summit · 2017.10.24</p>
+</div>
+<div class="t">
+<p>Montréal Design Declaration</p>
+</div>
+<div class="en">
+<p>UNESCO·UN-Habitat·UN Environment 참관, 90여 개국 700여 기관 대표</p>
+</div>
+<div class="sm mt2">
+<p>디자인을 <strong>경제·사회·환경·문화의 지속가능한 발전을 위한 전략적 도구</strong>로 규정한 국제 선언. 디자인 정책·지표·표준·교육의 의제화와 UN SDGs 기여를 촉구.<br><br><em>“All people deserve to live in a well-designed world.”</em></p>
+</div>
+</div>
+<div class="fragment b-scale">
+<div class="label">
+<p>Imagination Lancaster · 2017 → 2019</p>
+</div>
+<div class="t">
+<p>Lancaster Care Charter</p>
+</div>
+<div class="en">
+<p>Rodgers et al., <em>Design Issues</em> 35(1) · 16개국 참여</p>
+</div>
+<div class="sm mt2">
+<p>디자인을 <strong>돌봄(care)의 실천</strong>으로 재정의. “돌봄의 디자인은 <strong>영웅으로서의 디자이너</strong> 모델에서 벗어난다.” 디자인은 맥락·차이·시간에 주의하는 관계적·생태적·겸손한 실천이어야 하며, <strong>이미 존재하는 자원을 인정하고 관리(steward)</strong>해야 한다.</p>
+</div>
+</div>
+</div>
+<div class="cap" style="left:104px;bottom:34px">
+<p>배경: Montréal · World Design Summit 2017 개최 도시</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Dissolve 전환 · 세 가지 빌드 비교 — Drop / Iris / Scale.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="part-2" class="slide level2 dark part" data-background-color="#013D00" data-vt="cube">
+<h2></h2>
+<div class="ph zoom" style="right:0;top:0;width:700px;height:900px">
+<p><img data-src="img/nm_tadasu.jpg"></p>
+</div>
+<div class="cap" style="right:24px;bottom:22px">
+<p>Tadasu-Gawara, Kyoto · nominute.city © Jan Albert Eckert, 2025</p>
+</div>
+<div style="margin-top:190px;width:720px">
+<div class="partno rise d1">
+<p>Part 2 · Jan Eckert</p>
+</div>
+<div class="ttl t-chars auto" style="--d0:.35s;--step:32ms">
+<p>Jan Eckert의<br>Stewardship<br>in Design</p>
+</div>
+<div class="lead rise d6">
+<p>디자이너를 환경-사회 변혁의 주체로 양성하려는 시도</p>
+</div>
+</div>
+</section>
+<section id="profile" class="slide level2 profile" data-vt="reveal">
+<h2><span class="kicker">Who is Jan Eckert?</span> Dr.&nbsp;Jan Albert Eckert</h2>
+<div class="ph zoom" style="right:0;top:0;width:560px;height:900px">
+<p><img data-src="img/scdh_sim.jpg"></p>
+</div>
+<div class="abs" style="right:0;bottom:0;width:560px;padding:140px 36px 44px;background:linear-gradient(0deg,rgba(4,16,4,.92) 0%,rgba(4,16,4,.6) 55%,rgba(4,16,4,0) 100%)">
+<div class="label" style="color:var(--mint)">
+<p>Swiss Center for Design and Health · Living Lab</p>
+</div>
+<div style="font-size:16px;line-height:1.55;color:rgba(255,255,255,.85)">
+<p>스위스 니다우(Nidau)의 3,500㎡ 리빙랩. 의료진·건축가·디자이너가 1:1 스케일 XR 시뮬레이션 공간에서 병원을 함께 설계·검증한다.</p>
+</div>
+</div>
+<div style="width:840px;margin-top:-18px">
+<div class="lead g rise d1" style="font-weight:600;font-size:24px">
+<p>탈성장 도시학자 · 디자인 교육자 · 사진 연구자</p>
+</div>
+<div class="sm rise d2 mt1">
+<p>“사회-도시 시스템과 평생학습의 영역에서 <strong>전환의 과정을 개발하고 동행</strong>하는” 20년 경력의 도시·디자인 연구자. 스위스 Biel/Bienne 기반.</p>
+</div>
+<div class="rows stagger mt2" style="font-size:17px">
+<div class="row" style="grid-template-columns:110px 1fr;padding:9px 0">
+<p><span class="label">교육</span> <span class="ink2">실내건축 BA(슈투트가르트·ENSAD 파리) · 국제 MA(슈투트가르트·에든버러·SUPSI) · 디자인학 박사(IUAV 베네치아, 2012)</span></p>
+</div>
+<div class="row" style="grid-template-columns:110px 1fr;padding:9px 0">
+<p><span class="label">2016–21</span> <span class="ink2">루체른 응용과학예술대(HSLU) MA Design 학과장, 2019 정교수</span></p>
+</div>
+<div class="row" style="grid-template-columns:110px 1fr;padding:9px 0">
+<p><span class="label">2021–</span> <span class="ink2">예테보리대학교 HDK-Valand 디자인 유닛 책임자</span></p>
+</div>
+<div class="row" style="grid-template-columns:110px 1fr;padding:9px 0">
+<p><span class="label">~2024</span> <span class="g" style="font-weight:600">Swiss Center for Design and Health 리빙랩 책임자 · 부센터장</span></p>
+</div>
+<div class="row" style="grid-template-columns:110px 1fr;padding:9px 0">
+<p><span class="label">2025–</span> <span class="ink2"><strong>nominute.city</strong> 설립 · L*3 Lugano Living Lab 연구원 · HSLU 방문교수</span></p>
+</div>
+</div>
+<div class="note fragment b-wipe mt2" style="font-size:16.5px;font-weight:500">
+<p>“Maldonado(1970)와 Papanek(1971) 이후 디자인의 사회적·생태학적 책임은 많이 논의되었지만 실무에서는 제대로 구현되지 않았다. 디자인 교육조차 낡은 패러다임을 극복하고, 커리큘럼을 <span style="text-decoration:underline;font-weight:700">환경-사회 변혁의 주체로서 디자이너 세대를 양성하는 플랫폼</span>으로 전환하는 데 여전히 어려움을 겪고 있다.”</p>
+</div>
+</div>
+<div class="src" style="right:620px">
+<p>Sources: janeckert.swiss/about · Eckert CV (2021) · vitality.swiss (2024) · Eckert, <em>Stewardship in Design</em></p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Reveal 전환(이전 슬라이드가 비켜나며 드러남).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="publications" class="slide level2 plane" data-background-gradient="linear-gradient(90deg,#FFFFFF 0 71%,#EEF5EC 71% 100%)" data-vt="pageflip">
+<h2><span class="kicker">Publications · 2017 → 2026</span> 작가(authorship)에서 <span class="g">리더십과 스튜어드십</span>으로</h2>
+<div style="display:grid;grid-template-columns:1fr 320px;gap:64px">
+<table class="tb caption-top" style="font-size:17.5px">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="width: 90px">연도</th>
+<th data-quarto-table-cell-role="th">저작</th>
+<th data-quarto-table-cell-role="th" style="width: 300px">핵심 논지</th>
+</tr>
+</thead>
+<tbody class="stagger">
+<tr class="odd">
+<td>2017</td>
+<td><em>The Y-Shaped Designer</em> · J. of Education and Learning 6(4)</td>
+<td>분야 간 협업을 이끄는 연결 역량</td>
+</tr>
+<tr class="even">
+<td>2017</td>
+<td><em>The Agile Artifact</em> · Universal J. of Management 5(5)</td>
+<td>미완의 디자인, 반취약성(antifragile)</td>
+</tr>
+<tr class="odd">
+<td>2018</td>
+<td><em>Leading the Conversation</em> · Cumulus Paris</td>
+<td class="hi">“작가에서 리더십으로” · 디자인 영역 밖과의 연결</td>
+</tr>
+<tr class="even">
+<td>2021</td>
+<td><em>Rethinking Design Education for a VUCA World</em> (Junginger·Noël 공저)</td>
+<td>불확실성 시대의 다층적 디자인 교육</td>
+</tr>
+<tr class="odd">
+<td>2021</td>
+<td>블로그 <em>Stewardship in Design</em> · 4영역 · 도넛 커리큘럼</td>
+<td class="hi">안에서 바깥으로(inside-out) 배우는 교육</td>
+</tr>
+<tr class="even">
+<td>2024</td>
+<td><em>Hortopia: Territories of Co-transformation</em>, By Design and by Disaster, Bolzano</td>
+<td>정원·장소를 통한 공동 변혁</td>
+</tr>
+<tr class="odd">
+<td>2026</td>
+<td><em>Stewardship in Design Education: Future-Proofing the Eco-Social Curriculum</em> (Lived Places Publishing)</td>
+<td class="hi">“내면에서, 예견으로 이끄는 디자인 리더십”</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment b-drop">
+<p><img data-src="img/book.png" class="book"></p>
+<div class="xs mt2">
+<p>Eckert, J. A. (2026). <em>Stewardship in Design Education</em>. Lived Places Publishing. 장(章) 예: “Design leadership: Leading from inside and with foresight”, “Designing toward the Coenocene”</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Page Flip 전환(책장 넘기기) · 표의 행 순차 빌드 · 책 표지 Drop.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="y-shaped" class="slide level2" data-auto-animate="true" data-auto-animate-id="ty" data-vt="push">
+<h2 data-id="quarto-animate-title"><span class="kicker">The Y-Shaped Designer · Eckert 2017</span> T자형에서 <span class="g">Y자형</span>으로, 분야를 잇는 연결 역량</h2>
+<div class="abs" data-id="tdiag" style="left:200px;top:210px;width:330px;height:597px">
+<svg viewbox="0 0 260 470" width="100%" height="100%" font-family="Pretendard Variable, Pretendard, sans-serif">
+  <rect x="20" y="40" width="220" height="44" fill="#D6E6D3"></rect>
+  <text x="130" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#013D00">폭넓은 이해 (Breadth)</text>
+  <rect x="108" y="84" width="44" height="300" fill="#86868B"></rect>
+  <text x="165" y="240" font-size="13" fill="#515154">깊은 전문성</text>
+  <text x="165" y="258" font-size="13" fill="#515154">(Depth)</text>
+  <text x="130" y="420" text-anchor="middle" font-size="24" font-weight="700" fill="#1D1D1F">T-shaped</text>
+  <text x="130" y="446" text-anchor="middle" font-size="13" fill="#86868B">깊은 전문성 + 넓은 교양</text>
+</svg>
+</div>
+<div class="abs" style="left:700px;top:270px;width:760px">
+<div class="ttl2 t-words auto" style="--d0:.3s">
+<p>먼저, 우리가 알던 <span class="g">T자형</span> 인재.</p>
+</div>
+</div>
+<div class="abs" data-id="ttext" style="left:700px;top:430px;width:736px">
+<div class="label">
+<p>T자형 (T-shaped)</p>
+</div>
+<div class="sm">
+<p>하나의 분야에 대한 깊은 전문성(세로축)과 다양한 분야에 대한 폭넓은 이해(가로축). 효율적 실행에 초점.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Magic Move 시작. 다음 슬라이드로 넘기면 T가 왼쪽으로 줄어들고, 그 옆에서 Y가 자라난다. (해설서 5장)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="y-shaped-2" class="slide level2" data-auto-animate="true" data-auto-animate-id="ty">
+<h2 data-id="quarto-animate-title"><span class="kicker">The Y-Shaped Designer · Eckert 2017</span> T자형에서 <span class="g">Y자형</span>으로, 분야를 잇는 연결 역량</h2>
+<div class="abs" data-id="tdiag" style="left:104px;top:200px;width:250px;height:452px">
+<svg viewbox="0 0 260 470" width="100%" height="100%" font-family="Pretendard Variable, Pretendard, sans-serif">
+  <rect x="20" y="40" width="220" height="44" fill="#D6E6D3"></rect>
+  <text x="130" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#013D00">폭넓은 이해 (Breadth)</text>
+  <rect x="108" y="84" width="44" height="300" fill="#86868B"></rect>
+  <text x="165" y="240" font-size="13" fill="#515154">깊은 전문성</text>
+  <text x="165" y="258" font-size="13" fill="#515154">(Depth)</text>
+  <text x="130" y="420" text-anchor="middle" font-size="24" font-weight="700" fill="#1D1D1F">T-shaped</text>
+  <text x="130" y="446" text-anchor="middle" font-size="13" fill="#86868B">깊은 전문성 + 넓은 교양</text>
+</svg>
+</div>
+<div class="abs" style="left:384px;top:200px;width:300px;height:522px">
+<svg viewbox="285 0 270 470" width="100%" height="100%" font-family="Pretendard Variable, Pretendard, sans-serif">
+  <line x1="290" y1="30" x2="290" y2="460" stroke="#D2D2D7" stroke-width="1.5"></line>
+  <g class="grow auto" style="animation-delay:1.1s"><rect x="403" y="180" width="44" height="204" fill="#013D00"></rect></g>
+  <polygon class="pp auto" style="animation-delay:1.6s" points="310,40 356,40 426,180 404,200" fill="#A8D5A2"></polygon>
+  <polygon class="pp auto" style="animation-delay:1.75s" points="540,40 494,40 424,180 446,200" fill="#A8D5A2"></polygon>
+  <g class="pp auto" style="animation-delay:2.1s">
+    <rect x="399" y="160" width="52" height="52" fill="#013D00" stroke="#fff" stroke-width="3"></rect>
+    <text x="425" y="191" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">연결</text>
+  </g>
+  <g class="pp auto" style="animation-delay:2.3s">
+    <text x="300" y="28" font-size="12.5" font-weight="700" fill="#2F6B2C">분야 A로의 연결</text>
+    <text x="458" y="28" font-size="12.5" font-weight="700" fill="#2F6B2C">분야 B로의 연결</text>
+    <text x="458" y="290" font-size="13" fill="#515154">핵심 전문성</text>
+    <text x="425" y="420" text-anchor="middle" font-size="24" font-weight="700" fill="#013D00">Y-shaped</text>
+    <text x="425" y="446" text-anchor="middle" font-size="13" fill="#86868B">전문성 + 협업을 이끄는 연결 역량</text>
+  </g>
+</svg>
+</div>
+<div class="abs" data-id="ttext" style="left:760px;top:200px;width:736px">
+<div class="label">
+<p>T자형 (T-shaped)</p>
+</div>
+<div class="sm">
+<p>하나의 분야에 대한 깊은 전문성(세로축)과 다양한 분야에 대한 폭넓은 이해(가로축). 효율적 실행에 초점.</p>
+</div>
+</div>
+<div class="abs rows" style="left:760px;top:318px;width:736px">
+<div class="fragment b-right">
+<div class="label">
+<p>Y자형 (Y-shaped)</p>
+</div>
+<div class="sm">
+<p>T자형을 <strong>관리(management) 관점</strong>에서 보완. 두 갈래의 팔이 서로 다른 분야로 뻗어 나가 <strong>분야 간 협업을 이끄는 연결 역량</strong>(리더십·경영·전략·소통)을 형성한다.</p>
+</div>
+</div>
+<div class="fragment b-right">
+<div class="label">
+<p>거버넌스적 의미</p>
+</div>
+<div class="sm">
+<p>Y의 갈림목 = <span class="g" style="font-weight:700">이해관계자가 만나는 접점</span>. 디자이너는 그 접점에서 조직 내·외부의 복잡한 협업을 조율하는 <strong>전략적 리더</strong>가 된다. Y자형 모델을 논의하며 Eckert는 스튜어드십의 첫 원칙을 정리하게 된다.</p>
+</div>
+</div>
+<div class="fragment b-right">
+<div class="label">
+<p>Y의 세 단계 역할 (Eckert 2017)</p>
+</div>
+<div class="sm">
+<p><strong>인공물</strong> Maker · Researcher · Entrepreneur<br><strong>전략 기획</strong> Consultant · Strategist · Catalyst<br><strong>문화 시스템</strong> Broker · Cultivator · Curator</p>
+</div>
+</div>
+</div>
+<div class="src">
+<p>Eckert, J. (2017). The Y-Shaped Designer: Connective Competences as Key to Collaboration across Disciplines. <em>Journal of Education and Learning</em>, 6(4), 137–144.</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Magic Move(T 도식이 이동·축소, 설명문이 오른쪽 위로 이동) · Y가 아래에서 자라고 팔을 뻗는 빌드 · 오른쪽에서 들어오는 빌드.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="four-areas" class="slide level2" data-auto-animate="true" data-auto-animate-id="fa" data-background-color="#FFFFFF" data-vt="iris">
+<h2 data-id="quarto-animate-title"></h2>
+<p><img data-src="img/je_mirror.jpg" class="mm" style="left:700px;top:40px;width:820px;height:820px" data-id="mirror"></p>
+<div class="abs" data-id="fa-title" style="left:104px;top:300px;width:560px">
+<div class="kicker">
+<p>Four Areas · Systems Approach</p>
+</div>
+<div class="ttl2">
+<p>스튜어드십의<br><span class="g">네 가지 영역</span></p>
+</div>
+</div>
+<div class="abs rise d3" style="left:104px;top:520px;width:520px">
+<div class="sm">
+<p>변화는 디자이너 자신에게서 시작된다.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Magic Move 시작. 다음 슬라이드에서 다이어그램이 왼쪽으로 이동하고 제목은 오른쪽으로 옮겨 간다. (해설서 6.1)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="four-areas-2" class="slide level2" data-auto-animate="true" data-auto-animate-id="fa" data-background-color="#FFFFFF">
+<h2 data-id="quarto-animate-title"></h2>
+<p><img data-src="img/je_mirror.jpg" class="mm" style="left:56px;top:90px;width:720px;height:720px" data-id="mirror"></p>
+<div class="abs" data-id="fa-title" style="left:840px;top:110px;width:600px">
+<div class="kicker">
+<p>Four Areas · Systems Approach</p>
+</div>
+<div class="ttl2">
+<p>스튜어드십의<br><span class="g">네 가지 영역</span></p>
+</div>
+</div>
+<div class="abs" style="left:840px;top:330px;width:656px">
+<div class="sm">
+<p>시스템적 접근에 기반한 네 영역이 <strong>자기 개발(Self-development)</strong>을 중심으로 회전한다. 변화는 디자이너 자신에게서 시작된다.</p>
+</div>
+<div class="rows mt3">
+<div class="fragment b-pop">
+<div class="t" style="font-size:24px">
+<p>공감·의식·포용</p>
+</div>
+<div class="en">
+<p>Empathy, Consciousness &amp; Inclusion</p>
+</div>
+</div>
+<div class="fragment b-pop" data-after="200">
+<div class="t" style="font-size:24px">
+<p>체계적 예측·영향 평가</p>
+</div>
+<div class="en">
+<p>Systemic Foresight &amp; Impact Assessment</p>
+</div>
+</div>
+<div class="fragment b-pop" data-after="200">
+<div class="t" style="font-size:24px">
+<p>윤리적·문화적 인식</p>
+</div>
+<div class="en">
+<p>Ethical &amp; Cultural Awareness</p>
+</div>
+</div>
+<div class="fragment b-pop" data-after="200">
+<div class="t" style="font-size:24px">
+<p>증거 기반·비판적 분석</p>
+</div>
+<div class="en">
+<p>Evidentiary &amp; Critical Analysis</p>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Magic Move(이미지 이동·크기 변경) · 클릭 한 번에 네 영역이 차례로 Pop.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="principles-1" class="slide level2" data-background-color="#F5F5F7" data-vt="flip">
+<h2><span class="kicker">Principles of Stewardship in Design · 1/2</span> 네 영역에서 드러나는 <span class="g">스튜어드십의 원리</span></h2>
+<div class="grid3 stagger">
+<div>
+<div class="label">
+<p>Principle 1 · 공감·포용</p>
+</div>
+<div class="t">
+<p>포용과 참여</p>
+</div>
+<div class="en">
+<p>Inclusion &amp; Participation</p>
+</div>
+<div class="sm mt1">
+<p>공동디자인을 이끌거나 촉진자 역할을 맡을 때, 디자이너는 <strong>필요한 모든 참가자를 적극적으로 포함시킬 책임</strong>이 있다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 2 · 공감·포용</p>
+</div>
+<div class="t">
+<p>공감 리더십</p>
+</div>
+<div class="en">
+<p>Empathetic Leadership</p>
+</div>
+<div class="sm mt1">
+<p>다양한 문화 간 대화와 프로젝트를 주도하기 위해 <strong>공감에 기반한 리더십</strong>을 습득하고, 이해관계자 관계 속에서 발휘한다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 3 · 영역 공통</p>
+</div>
+<div class="t">
+<p>애자일</p>
+</div>
+<div class="en">
+<p>Agility</p>
+</div>
+<div class="sm mt1">
+<p>시스템 전반의 향후 확장·이전에 대비할 수 있도록 <strong>포괄적이고 적응 가능한 프로세스와 솔루션</strong>을 만들며 개방성을 수용한다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 4 · 예측·평가</p>
+</div>
+<div class="t">
+<p>예측과 평가</p>
+</div>
+<div class="en">
+<p>Foresight &amp; Evaluation</p>
+</div>
+<div class="sm mt1">
+<p>인간·비인간 존재, 문화, 사회, 경제, 생태계와의 관계에 대한 <strong>개입의 영향을 예측·평가·제어</strong>한다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 5 · 예측·평가</p>
+</div>
+<div class="t">
+<p>문제 식별과 활용 지점</p>
+</div>
+<div class="en">
+<p>Identifying Problems &amp; Leverage Points</p>
+</div>
+<div class="sm mt1">
+<p>개입 단계에서의 <strong>마찰·충돌·레버리지 포인트</strong>를 적극적으로 찾아내고 드러낸다. (cf.&nbsp;Donella Meadows)</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 6 · 영역 공통</p>
+</div>
+<div class="t">
+<p>모델링과 예측</p>
+</div>
+<div class="en">
+<p>Modeling &amp; Prediction</p>
+</div>
+<div class="sm mt1">
+<p>스스로 개발한 시나리오를 <strong>정량·정성 데이터 기반의 예측 분석</strong>으로 비판적으로 검증한다.</p>
+</div>
+</div>
+</div>
+<div class="src">
+<p>Source: Eckert, J. <em>Stewardship in Design</em>. 영역 표기는 강의 해설서의 분류 기준 · ‘영역 공통’은 네 영역을 가로지르는 원리</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Flip 전환 · 자동 순차 빌드. (해설서 6.2)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="principles-2" class="slide level2" data-background-color="#F5F5F7" data-vt="flip">
+<h2><span class="kicker">Principles of Stewardship in Design · 2/2</span> 윤리·증거·데이터, <span class="g">책임지는 디자이너</span>의 조건</h2>
+<div class="grid3 stagger">
+<div>
+<div class="label">
+<p>Principle 7 · 윤리·문화</p>
+</div>
+<div class="t">
+<p>윤리적·문화적 인식</p>
+</div>
+<div class="en">
+<p>Ethical &amp; Cultural Awareness</p>
+</div>
+<div class="sm mt1">
+<p>모든 디자인 개입과 그것이 인간·비인간·문화·사회·경제·생태계에 미치는 <strong>영향 사이의 관계</strong>를 작업의 핵심으로 인식한다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 8 · 윤리·문화</p>
+</div>
+<div class="t">
+<p>의식과 행동의 변화</p>
+</div>
+<div class="en">
+<p>Transforming Consciousness &amp; Behaviour</p>
+</div>
+<div class="sm mt1">
+<p>특정 영역에서 행동하려면 의식과 행동의 변화가 필요함을 안다. 그러므로 <strong>체계적 디자인 개입은 자기 변화에서 시작</strong>된다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 9 · 영역 공통</p>
+</div>
+<div class="t">
+<p>촉진과 번역</p>
+</div>
+<div class="en">
+<p>Facilitation &amp; Translation</p>
+</div>
+<div class="sm mt1">
+<p>미디어·문화·경제·기술 전반에서 <strong>서로 다른 언어를 잇는 촉진자이자 번역자</strong> 역할을 한다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 10 · 증거·분석</p>
+</div>
+<div class="t">
+<p>법의학적 분석</p>
+</div>
+<div class="en">
+<p>Forensics</p>
+</div>
+<div class="sm mt1">
+<p>디자인으로 해결할 마찰·갈등·문제를 밝히기 위해 <strong>확실한 사실에 근거한 증거</strong>를 결합하는 능력을 적용한다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 11 · 증거·분석</p>
+</div>
+<div class="t">
+<p>무결성과 투명성</p>
+</div>
+<div class="en">
+<p>Integrity &amp; Transparency</p>
+</div>
+<div class="sm mt1">
+<p>자신의 작업에 책임을 지고, 커뮤니티에 대해 최대한 투명하도록 <strong>방법론·연구·수단을 공개</strong>한다.</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Principle 12 · 영역 공통</p>
+</div>
+<div class="t">
+<p>데이터 리터러시와 탈연산</p>
+</div>
+<div class="en">
+<p>Data Literacy &amp; De-Computation</p>
+</div>
+<div class="sm mt1">
+<p>데이터 기반 프로세스를 인식하고 이를 <strong>“탈연산의 행위자”</strong>로 연결해, 인간 사회와 세계를 위한 가치로 환류한다.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>원칙 7–12. 원칙 8의 ’자기 변화에서 시작’이 네 영역 다이어그램의 중심과 연결된다. (해설서 6.2)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="curriculum" class="slide level2" data-background-color="#FFFFFF" data-vt="iris">
+<h2></h2>
+<div style="display:grid;grid-template-columns:740px 1fr;gap:64px;align-items:center;height:100%">
+<div class="spin-in">
+<p><img data-src="img/je_curric.jpg" style="width:740px;height:740px;object-fit:contain"></p>
+</div>
+<div>
+<div class="kicker rise d1">
+<p>Design Curriculum × Doughnut</p>
+</div>
+<div class="ttl2 rise d2">
+<p>스튜어드십 기반<br><span class="g">디자인 커리큘럼</span></p>
+</div>
+<div class="sm rise d3 mt2">
+<p>Kate Raworth의 <strong>도넛 경제</strong> 모델을 디자인 교육에 겹쳐 놓은 다이어그램.</p>
+</div>
+<div class="rows mt2">
+<div class="fragment b-left">
+<div class="label">
+<p>중심 · Self-development</p>
+</div>
+<div class="sm">
+<p>모든 개입은 디자이너의 자기 개발에서 출발</p>
+</div>
+</div>
+<div class="fragment b-left">
+<div class="label">
+<p>Shortfall · 사회적 경계</p>
+</div>
+<div class="sm" style="font-size:17px">
+<p>물·식량·건강·교육·소득·평화와 정의·정치적 목소리·사회적 형평·성평등·주거·네트워크·에너지, <strong>채워야 할 최소 기준</strong></p>
+</div>
+</div>
+<div class="fragment b-left">
+<div class="label">
+<p>Overshoot · 지구적 경계</p>
+</div>
+<div class="sm" style="font-size:17px">
+<p>기후변화·해양 산성화·화학 오염·질소/인 과부하·담수 취수·토지 전용·생물다양성 손실·대기오염·오존층 파괴, <strong>넘지 말아야 할 한계</strong></p>
+</div>
+</div>
+</div>
+<div class="note fragment b-wipe mt2" style="font-size:18px">
+<p>디자이너의 목표: 미달을 채우고 초과를 줄여 <span style="text-decoration:underline">안전하고 정의로운 공간(도넛의 고리)</span> 안에서의 개발을 유도</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Iris 전환 · 회전하며 등장(Twirl) · 왼쪽에서 들어오는 빌드. (해설서 7.1)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="interventions" class="slide level2" data-vt="push">
+<h2><span class="kicker">Design Interventions / Orders / Dimensions</span> 네 영역은 <span class="g">네 개의 디자인 개입</span>으로 작동한다</h2>
+<div class="cols" style="--n:4">
+<div class="fragment b-flip">
+<div class="label">
+<p>Interventions of</p>
+</div>
+<div class="t">
+<p>Communication</p>
+</div>
+<div class="sm" style="font-weight:600;color:var(--ink)">
+<p>소통의 개입</p>
+</div>
+<div class="sm mt2" style="font-size:18px">
+<p>기호·이미지·정보를 통해 의미를 전달하고 이해를 공유</p>
+</div>
+<div class="sm mt2" style="font-size:17px">
+<p><span class="g" style="font-weight:700">← 증거 기반·비판적 분석</span><br>무결성과 투명성, 법의학적 분석</p>
+</div>
+<div class="xs mt2">
+<p>Buchanan: Symbols</p>
+</div>
+</div>
+<div class="fragment b-flip">
+<div class="label">
+<p>Interventions of</p>
+</div>
+<div class="t">
+<p>Construction</p>
+</div>
+<div class="sm" style="font-weight:600;color:var(--ink)">
+<p>구성의 개입</p>
+</div>
+<div class="sm mt2" style="font-size:18px">
+<p>사물·공간·인공물을 만들어 물리적 조건을 변화</p>
+</div>
+<div class="sm mt2" style="font-size:17px">
+<p><span class="g" style="font-weight:700">← 윤리적·문화적 인식</span><br>윤리 인식, 의식과 행동의 변화</p>
+</div>
+<div class="xs mt2">
+<p>Buchanan: Things</p>
+</div>
+</div>
+<div class="fragment b-flip">
+<div class="label">
+<p>Interventions of</p>
+</div>
+<div class="t">
+<p>Action &amp; Orchestration</p>
+</div>
+<div class="sm" style="font-weight:600;color:var(--ink)">
+<p>행동·조율의 개입</p>
+</div>
+<div class="sm mt2" style="font-size:18px">
+<p>서비스·과정·이해관계자의 상호작용을 설계하고 조율</p>
+</div>
+<div class="sm mt2" style="font-size:17px">
+<p><span class="g" style="font-weight:700">← 공감·의식·포용</span><br>포용과 참여, 공감 리더십</p>
+</div>
+<div class="xs mt2">
+<p>Buchanan: Actions</p>
+</div>
+</div>
+<div class="fragment b-flip">
+<div class="label">
+<p>Interventions on</p>
+</div>
+<div class="t">
+<p>Behaviour &amp; Consciousness</p>
+</div>
+<div class="sm" style="font-weight:600;color:var(--ink)">
+<p>행동·의식에 대한 개입</p>
+</div>
+<div class="sm mt2" style="font-size:18px">
+<p>시스템·환경·가치관 차원에서 사고와 문화를 전환</p>
+</div>
+<div class="sm mt2" style="font-size:17px">
+<p><span class="g" style="font-weight:700">← 체계적 예측·영향 평가</span><br>예측과 평가, 레버리지 포인트</p>
+</div>
+<div class="xs mt2">
+<p>Buchanan: Thoughts / Systems</p>
+</div>
+</div>
+</div>
+<div class="note fragment b-wipe mt3">
+<p>개입의 질서가 바깥으로 갈수록 대상은 ‘사물’에서 ‘관계와 의식’으로 확장된다. 공공디자인 거버넌스의 영역이 바로 이 바깥 고리이다.</p>
+</div>
+<div class="src">
+<p>Buchanan, R. (1992). Wicked Problems in Design Thinking. <em>Design Issues</em>, 8(2), 5–21 의 ‘디자인의 네 질서’와 Eckert 다이어그램의 외곽 고리를 대응해 재구성 (4강 Wicked Problem과 연결)</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Push 전환 · Flip 빌드(위에서 접혀 내려옴). (해설서 7.2)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="nominute" class="slide level2 photo veil-l" data-background-image="img/nm_satoakichi.jpg" data-background-color="#0B0B0C" data-vt="blur">
+<h2></h2>
+<div style="width:780px;margin-top:10px">
+<div class="kicker rise d1">
+<p>nominute.city · Since 2025</p>
+</div>
+<div class="ttl2 rise d2" style="color:#fff">
+<p>15분 도시, 1분 도시,<br>그리고 <span class="g">‘무(無)분’ 도시</span></p>
+</div>
+<div class="sm rise d3 mt2">
+<p>Eckert가 2025년 설립한 <strong>탈성장(post-growth) 생태-사회 도시 전환</strong> 연구 이니셔티브. 사진 연구·현상학·도시 사운드스케이프 생태학으로 탈성장 도시의 <strong>‘아직 오지 않은 것(not-yet)’</strong>을 탐색하며 <strong>현존의 도시학(urbanism of presence)</strong>을 지향한다.</p>
+</div>
+<div class="rows mt2">
+<div class="fragment b-blur">
+<div class="label">
+<p>Satoakichi · 교토·도쿄</p>
+</div>
+<div class="sm" style="font-size:18px">
+<p>빈터(akichi) 약 150곳 사진 연구. 마을숲 ‘사토(sato)’의 <strong>돌봄·관리(stewardship)</strong> 개념을 빈터와 결합.</p>
+</div>
+</div>
+<div class="fragment b-blur">
+<div class="label">
+<p>Tadasu-Gawara · 교토 가모강</p>
+</div>
+<div class="sm" style="font-size:18px">
+<p>“효율과 성장의 서사를 넘어선 도시 공존”을 강변에서 관찰.</p>
+</div>
+</div>
+<div class="fragment b-blur">
+<div class="label">
+<p>Urban Endemism Manifesto</p>
+</div>
+<div class="sm" style="font-size:18px">
+<p>도시 고유종은 효율·착취·영구 성장이라는 지배적 패러다임에 도전한다.</p>
+</div>
+</div>
+</div>
+<div class="xs mt2">
+<p>해석 노트: ‘No-minute’은 이동시간·효율 지표 자체를 넘어 머무름·현존으로 도시를 보자는 강의자의 해석이며, 사이트에 명시된 정의는 아님. 파트너: Hortopia, Pro Helvetia(2025 연구 지원) 등.</p>
+</div>
+</div>
+<div class="cap" style="right:24px;bottom:22px">
+<p>Satoakichi · nominute.city © Jan Albert Eckert, 2025</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Blur 전환 · Blur 빌드. ’No-minute’은 강의자의 해석임을 분명히 말한다. (해설서 8.1)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="minute-15" class="slide level2" data-auto-animate="true" data-auto-animate-id="min" data-background-color="#F5F5F7" data-vt="scale">
+<h2 data-id="quarto-animate-title"><span class="kicker">From Proximity to Presence</span> 도시 단위의 축소, 행정의 계획에서 <span class="g">거리의 돌봄</span>으로</h2>
+<p><img data-src="img/paris_15min.jpg" class="mm" style="left:104px;top:200px;width:860px;height:560px" data-id="p15"></p>
+<div class="abs bignum" data-id="n15" style="left:1030px;top:290px;font-size:190px">
+<p><span class="count" data-from="60" data-to="15">15</span><span class="unit">분</span></p>
+</div>
+<div class="abs" data-id="l15" style="left:1036px;top:540px;width:460px">
+<div class="label">
+<p>15-Minute City · 2016~</p>
+</div>
+<div class="xs">
+<p>Carlos Moreno · 파리 Anne Hidalgo(2020)</p>
+</div>
+</div>
+<aside class="notes">
+<p>Magic Move 연속 3단계: 15분 → 1분 → 무(無)분 → 세 단의 비교 화면. 숫자는 카운터로 줄어든다. (해설서 8.2)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="minute-1" class="slide level2" data-auto-animate="true" data-auto-animate-id="min" data-background-color="#F5F5F7">
+<h2 data-id="quarto-animate-title"><span class="kicker">From Proximity to Presence</span> 도시 단위의 축소, 행정의 계획에서 <span class="g">거리의 돌봄</span>으로</h2>
+<p><img data-src="img/paris_15min.jpg" class="mm" style="left:104px;top:700px;width:180px;height:110px" data-id="p15"></p>
+<div class="abs bignum" data-id="n15" style="left:300px;top:722px;font-size:52px">
+<p>15<span class="unit">분</span></p>
+</div>
+<p><img data-src="img/streetmoves.jpg" class="mm" style="left:104px;top:200px;width:860px;height:470px" data-id="p1"></p>
+<div class="abs bignum" data-id="n1" style="left:1030px;top:290px;font-size:190px">
+<p><span class="count" data-from="15" data-to="1" data-dur="1400">1</span><span class="unit">분</span></p>
+</div>
+<div class="abs" data-id="l1" style="left:1036px;top:540px;width:460px">
+<div class="label">
+<p>One-Minute City · 2020–21</p>
+</div>
+<div class="xs">
+<p>Dan Hill · Vinnova · ArkDes · 스톡홀름 (Street Moves)</p>
+</div>
+</div>
+</section>
+<section id="minute-0" class="slide level2" data-auto-animate="true" data-auto-animate-id="min" data-background-color="#F5F5F7">
+<h2 data-id="quarto-animate-title"><span class="kicker">From Proximity to Presence</span> 도시 단위의 축소, 행정의 계획에서 <span class="g">거리의 돌봄</span>으로</h2>
+<p><img data-src="img/paris_15min.jpg" class="mm" style="left:104px;top:700px;width:180px;height:110px" data-id="p15"></p>
+<div class="abs bignum" data-id="n15" style="left:300px;top:722px;font-size:52px">
+<p>15<span class="unit">분</span></p>
+</div>
+<p><img data-src="img/streetmoves.jpg" class="mm" style="left:470px;top:700px;width:180px;height:110px" data-id="p1"></p>
+<div class="abs bignum" data-id="n1" style="left:666px;top:722px;font-size:52px">
+<p>1<span class="unit">분</span></p>
+</div>
+<p><img data-src="img/nm_tadasu.jpg" class="mm" style="left:104px;top:200px;width:860px;height:470px" data-id="p0"></p>
+<div class="abs bignum" data-id="n0" style="left:1030px;top:320px;font-size:150px">
+<p>무(無)<span class="unit">분</span></p>
+</div>
+<div class="abs" data-id="l0" style="left:1036px;top:540px;width:460px">
+<div class="label">
+<p>No-Minute City · 2025~</p>
+</div>
+<div class="xs">
+<p>Jan Eckert · nominute.city</p>
+</div>
+</div>
+</section>
+<section id="minutes" class="slide level2" data-auto-animate="true" data-auto-animate-id="min" data-background-color="#F5F5F7">
+<h2 data-id="quarto-animate-title"><span class="kicker">From Proximity to Presence</span> 도시 단위의 축소, 행정의 계획에서 <span class="g">거리의 돌봄</span>으로</h2>
+<p><img data-src="img/paris_15min.jpg" class="mm" style="left:104px;top:190px;width:430px;height:220px" data-id="p15"></p>
+<p><img data-src="img/streetmoves.jpg" class="mm" style="left:568px;top:190px;width:430px;height:220px" data-id="p1"></p>
+<p><img data-src="img/nm_tadasu.jpg" class="mm" style="left:1032px;top:190px;width:430px;height:220px" data-id="p0"></p>
+<div class="abs bignum" data-id="n15" style="left:104px;top:430px;font-size:76px">
+<p>15<span class="unit">분</span></p>
+</div>
+<div class="abs bignum" data-id="n1" style="left:568px;top:430px;font-size:76px">
+<p>1<span class="unit">분</span></p>
+</div>
+<div class="abs bignum" data-id="n0" style="left:1032px;top:430px;font-size:76px">
+<p>무(無)<span class="unit">분</span></p>
+</div>
+<div class="abs" data-id="l15" style="left:104px;top:530px;width:430px">
+<div class="label">
+<p>15-Minute City · 2016~</p>
+</div>
+<div class="xs">
+<p>Carlos Moreno · 파리 Anne Hidalgo(2020)</p>
+</div>
+</div>
+<div class="abs" data-id="l1" style="left:568px;top:530px;width:430px">
+<div class="label">
+<p>One-Minute City · 2020–21</p>
+</div>
+<div class="xs">
+<p>Dan Hill · Vinnova · ArkDes · 스톡홀름 (Street Moves)</p>
+</div>
+</div>
+<div class="abs" data-id="l0" style="left:1032px;top:530px;width:430px">
+<div class="label">
+<p>No-Minute City · 2025~</p>
+</div>
+<div class="xs">
+<p>Jan Eckert · nominute.city</p>
+</div>
+</div>
+<div class="abs rise d4" style="left:104px;top:615px;width:430px">
+<div class="sm" style="font-size:18px">
+<p>일상의 필요를 도보·자전거 15분 안에. <strong>근접성(proximity)</strong>을 도시 계획의 단위로.</p>
+</div>
+<div class="xs mt1">
+<p><span class="g" style="font-weight:700">주체</span> · 시 정부의 도시계획</p>
+</div>
+</div>
+<div class="abs rise d5" style="left:568px;top:615px;width:430px">
+<div class="sm" style="font-size:18px">
+<p>집 앞 거리를 주민이 모듈형 키트로 <strong>공동 설계·관리</strong>. “2030년까지 모든 거리를”.</p>
+</div>
+<div class="xs mt1">
+<p><span class="g" style="font-weight:700">주체</span> · 주민·국가 혁신청·디자이너의 협력</p>
+</div>
+</div>
+<div class="abs rise d6" style="left:1032px;top:615px;width:430px">
+<div class="sm" style="font-size:18px">
+<p>시간·효율 지표를 넘어 <strong>머무름·현존·공존</strong>. 인간과 비인간이 함께 사는 장소의 돌봄.</p>
+</div>
+<div class="xs mt1">
+<p><span class="g" style="font-weight:700">주체</span> · 장소의 모든 거주자 = 공동 관리인</p>
+</div>
+</div>
+<div class="src">
+<p>Moreno et al.&nbsp;(2021) Introducing the “15-Minute City”, <em>Smart Cities</em> 4(1) · Hill, D. / Vinnova Street Moves (2020–21) · nominute.city (2025). ‘무분 도시’의 비교 해석은 강의자의 재구성.</p>
+</div>
+<aside class="notes">
+<p>Magic Move 마지막 단계: 사진·숫자·라벨이 세 단으로 정렬되고 설명이 떠오른다. 단위가 작아질수록 주체가 시 정부 → 주민 협력 → 장소의 모든 거주자로 이동.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="part-3" class="slide level2 dark part" data-background-color="#013D00" data-vt="cube">
+<h2></h2>
+<div class="ph zoom" style="right:0;top:0;width:700px;height:900px">
+<p><img data-src="img/helsinki.jpg"></p>
+</div>
+<div style="margin-top:210px;width:720px">
+<div class="partno rise d1">
+<p>Part 3 · Governance</p>
+</div>
+<div class="ttl t-chars auto" style="--d0:.35s">
+<p>거버넌스 요소로서의<br>스튜어드십</p>
+</div>
+<div class="lead rise d6">
+<p>위계적 통제가 아닌,<br>혁신의 주체로서의 전략적 개념</p>
+</div>
+</div>
+</section>
+<section id="strategic" class="slide level2" data-vt="wipe">
+<h2><span class="kicker">Stewardship as a Strategic Concept</span> “통제하지 않는 시스템을 <span class="g">앞으로 이끄는 기술</span>”</h2>
+<div class="cols" style="--n:2">
+<div class="rise d1">
+<div class="label">
+<p>Helsinki Design Lab · Sitra · 2013</p>
+</div>
+<div class="t" style="font-weight:500;font-size:28px;line-height:1.45">
+<p>스튜어드십은 <span class="g" style="font-weight:700">많은 사람이 계획을 구상하고 많은 손이 실행에 관여할 때</span>, 결정을 영향(impact)과 정렬시키는 기술이다.</p>
+</div>
+<div class="en mt2" style="font-size:18px">
+<p>“Stewardship is the art of aligning decisions with impact when many minds are involved in making a plan, and many hands in enacting it.”</p>
+</div>
+<div class="mt3">
+<div class="label">
+<p>Legible Practises · Six Stories</p>
+</div>
+<div class="sm" style="font-size:18px">
+<p>Boyer, Cook &amp; Steinberg가 ‘스튜어드십의 기술’로 읽어낸 6개 사례: 뉴욕 브라운스빌 파트너십 · 칠레 콘스티투시온 재건(Elemental) · 영국 GDS · 미국 CFPB · 덴마크 MindLab · Nesta Creative Councils</p>
+</div>
+</div>
+</div>
+<div class="fragment b-wipe-r">
+<div class="label">
+<p>Institute for Government (UK) · 2011</p>
+</div>
+<div class="t" style="font-weight:500;font-size:28px;line-height:1.45">
+<p>정책은 한 번 만들어 집행되는 것이 아니라, <span class="g" style="font-weight:700">시스템 안의 여러 행위자들에 의해 끊임없이 다시 만들어진다.</span></p>
+</div>
+<div class="sm mt2">
+<p>중앙정부는 자신의 역할을 <strong>‘시스템 스튜어드십’</strong>으로 보아야 한다. 정책이 현장에서 어떻게 변용되는지 살피고, 필요할 때 시스템을 원하는 결과 쪽으로 조향(steer)하는 것.</p>
+</div>
+<div class="note mt3">
+<p>“내가 통제하지 않는 시스템을 <span class="fragment e-mark">앞으로 이끌 수 있는 리더십과 자신감</span>”<br><span class="xs" style="font-weight:400">한 고위 공무원의 말, Hallsworth (2011) <em>System Stewardship</em></span></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Wipe 전환 · 오른쪽에서 닦아 내는 Wipe 빌드 · 형광펜 강조. (해설서 9.1)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pyramid" class="slide level2" data-auto-animate="true" data-auto-animate-id="pyr" data-vt="dissolve">
+<h2 data-id="quarto-animate-title"><span class="kicker">Hierarchy vs Stewardship</span> 피라미드의 끝에서, <span class="g">생태계의 결절점</span>으로</h2>
+<div class="abs hlab" data-id="hlab1" style="left:420px;top:190px;width:760px">
+<p>위계적 거버넌스</p>
+</div>
+<div class="abs pyr" data-id="pyr" style="left:420px;top:230px;width:760px;height:430px">
+
+</div>
+<div class="abs tier" data-id="t1" style="left:700px;top:250px;width:200px;height:64px;background:#1D1D1F;font-size:17px">
+<p>단체장·중앙</p>
+</div>
+<div class="abs vline" data-id="a1" style="left:799px;top:314px;height:46px">
+
+</div>
+<div class="abs tier" data-id="t2" style="left:620px;top:360px;width:360px;height:64px;background:#515154;font-size:17px">
+<p>부서 · 과업지시</p>
+</div>
+<div class="abs vline" data-id="a2" style="left:799px;top:424px;height:46px">
+
+</div>
+<div class="abs tier" data-id="t3" style="left:540px;top:470px;width:520px;height:64px;background:#86868B;font-size:17px;padding-right:240px">
+<p>용역사</p>
+</div>
+<div class="abs tier" data-id="designer" style="left:820px;top:470px;width:240px;height:64px;background:#6E6E73;font-size:17px;outline:2px solid #fff;outline-offset:-2px">
+<p>디자이너 (수행)</p>
+</div>
+<div class="abs vline" data-id="a3" style="left:799px;top:534px;height:46px">
+
+</div>
+<div class="abs tier" data-id="t4" style="left:460px;top:580px;width:680px;height:64px;background:#D2D2D7;color:#1D1D1F;font-size:17px">
+<p>시민 (수혜자 · 민원인)</p>
+</div>
+<div class="abs pcap" data-id="pcap" style="left:420px;top:690px;width:760px;font-size:18px">
+<p>명령 · 통제 · 납품 · 단선적 책임</p>
+</div>
+<aside class="notes">
+<p>Magic Move 시작. 피라미드 3층의 ‘디자이너’를 가리키고 넘기면, 디자이너가 피라미드에서 빠져나와 생태계의 한가운데로 이동한다. (해설서 9.2)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="network" class="slide level2" data-auto-animate="true" data-auto-animate-id="pyr">
+<h2 data-id="quarto-animate-title"><span class="kicker">Hierarchy vs Stewardship</span> 피라미드의 끝에서, <span class="g">생태계의 결절점</span>으로</h2>
+<div class="abs hlab" data-id="hlab1" style="left:104px;top:190px;width:380px;font-size:16px">
+<p>위계적 거버넌스</p>
+</div>
+<div class="abs pyr" data-id="pyr" style="left:104px;top:222px;width:380px;height:215px">
+
+</div>
+<div class="abs tier" data-id="t1" style="left:244px;top:232px;width:100px;height:32px;background:#1D1D1F;font-size:11px">
+<p>단체장·중앙</p>
+</div>
+<div class="abs vline" data-id="a1" style="left:293px;top:264px;height:23px">
+
+</div>
+<div class="abs tier" data-id="t2" style="left:204px;top:287px;width:180px;height:32px;background:#515154;font-size:11px">
+<p>부서 · 과업지시</p>
+</div>
+<div class="abs vline" data-id="a2" style="left:293px;top:319px;height:23px">
+
+</div>
+<div class="abs tier" data-id="t3" style="left:164px;top:342px;width:260px;height:32px;background:#86868B;font-size:11px">
+<p>용역사 · (빈자리)</p>
+</div>
+<div class="abs vline" data-id="a3" style="left:293px;top:374px;height:23px">
+
+</div>
+<div class="abs tier" data-id="t4" style="left:124px;top:397px;width:340px;height:32px;background:#D2D2D7;color:#1D1D1F;font-size:11px">
+<p>시민 (수혜자 · 민원인)</p>
+</div>
+<div class="abs pcap" data-id="pcap" style="left:104px;top:450px;width:380px;font-size:13px">
+<p>명령 · 통제 · 납품 · 단선적 책임</p>
+</div>
+<div class="abs hlab g" style="left:910px;top:190px;width:500px">
+<p>스튜어드십 거버넌스</p>
+</div>
+<svg class="abs" style="left:530px;top:300px" width="300" height="40" viewbox="0 0 300 40">
+  <path class="dr auto" pathlength="1" d="M10 20 H280" stroke="#013D00" stroke-width="3" fill="none" style="animation-delay:.9s"></path>
+  <path class="pp auto" d="M276 10 L294 20 L276 30 Z" fill="#013D00" style="animation-delay:1.8s"></path>
+</svg>
+<svg class="abs" style="left:860px;top:180px" width="600" height="600" viewbox="0 0 600 600">
+  <circle class="dr auto" pathlength="1" cx="300" cy="300" r="230" fill="none" stroke="#A8D5A2" stroke-width="1.5" style="animation-delay:1.1s"></circle>
+  <circle class="dr auto" pathlength="1" cx="300" cy="300" r="135" fill="none" stroke="#D2D2D7" stroke-width="1.5" style="animation-delay:1.3s"></circle>
+  <g stroke="#2F6B2C" stroke-width="1.5" fill="none">
+    <line class="dr auto" pathlength="1" x1="300" y1="300" x2="300" y2="100" style="animation-delay:1.5s"></line>
+    <line class="dr auto" pathlength="1" x1="300" y1="300" x2="488" y2="200" style="animation-delay:1.55s"></line>
+    <line class="dr auto" pathlength="1" x1="300" y1="300" x2="500" y2="400" style="animation-delay:1.6s"></line>
+    <line class="dr auto" pathlength="1" x1="300" y1="300" x2="300" y2="500" style="animation-delay:1.65s"></line>
+    <line class="dr auto" pathlength="1" x1="300" y1="300" x2="100" y2="400" style="animation-delay:1.7s"></line>
+    <line class="dr auto" pathlength="1" x1="300" y1="300" x2="112" y2="188" style="animation-delay:1.75s"></line>
+    <line class="dr auto" pathlength="1" x1="300" y1="100" x2="488" y2="200" style="animation-delay:2s"></line>
+    <line class="dr auto" pathlength="1" x1="488" y1="200" x2="500" y2="400" style="animation-delay:2.05s"></line>
+    <line class="dr auto" pathlength="1" x1="500" y1="400" x2="300" y2="500" style="animation-delay:2.1s"></line>
+    <line class="dr auto" pathlength="1" x1="300" y1="500" x2="100" y2="400" style="animation-delay:2.15s"></line>
+    <line class="dr auto" pathlength="1" x1="100" y1="400" x2="112" y2="188" style="animation-delay:2.2s"></line>
+    <line class="dr auto" pathlength="1" x1="112" y1="188" x2="300" y2="100" style="animation-delay:2.25s"></line>
+  </g>
+</svg>
+<div class="abs" style="left:860px;top:180px;width:600px;height:600px">
+<div class="orbit" style="offset-path:path('M 300 70 A 230 230 0 1 1 299.9 70');--t:12s;--delay:0s">
+
+</div>
+<div class="orbit" style="offset-path:path('M 300 70 A 230 230 0 1 1 299.9 70');--t:12s;--delay:-4s">
+
+</div>
+<div class="orbit" style="offset-path:path('M 300 70 A 230 230 0 1 1 299.9 70');--t:12s;--delay:-8s">
+
+</div>
+<div class="orbit" style="offset-path:path('M 300 165 A 135 135 0 1 0 300.1 165');--t:8s;--delay:-2s;background:#2F6B2C;width:10px;height:10px">
+
+</div>
+</div>
+<div class="abs node" style="left:1118px;top:250px;animation-delay:1.6s">
+<p>행정</p>
+</div>
+<div class="abs node" style="left:1306px;top:350px;animation-delay:1.7s">
+<p>시민</p>
+</div>
+<div class="abs node" style="left:1318px;top:550px;animation-delay:1.8s">
+<p>기업</p>
+</div>
+<div class="abs node" style="left:1118px;top:650px;animation-delay:1.9s">
+<p>비인간<small>생태계</small></p>
+</div>
+<div class="abs node" style="left:918px;top:550px;animation-delay:2s">
+<p>미래<small>세대</small></p>
+</div>
+<div class="abs node" style="left:930px;top:338px;animation-delay:2.1s">
+<p>연구자</p>
+</div>
+<div class="abs tier" data-id="designer" style="left:1100px;top:432px;width:120px;height:96px;background:#013D00;font-size:18px;outline:3px solid #A8D5A2;outline-offset:-3px">
+<p>디자이너<small>steward</small></p>
+</div>
+<div class="abs pcap g" style="left:910px;top:790px;width:500px;font-size:16px;font-weight:600">
+<p>돌봄 · 조율 · 번역 · 학습 · 순환적 책무</p>
+</div>
+<div class="abs rows" style="left:104px;top:540px;width:640px">
+<div class="fragment b-left">
+<p><span class="label">권한의 원천</span> <span style="font-size:22px">직위 → <strong>신뢰와 관계</strong></span></p>
+</div>
+<div class="fragment b-left" data-after="250">
+<p><span class="label">디자인의 대상</span> <span style="font-size:22px">납품물 → <strong>조건과 관계</strong></span></p>
+</div>
+<div class="fragment b-left" data-after="250">
+<p><span class="label">책임의 범위</span> <span style="font-size:22px">발주처 → <strong>인간·비인간·미래세대</strong></span></p>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Magic Move(디자이너 상자가 피라미드에서 생태계의 중심으로 이동하며 색·크기가 바뀜 · 피라미드는 축소) · 선 그리기 · 모션 패스(궤도를 도는 점) · 연속 빌드.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="roles" class="slide level2 plane" data-background-gradient="linear-gradient(180deg,#FFFFFF 0 64%,#F5F5F7 64% 100%)" data-vt="push">
+<h2><span class="kicker">New Roles of the Designer-as-Steward</span> 스튜어드로서 디자이너가 맡는 <span class="g">네 가지 역할</span></h2>
+<div class="cols stagger" style="--n:4">
+<div>
+<div class="label">
+<p>Role 1</p>
+</div>
+<div class="t">
+<p>시스템 사고자</p>
+</div>
+<div class="en">
+<p>System Thinker</p>
+</div>
+<div class="sm mt2" style="min-height:160px">
+<p>미시와 거시를 오가며, 부서와 분야의 칸막이를 가로질러 모든 것이 어떻게 연결되어 있는지 본다.</p>
+</div>
+<div class="xs mt1">
+<p><span class="g" style="font-weight:700">Eckert</span> · 체계적 예측 · 레버리지 포인트 · 모델링</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Role 2</p>
+</div>
+<div class="t">
+<p>리더 · 이야기꾼</p>
+</div>
+<div class="en">
+<p>Leader &amp; Storyteller</p>
+</div>
+<div class="sm mt2" style="min-height:160px">
+<p>무엇이 가능한지에 대한 이야기를 들려주고, 끝까지 일을 밀고 가는 끈기를 가진다.</p>
+</div>
+<div class="xs mt1">
+<p><span class="g" style="font-weight:700">Eckert</span> · 공감 리더십 · 의식과 행동의 변화</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Role 3</p>
+</div>
+<div class="t">
+<p>디자이너 · 제작자</p>
+</div>
+<div class="en">
+<p>Designer &amp; Maker</p>
+</div>
+<div class="sm mt2" style="min-height:160px">
+<p>아이디어를 눈에 보이는 프로토타입으로 만들어 일이 실제로 일어나게 한다.</p>
+</div>
+<div class="xs mt1">
+<p><span class="g" style="font-weight:700">Eckert</span> · 애자일 · 증거 기반 분석 · 투명성</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Role 4</p>
+</div>
+<div class="t">
+<p>연결자 · 소집자</p>
+</div>
+<div class="en">
+<p>Connector &amp; Convener</p>
+</div>
+<div class="sm mt2" style="min-height:160px">
+<p>서로 다른 배경의 사람들이 만나는 장을 만들고, 점들을 이어 더 큰 운동을 만든다.</p>
+</div>
+<div class="xs mt1">
+<p><span class="g" style="font-weight:700">Eckert</span> · 포용과 참여 · 촉진과 번역</p>
+</div>
+</div>
+</div>
+<div class="note fragment b-wipe mt4">
+<p>한 사람이 모두 맡을 수도, 팀이 나누어 맡을 수도 있다. 스튜어드십은 개인의 덕목이 아니라 <span style="text-decoration:underline">거버넌스 안에 설계되어야 하는 역할 체계</span>이다.</p>
+</div>
+<div class="src">
+<p>Design Council (2021). <em>Beyond Net Zero: A Systemic Design Approach</em>. Systemic Design Framework의 4개 역할에 Eckert의 원칙을 대응</p>
+</div>
+<aside class="notes">
+<p>Design Council의 Systemic Design Framework 네 역할에 Eckert 원칙을 대응. (해설서 9.3)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="five-elements" class="slide level2 plane" data-background-gradient="linear-gradient(180deg,#FFFFFF 0 71%,#EEF5EC 71% 100%)" data-vt="dissolve">
+<h2><span class="kicker">Stewardship as an Element of Design Governance</span> 디자인 거버넌스를 구성하는 <span class="g">스튜어드십의 다섯 요소</span></h2>
+<table class="tb caption-top" style="font-size:18px">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="width: 200px">요소</th>
+<th data-quarto-table-cell-role="th" style="width: 250px">위계적 거버넌스에서</th>
+<th class="hi" data-quarto-table-cell-role="th">스튜어드십 거버넌스에서</th>
+<th data-quarto-table-cell-role="th" style="width: 290px">Eckert의 근거</th>
+</tr>
+</thead>
+<tbody class="stagger">
+<tr class="odd">
+<td>목적 <span class="en">Purpose</span></td>
+<td>예산 집행·사업 완료</td>
+<td class="fragment e-cell" data-fragment-index="1">사회적 기초와 지구적 한계 사이의 웰빙</td>
+<td>도넛 커리큘럼 · Brighton</td>
+</tr>
+<tr class="even">
+<td>관계 <span class="en">Relation</span></td>
+<td>발주–수주의 계약 관계</td>
+<td class="fragment e-cell" data-fragment-index="1">인간·비인간·미래세대를 포함한 공동 관리인의 관계</td>
+<td>공감·의식·포용</td>
+</tr>
+<tr class="odd">
+<td>과정 <span class="en">Process</span></td>
+<td>선형 단계·납품·검수</td>
+<td class="fragment e-cell" data-fragment-index="1">리빙랩·프로토타입·반복과 학습, 미완의 디자인</td>
+<td>애자일 · Agile Artifact</td>
+</tr>
+<tr class="even">
+<td>역량 <span class="en">Capability</span></td>
+<td>전문 분야의 기술 숙련</td>
+<td class="fragment e-cell" data-fragment-index="1">분야를 잇는 Y자형 연결 역량과 자기 개발</td>
+<td>Y-Shaped · Self-development</td>
+</tr>
+<tr class="odd">
+<td>책무 <span class="en">Accountability</span></td>
+<td>절차 준수·감사 대응</td>
+<td class="fragment e-cell" data-fragment-index="1">영향의 예측·평가·투명한 공개</td>
+<td>예측과 평가 · 무결성과 투명성</td>
+</tr>
+</tbody>
+</table>
+<div class="cols mt3" style="--n:2;border-top:0">
+<div class="fragment b-left" data-fragment-index="2">
+<div class="label">
+<p>전략적 개념으로서</p>
+</div>
+<div class="sm" style="font-size:18.5px">
+<p>스튜어드십은 ‘누가 결정하는가’가 아니라 <strong>‘무엇을 누구를 위해 오래 돌보는가’</strong>를 거버넌스의 질문으로 바꾼다. 디자이너는 이 질문을 시각화하고 합의 가능한 형태로 번역하는 주체이다.</p>
+</div>
+</div>
+<div class="fragment b-right" data-fragment-index="2">
+<div class="label">
+<p>혁신의 주체로서</p>
+</div>
+<div class="sm" style="font-size:18.5px">
+<p>통제의 사슬 끝에 있던 디자이너가 <strong>문제를 재정의(reframe)</strong>하고 이해관계자를 소집하며, 실험을 통해 제도를 바꾸는 <strong>변혁의 행위자(agent of change)</strong>가 된다.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Dissolve 전환 · 표 셀 강조(스튜어드십 열이 한 번에 녹색으로 채워짐) · 좌우에서 동시에 들어오는 빌드. (해설서 9.4)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="part-4" class="slide level2 dark part" data-background-color="#013D00" data-vt="cube">
+<h2></h2>
+<div class="montage" style="right:0;top:0;width:700px;height:900px">
+<p><img data-src="img/barcelona_superblock.jpg" style="animation-delay:0s"> <img data-src="img/amsterdam.jpg" style="animation-delay:3s"> <img data-src="img/bologna.jpg" style="animation-delay:6s"> <img data-src="img/whanganui.jpg" style="animation-delay:9s"> <img data-src="img/medellin.jpg" style="animation-delay:12s"> <img data-src="img/scdh_xr.jpg" style="animation-delay:15s"></p>
+</div>
+<div class="cap" style="right:24px;bottom:22px">
+<p>Barcelona · Amsterdam · Bologna · Whanganui · Medellín · Nidau</p>
+</div>
+<div style="margin-top:210px;width:720px">
+<div class="partno rise d1">
+<p>Part 4 · Cases</p>
+</div>
+<div class="ttl t-chars auto" style="--d0:.35s">
+<p>사례로 읽는<br>디자인 스튜어드십</p>
+</div>
+<div class="lead rise d6">
+<p>도시 · 공유재 · 비인간 · 미래세대 · 공공혁신랩</p>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: 자동 재생 사진 몽타주(사례 사진이 3초 간격으로 교차) · Cube 전환.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="amsterdam" class="slide level2 photo veil-l" data-background-image="img/amsterdam.jpg" data-background-color="#0B140B" data-vt="scale">
+<h2></h2>
+<div style="width:840px;margin-top:10px">
+<div class="kicker rise d1">
+<p>Case 1 · 목적의 재설계</p>
+</div>
+<div class="ttl2 rise d2" style="color:#fff">
+<p>암스테르담 시티 도넛</p>
+</div>
+<div class="xs rise d2 mt1">
+<p>Amsterdam City Doughnut · 2020.4 · 암스테르담시 × Kate Raworth / DEAL</p>
+</div>
+<div class="sm rise d3 mt2">
+<p>코로나19 한가운데서 시 의회가 도넛 경제를 <strong>순환경제 전략 2020–2025</strong>의 틀로 공식 채택.</p>
+</div>
+<div class="cols rise d4 mt3" style="--n:3">
+<div>
+<div class="num">
+<p><span class="count" data-to="50">50</span><span style="font-size:34px">%</span></p>
+</div>
+<div class="sm mt1" style="font-size:16px">
+<p>2030년까지 신규 원자재 사용 감축</p>
+</div>
+</div>
+<div>
+<svg width="230" height="150" viewbox="0 0 230 150" font-family="Pretendard Variable, Pretendard, sans-serif">
+  <line x1="10" y1="124" x2="220" y2="124" stroke="rgba(255,255,255,.4)" stroke-width="1.5"></line>
+  <rect class="grow auto" x="40" y="24" width="56" height="100" fill="rgba(255,255,255,.55)" style="animation-delay:.9s"></rect>
+  <rect class="grow auto" x="134" y="74" width="56" height="50" fill="#A8D5A2" style="animation-delay:1.4s"></rect>
+  <text x="68" y="16" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">100</text>
+  <text x="162" y="66" text-anchor="middle" font-size="13" fill="#A8D5A2" font-weight="700">50</text>
+  <text x="68" y="143" text-anchor="middle" font-size="12" fill="rgba(255,255,255,.7)">기준</text>
+  <text x="162" y="143" text-anchor="middle" font-size="12" fill="rgba(255,255,255,.7)">2030 목표</text>
+</svg>
+</div>
+<div>
+<div class="num">
+<p><span class="count" data-from="2020" data-to="2050" data-dur="2000">2050</span></p>
+</div>
+<div class="sm mt1" style="font-size:16px">
+<p>완전 순환 도시 목표 연도</p>
+</div>
+</div>
+</div>
+<div class="fragment b-blur mt3">
+<div class="label">
+<p>스튜어드십 읽기</p>
+</div>
+<div class="sm" style="font-size:18.5px">
+<p>도시의 성공 지표를 성장에서 <strong>‘사회적 기초 위·지구적 한계 아래’</strong>로 바꿈 → Eckert 도넛 커리큘럼의 행정 버전. 시민 네트워크 ‘Amsterdam Donut Coalitie’가 공동 관리인으로 참여.</p>
+</div>
+</div>
+</div>
+<div class="abs spin-in" style="right:100px;top:220px;width:440px;height:440px;background:#fff;padding:18px">
+<p><img data-src="img/doughnut.png" style="width:100%;height:100%;object-fit:contain"></p>
+</div>
+<div class="cap" style="right:24px;bottom:22px">
+<p>Amsterdam</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Scale 전환 · 숫자 카운터 · 막대 차트 빌드(기준 대비 원자재 사용 100 → 50) · 회전하며 등장하는 도넛. (해설서 10.1)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="barcelona" class="slide level2 photo veil" data-background-image="img/barcelona_superblock2.jpg" data-background-color="#0B140B" data-vt="push">
+<h2></h2>
+<div style="width:800px;margin-top:10px">
+<div class="kicker rise d1">
+<p>Case 2 · 실험으로 제도를 바꾸다</p>
+</div>
+<div class="ttl2 rise d2" style="color:#fff">
+<p>바르셀로나 슈퍼블록<br>(Superilles)</p>
+</div>
+<div class="xs rise d2 mt1">
+<p>Salvador Rueda · BCNecologia · Poblenou 2016 → Sant Antoni 2018 → Eixample ‘Superilla Barcelona’ 2020–23</p>
+</div>
+<div class="sm rise d3 mt2">
+<p>3×3 블록을 묶어 내부 통과 차량을 막고 거리를 시민에게 돌려줌. 페인트·화분·벤치의 <strong>전술적 도시계획</strong>으로 먼저 실험하고, 주민 참여를 거쳐 녹색 축(Consell de Cent 등)으로 영구화.</p>
+</div>
+<div class="fragment b-blur mt3" data-fragment-index="2">
+<div class="label">
+<p>스튜어드십 읽기</p>
+</div>
+<div class="sm">
+<p>초기 반발에 <strong>애자일하게 대응</strong>하며 ‘미완의 디자인’을 유지 → 거리의 주인을 차량에서 주민으로 이동. 디자이너는 계획가가 아니라 <span class="g" style="font-weight:700">실험의 조율자·번역자</span>.</p>
+</div>
+</div>
+<div class="note fragment b-wipe mt3" data-fragment-index="3">
+<p>Eckert 원칙: 애자일 · 포용과 참여 · 예측과 평가</p>
+</div>
+</div>
+<div class="abs rise d3" style="left:960px;top:160px;width:540px;height:540px">
+<svg width="540" height="540" viewbox="0 0 540 540" style="position:absolute;inset:0">
+  <rect x="24" y="24" width="492" height="492" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="26"></rect>
+  <rect x="180" y="24" width="30" height="492" fill="rgba(255,255,255,.22)"></rect>
+  <rect x="330" y="24" width="30" height="492" fill="rgba(255,255,255,.22)"></rect>
+  <rect x="24" y="180" width="492" height="30" fill="rgba(255,255,255,.22)"></rect>
+  <rect x="24" y="330" width="492" height="30" fill="rgba(255,255,255,.22)"></rect>
+  <g fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.3)" stroke-width="1">
+    <rect x="60" y="60" width="120" height="120"></rect><rect x="210" y="60" width="120" height="120"></rect><rect x="360" y="60" width="120" height="120"></rect>
+    <rect x="60" y="210" width="120" height="120"></rect><rect x="210" y="210" width="120" height="120"></rect><rect x="360" y="210" width="120" height="120"></rect>
+    <rect x="60" y="360" width="120" height="120"></rect><rect x="210" y="360" width="120" height="120"></rect><rect x="360" y="360" width="120" height="120"></rect>
+  </g>
+  <g class="fragment slow" data-fragment-index="1">
+    <rect x="180" y="45" width="30" height="450" fill="#2F6B2C"></rect>
+    <rect x="330" y="45" width="30" height="450" fill="#2F6B2C"></rect>
+    <rect x="45" y="180" width="450" height="30" fill="#2F6B2C"></rect>
+    <rect x="45" y="330" width="450" height="30" fill="#2F6B2C"></rect>
+    <g fill="#A8D5A2">
+      <rect x="187" y="187" width="16" height="16"></rect><rect x="337" y="187" width="16" height="16"></rect>
+      <rect x="187" y="337" width="16" height="16"></rect><rect x="337" y="337" width="16" height="16"></rect>
+      <rect x="189" y="110" width="12" height="12"></rect><rect x="339" y="420" width="12" height="12"></rect>
+      <rect x="110" y="189" width="12" height="12"></rect><rect x="420" y="339" width="12" height="12"></rect>
+    </g>
+  </g>
+</svg>
+<div class="car" style="offset-path:path('M 37 37 H 503 V 503 H 37 Z');--t:14s;--delay:0s">
+
+</div>
+<div class="car" style="offset-path:path('M 37 37 H 503 V 503 H 37 Z');--t:14s;--delay:-3.5s">
+
+</div>
+<div class="car" style="offset-path:path('M 37 37 H 503 V 503 H 37 Z');--t:14s;--delay:-7s">
+
+</div>
+<div class="car" style="offset-path:path('M 37 37 H 503 V 503 H 37 Z');--t:14s;--delay:-10.5s">
+
+</div>
+<div class="fragment fade-out" data-fragment-index="1" style="position:absolute;inset:0">
+<div class="car thru" style="offset-path:path('M 195 0 V 540');--t:4s;--delay:0s">
+
+</div>
+<div class="car thru" style="offset-path:path('M 0 345 H 540');--t:4.6s;--delay:-1s">
+
+</div>
+<div class="car thru" style="offset-path:path('M 345 540 V 0');--t:4.2s;--delay:-2s">
+
+</div>
+<div class="car thru" style="offset-path:path('M 540 195 H 0');--t:5s;--delay:-3s">
+
+</div>
+</div>
+</div>
+<div class="abs xs" style="left:960px;top:712px;width:540px;color:rgba(255,255,255,.8)">
+<p><span class="label" style="color:var(--mint);display:inline">3×3 Superilla</span> 클릭하면 내부 통과 차량이 사라지고 거리가 녹색(보행·녹지)으로 바뀐다. 외곽 도로의 차량은 계속 순환.</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Push 전환 · 모션 패스 애니메이션(외곽을 도는 차량, 내부를 가로지르는 통과 차량) · 클릭 한 번에 통과 차량이 빌드 아웃되고 내부 가로가 녹색으로 전환. (해설서 10.2)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bologna" class="slide level2" data-background-color="#FFFFFF" data-vt="reveal">
+<h2></h2>
+<div class="ph zoom" style="left:0;top:0;width:560px;height:900px">
+<p><img data-src="img/bologna.jpg"></p>
+</div>
+<div class="cap" style="left:24px;bottom:22px">
+<p>Bologna</p>
+</div>
+<div style="margin-left:600px">
+<div class="kicker rise d1">
+<p>Case 3 · 공유재의 공동 관리</p>
+</div>
+<div class="ttl2 rise d2">
+<p>볼로냐 도시공유재 규약</p>
+</div>
+<div class="xs rise d2 mt1">
+<p>Regolamento sui beni comuni urbani · 2014.5 · 볼로냐시 × Labsus · LabGov</p>
+</div>
+<div class="sm rise d3 mt2" style="font-size:19px">
+<p>시민과 행정이 공원·광장·빈 건물 등 도시 공유재를 함께 돌보기 위한 <strong>‘협력 협약(patti di collaborazione)’</strong>을 맺을 수 있도록 한 조례. 시민은 민원인이 아니라 <strong>공동 관리인</strong>이 된다. 이후 이탈리아 여러 도시로 확산.</p>
+</div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;margin-top:26px">
+<div class="ph rise d4" style="position:relative;width:150px;height:190px">
+<p><img data-src="img/ostrom.jpg"></p>
+</div>
+<div>
+<div class="label">
+<p>이론적 배경 · Elinor Ostrom (2009 노벨 경제학상)</p>
+</div>
+<div class="xs" style="color:var(--ink-2)">
+<p>『공유의 비극을 넘어(Governing the Commons, 1990)』 공동체 자치의 8개 설계 원칙</p>
+</div>
+<div class="ostrom mt1">
+<p><span class="fragment b-pop">① 명확한 경계</span> <span class="fragment b-pop" data-after="140">② 지역 조건과의 부합</span> <span class="fragment b-pop" data-after="140">③ 집합적 선택</span> <span class="fragment b-pop" data-after="140">④ 모니터링</span> <span class="fragment b-pop" data-after="140">⑤ 단계적 제재</span> <span class="fragment b-pop" data-after="140">⑥ 갈등 해결 장치</span> <span class="fragment b-pop" data-after="140">⑦ 자치 권리의 인정</span> <span class="fragment b-pop" data-after="140">⑧ 중첩된 조직</span></p>
+</div>
+</div>
+</div>
+<div class="note fragment b-wipe mt2" style="font-size:19px">
+<p>스튜어드십이 ‘제도’로 설계될 때, 공유재는 국가도 시장도 아닌 <span style="text-decoration:underline">돌보는 공동체</span>가 관리한다.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Reveal 전환 · 클릭 한 번에 Ostrom 8원칙이 0.14초 간격으로 Pop. 한국에 도입한다면? 토론 Q2와 연결. (해설서 10.3)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="nonhuman" class="slide level2 photo" data-background-color="#0B140B" data-vt="wipe">
+<h2></h2>
+<div class="ph zoom" style="left:0;top:0;width:800px;height:900px">
+<p><img data-src="img/whanganui.jpg"></p>
+</div>
+<div class="abs" style="left:0;top:0;width:800px;height:900px;background:linear-gradient(0deg,rgba(4,16,4,.94) 0%,rgba(4,16,4,.6) 45%,rgba(4,16,4,.1) 75%)">
+
+</div>
+<div class="abs fragment b-wipe-r" style="left:800px;top:0;width:800px;height:900px">
+<div class="ph zoom" style="left:0;top:0;width:800px;height:900px">
+<p><img data-src="img/wales.jpg"></p>
+</div>
+<div class="abs" style="left:0;top:0;width:800px;height:900px;background:linear-gradient(0deg,rgba(4,16,4,.94) 0%,rgba(4,16,4,.6) 45%,rgba(4,16,4,.1) 75%)">
+
+</div>
+<div class="abs" style="left:56px;right:56px;bottom:80px">
+<div class="kicker">
+<p>Case 5 · 미래세대의 관리인</p>
+</div>
+<div class="t" style="font-size:38px">
+<p>웨일스 미래세대 웰빙법 (2015)</p>
+</div>
+<div class="sm mt2" style="font-size:18.5px">
+<p>공공기관이 7개 웰빙 목표와 5가지 일하는 방식, 곧 <strong>장기적 사고·예방·통합·협력·참여</strong>를 따르도록 법제화. <strong>미래세대 위원(Future Generations Commissioner)</strong>이 아직 태어나지 않은 시민을 대변.</p>
+</div>
+<div class="mt1" style="font-size:16px;color:var(--mint)">
+<p>→ Eckert: 체계적 예측과 영향 평가</p>
+</div>
+</div>
+<div class="cap" style="right:24px;top:24px">
+<p>Senedd, Cardiff · Wales</p>
+</div>
+</div>
+<div class="abs rise d2" style="left:104px;width:620px;bottom:80px">
+<div class="kicker">
+<p>Case 4 · 비인간 존재의 관리인</p>
+</div>
+<div class="t" style="font-size:38px">
+<p>테 아와 투푸아 법 (2017)</p>
+</div>
+<div class="sm mt2" style="font-size:18.5px">
+<p>뉴질랜드 황가누이 강에 <strong>법적 인격</strong> 부여. 정부와 마오리 이위(iwi)가 각 1인씩 지명한 두 명의 수호자 <strong>Te Pou Tupua</strong>가 강의 ‘얼굴과 목소리’로서 강을 대리·관리.</p>
+</div>
+<div class="mt1" style="font-size:16px;color:var(--mint)">
+<p>→ Eckert: “인간과 인간이 아닌 존재의 관리인”</p>
+</div>
+</div>
+<div class="cap" style="left:24px;top:24px">
+<p>Whanganui River, New Zealand</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Wipe 전환 · 오른쪽에서 닦아 내는 사진 빌드. 둘 다 ’목소리 없는 존재’를 대리하는 제도적 장치. (해설서 10.4–10.5)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="medellin" class="slide level2 photo veil-l" data-background-image="img/medellin.jpg" data-background-color="#0B0B0C" data-vt="movein">
+<h2></h2>
+<div class="abs" style="left:920px;top:70px;width:600px;height:260px">
+<svg width="600" height="260" viewbox="0 0 600 260" style="position:absolute;inset:0">
+  <line class="dr auto" pathlength="1" x1="0" y1="30" x2="600" y2="230" stroke="rgba(255,255,255,.75)" stroke-width="1.5" style="animation-delay:.6s"></line>
+</svg>
+<div class="gondola">
+
+</div>
+</div>
+<div style="width:800px;margin-top:40px">
+<div class="kicker rise d1">
+<p>Case 6 · 가장 취약한 곳에 가장 좋은 디자인을</p>
+</div>
+<div class="ttl2 rise d2" style="color:#fff">
+<p>메데인 사회적 도시주의</p>
+</div>
+<div class="xs rise d2 mt1">
+<p>Urbanismo Social · Sergio Fajardo 시장(2004–07) · PUI 통합도시프로젝트 · Metrocable(2004) · Parque Biblioteca España(2007)</p>
+</div>
+<div class="sm rise d3 mt3">
+<p>세계에서 가장 폭력적인 도시로 불리던 메데인은 고지대 비공식 주거지에 케이블카·도서관 공원·옥외 에스컬레이터를 놓으며 <strong>공공 공간의 질을 사회 정의의 수단</strong>으로 삼았다. 계획 단계마다 주민 워크숍(imaginarios)을 운영.</p>
+</div>
+<div class="fragment b-iris mt3">
+<div class="label">
+<p>스튜어드십 읽기</p>
+</div>
+<div class="sm">
+<p>사회적 경계의 ‘미달(shortfall)’, 곧 교육·이동·안전을 채우는 디자인. 디자인이 <strong>신뢰를 회복하는 거버넌스 도구</strong>가 됨.</p>
+</div>
+</div>
+</div>
+<div class="cap" style="right:24px;bottom:22px">
+<p>Medellín, Colombia</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Move In 전환 · 선 그리기 + 모션 패스(케이블을 오가는 Metrocable) · Iris 빌드. (해설서 10.6)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="labs" class="slide level2" data-background-color="#F5F5F7" data-vt="push">
+<h2><span class="kicker">Case 7 · Public Innovation Labs</span> 정부 안에 <span class="g">스튜어드십의 자리</span>를 만들다</h2>
+<div class="cols" style="--n:3;border-top:0">
+<div class="fragment b-flip">
+<div class="thumb" style="height:260px">
+<p><img data-src="img/copenhagen_mindlab.jpg"></p>
+</div>
+<div class="label">
+<p>Denmark · 2002–2018</p>
+</div>
+<div class="t">
+<p>MindLab</p>
+</div>
+<div class="xs">
+<p>경제·고용·교육부 공동 부처간 혁신 조직 · Christian Bason</p>
+</div>
+<div class="sm mt1" style="font-size:18px">
+<p>시민 경험을 정책 설계에 끌어들인 최초의 정부 디자인랩. 기업 업종코드(Branchekode) 개편은 HDL이 꼽은 스튜어드십 사례.</p>
+</div>
+</div>
+<div class="fragment b-flip" data-after="300">
+<div class="thumb" style="height:260px">
+<p><img data-src="img/helsinki.jpg"></p>
+</div>
+<div class="label">
+<p>Finland · Sitra · 2009–2013</p>
+</div>
+<div class="t">
+<p>Helsinki Design Lab</p>
+</div>
+<div class="xs">
+<p>Marco Steinberg · Bryan Boyer · Justin W. Cook · Dan Hill</p>
+</div>
+<div class="sm mt1" style="font-size:18px">
+<p>‘전략 디자인’을 공공 영역에 도입하고, <strong>스튜어드십을 변화 주체의 핵심 역량</strong>으로 정식화(<em>Legible Practises</em>, 2013).</p>
+</div>
+</div>
+<div class="fragment b-flip" data-after="300">
+<div class="thumb" style="height:260px">
+<p><img data-src="img/london_policy.jpg"></p>
+</div>
+<div class="label">
+<p>UK · Cabinet Office · 2014–</p>
+</div>
+<div class="t">
+<p>Policy Lab</p>
+</div>
+<div class="xs">
+<p>영국 내각사무처 · 정책의 디자인 방법론 도입</p>
+</div>
+<div class="sm mt1" style="font-size:18px">
+<p>민족지학·프로토타이핑·시민 참여로 정책을 공동 설계. 정부 디지털서비스(GDS)와 함께 영국 공공혁신의 축.</p>
+</div>
+</div>
+</div>
+<div class="note fragment b-wipe mt3" style="font-size:19px">
+<p>한국: 행정안전부 국민디자인단(2014–) · 서울시 사회문제해결디자인, 정부 안의 스튜어드십 장치로 비교해 볼 것</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: 클릭 한 번에 세 개의 랩이 0.3초 간격으로 Flip(After Previous) · 사진에 마우스를 올리면 확대. (해설서 10.7)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="scdh" class="slide level2 photo veil-b" data-background-image="img/scdh_xr.jpg" data-background-color="#0B0B0C" data-vt="iris">
+<h2></h2>
+<div class="abs" style="left:104px;right:104px;bottom:90px;display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:end">
+<div>
+<div class="kicker rise d1">
+<p>Case 8 · Eckert의 현장</p>
+</div>
+<div class="ttl2 rise d2" style="color:#fff">
+<p>Swiss Center for<br>Design and Health 리빙랩</p>
+</div>
+<div class="xs rise d3 mt1">
+<p>스위스 Nidau · 연방·베른주·민간 파트너의 공공-민간 협력 국가 기술역량센터 · BFH 연구그룹(2007~)에서 출발</p>
+</div>
+</div>
+<div>
+<div class="sm rise d3">
+<p>약 560㎡의 확장현실(XR) 시뮬레이션 공간에 평면도를 <strong>1:1로 투사</strong>하고, 의사·간호사·환자·건축가가 함께 병원 동선을 롤플레이하며 검증한다(예: Bülach 병원).</p>
+</div>
+<div class="note fragment b-scale mt2">
+<p>디자이너는 해답을 납품하지 않는다. 이해관계자가 함께 <span style="text-decoration:underline">보고, 겪고, 결정할 수 있는 장</span>을 디자인한다.</p>
+</div>
+</div>
+</div>
+<div class="cap" style="right:24px;top:24px">
+<p>SCDH Extended-Reality simulation area · vitality.swiss</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Iris 전환 · Scale 빌드(크게 나타났다가 제자리로). (해설서 10.8)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conclusion" class="slide level2 photo veil" data-background-image="img/ll_ws6.jpg" data-background-color="#0B140B" data-auto-animate="true" data-auto-animate-id="eng" data-vt="doorway">
+<h2 data-id="quarto-animate-title"></h2>
+<div class="kicker rise d1">
+<p>Conclusion</p>
+</div>
+<div class="ttl2 rise d2" style="color:#fff;font-size:56px">
+<p>‘결과’를 만드는 디자인에서 <span class="g">‘관계’</span>를 돌보는 디자인으로</p>
+</div>
+<div style="width:1100px;margin:34px auto 0">
+<div class="shift fragment">
+<p><span class="from">결과물 · 媒介物</span> <span class="arr">→</span> <span class="to">관계 · 媒介機</span></p>
+</div>
+<div class="shift fragment">
+<p><span class="from">통제 · control</span> <span class="arr">→</span> <span class="to">돌봄 · care</span></p>
+</div>
+<div class="shift fragment">
+<p><span class="from">작가 · authorship</span> <span class="arr">→</span> <span class="to">리더십 · stewardship</span></p>
+</div>
+<div class="shift fragment">
+<p><span class="from">수행자 · agent</span> <span class="arr">→</span> <span class="to">변혁의 주체 · steward</span></p>
+</div>
+<div class="shift fragment">
+<p><span class="from">납품 · delivery</span> <span class="arr">→</span> <span class="to">지속적 관리 · tending</span></p>
+</div>
+</div>
+<div class="note fragment b-wipe mt3" data-id="engine" style="font-size:22px">
+<p>스튜어드십은 디자인 거버넌스의 ‘부록’이 아니라 엔진이다.</p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Doorway 전환 · 클릭마다 왼쪽이 흐려지고 오른쪽이 들어오는 교체 빌드 · 마지막 문장은 다음 슬라이드에서 Magic Move로 화면 가운데 크게 이동. (해설서 11장)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="engine" class="slide level2 photo veil" data-background-image="img/ll_ws6.jpg" data-background-color="#0B140B" data-auto-animate="true" data-auto-animate-id="eng">
+<h2 data-id="quarto-animate-title"></h2>
+<div class="engine sparkle-auto" data-id="engine" data-delay="1300">
+<p>스튜어드십은 디자인 거버넌스의 ‘부록’이 아니라 엔진이다.</p>
+</div>
+<div class="abs fragment t-words" style="left:104px;right:104px;top:600px;text-align:center">
+<p><span class="lead" style="font-size:28px">디자이너가 자기 개발에서 출발해 관계와 생태계를 돌볼 때, 거버넌스는 위계에서 혁신으로 이동한다.</span></p>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Magic Move(앞 슬라이드의 문장이 가운데로 이동하며 커짐) · Sparkle 파티클 · 단어 단위 빌드.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="discussion" class="slide level2" data-vt="movein">
+<h2><span class="kicker">Discussion &amp; Assignment</span> 토론과 과제</h2>
+<div class="abs" style="right:0;top:0;bottom:0;width:640px;background:#013D00">
+
+</div>
+<div style="width:780px">
+<div class="rows">
+<div class="fragment b-drop">
+<div class="label">
+<p>Q1</p>
+</div>
+<div class="t" style="font-size:25px">
+<p>나는 누구의 관리인인가?</p>
+</div>
+<div class="sm mt1" style="font-size:18px">
+<p>내가 참여한 최근 프로젝트에서 ‘보이지 않던 이해관계자’, 곧 비인간, 미래세대, 목소리 없는 주민은 누구였는가?</p>
+</div>
+</div>
+<div class="fragment b-drop">
+<div class="label">
+<p>Q2</p>
+</div>
+<div class="t" style="font-size:25px">
+<p>한국 공공디자인 제도의 스튜어드십 공백</p>
+</div>
+<div class="sm mt1" style="font-size:18px">
+<p>과업지시서·용역·준공 검사 중심의 발주 구조에서, ‘지속적 관리(tending)’는 누가 맡는가? 볼로냐 협력 협약이나 웨일스 미래세대 위원 같은 장치를 한국에 도입한다면?</p>
+</div>
+</div>
+<div class="fragment b-drop">
+<div class="label">
+<p>Q3</p>
+</div>
+<div class="t" style="font-size:25px">
+<p>Y자형 디자이너는 어떻게 길러지는가</p>
+</div>
+<div class="sm mt1" style="font-size:18px">
+<p>대학원 교육은 T자형을 넘어 연결 역량과 자기 개발을 어떻게 커리큘럼화할 수 있는가?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="abs" style="left:104px;bottom:86px;display:flex;align-items:baseline;gap:28px">
+<div class="timer" data-min="10">
+<p>10:00</p>
+</div>
+<div class="xs">
+<p>모둠 토론 타이머<br>숫자를 클릭하거나 T 키로 시작·정지</p>
+</div>
+</div>
+<div class="abs fragment b-wipe-r" style="right:0;top:0;width:640px;padding:150px 64px 0;color:#fff">
+<div class="label" style="color:var(--mint)">
+<p>Assignment</p>
+</div>
+<div class="t" style="color:#fff;font-size:36px">
+<p>스튜어드십 진단 카드</p>
+</div>
+<div class="mt2" style="font-size:18px;color:rgba(255,255,255,.82);line-height:1.6">
+<p>각자 관심 있는 국내 공공디자인 사업 1건을 골라 다음을 A4 2쪽으로 정리.</p>
+</div>
+<div class="assign mt2">
+<div>
+<p><strong>도넛 진단</strong> <span>어떤 사회적 기초를 채우고, 어떤 지구적 한계를 넘었는가</span></p>
+</div>
+<div>
+<p><strong>네 영역 평가</strong> <span>Eckert 4영역별 강점·공백</span></p>
+</div>
+<div>
+<p><strong>관리인 지도</strong> <span>사업 이후 누가 무엇을 돌보는가</span></p>
+</div>
+<div>
+<p><strong>거버넌스 제안</strong> <span>위계형 절차를 스튜어드십형으로 바꾸는 장치 1가지</span></p>
+</div>
+</div>
+<div class="mt3" style="font-size:14px;color:rgba(255,255,255,.6)">
+<p>참고: Eckert의 12원칙 · Design Council 4개 역할 · Ostrom 8원칙</p>
+</div>
+</div>
+<aside class="notes">
+<p>Keynote 기능: Move In 전환 · 질문이 하나씩 Drop · 과제가 오른쪽에서 Wipe · 10분 토론 타이머(T 키, 끝나면 스파클). (해설서 13장)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="fx-index" class="slide level2" data-visibility="uncounted" data-vt="dissolve">
+<h2><span class="kicker">Keynote FX Index</span> 이 발표에 쓰인 <span class="g">Keynote 기능</span></h2>
+<div class="cols fxidx" style="--n:4">
+<div>
+<div class="label">
+<p>Transitions · 전환</p>
+</div>
+<p><a href="#//declarations">Dissolve</a> · <a href="#//today">Scale</a> · <a href="#//quote">Blur</a> · <a href="#//part-1">Cube</a> · <a href="#//etymology">Push</a> · <a href="#//paradigms">Wipe</a> · <a href="#//agency">Swap</a> · <a href="#//timeline">Iris</a> · <a href="#//papanek">Fall</a> · <a href="#//brighton">Blinds</a> · <a href="#//profile">Reveal</a> · <a href="#//publications">Page Flip</a> · <a href="#//principles-1">Flip</a> · <a href="#//medellin">Move In</a> · <a href="#//conclusion">Doorway</a></p>
+<div class="xs mt2">
+<p>슬라이드 제목 뒤에 <code>vt="cube"</code> 처럼 지정</p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Magic Move</p>
+</div>
+<p><a href="#//y-shaped">도식 이동·축소 · T → Y</a></p>
+<p><a href="#//four-areas">이미지 이동·크기 · 네 영역</a></p>
+<p><a href="#//minute-15">사진·숫자 연속 · 15 → 1 → 무</a></p>
+<p><a href="#//pyramid">요소의 위치·색 변화 · 피라미드 → 네트워크</a></p>
+<p><a href="#//conclusion">문장이 제목으로 · 결론 → 엔진</a></p>
+<div class="xs mt2">
+<p><code>auto-animate=true</code> + <code>auto-animate-id</code> + 요소에 <code>data-id</code></p>
+</div>
+</div>
+<div>
+<div class="label">
+<p>Builds · 빌드</p>
+</div>
+<p><a href="#//etymology">Drop · Pop · Anvil</a> · <a href="#//paradigms">Flip</a> · <a href="#//papanek">Typewriter</a> · <a href="#//quote">Words</a> · <a href="#//part-1">Letters</a> · <a href="#//declarations">Drop · Iris · Scale</a> · <a href="#//nominute">Blur</a> · <a href="#//agency">Wipe</a> · <a href="#//brighton">After Previous</a> · <a href="#//agency">Build Out · Dim</a> · <a href="#//today">Highlight · Strike</a> · <a href="#//agency">Pulse</a> · <a href="#//five-elements">Cell Fill</a> · <a href="#//engine">Sparkle</a> · <a href="#//cover">Shimmer</a></p>
+</div>
+<div>
+<div class="label">
+<p>Actions · 도구</p>
+</div>
+<p><a href="#//network">Motion Path · Orbit</a> · <a href="#//barcelona">Motion Path · Traffic</a> · <a href="#//medellin">Line Draw · Gondola</a> · <a href="#//amsterdam">Chart Build · Counter</a> · <a href="#//cover">Ken Burns</a> · <a href="#//part-4">Self-playing Montage</a> · <a href="#//today">Hyperlink</a> · <a href="#//discussion">Timer</a></p>
+<div class="xs mt2">
+<p>S 발표자 화면 · L 레이저 · O 전체 보기 · B 칠판 · C 필기 · M 메뉴 · Alt+클릭 확대 · Ctrl+Shift+F 검색 · E PDF 모드 · ? 단축키</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>번호 없는 부록 슬라이드(visibility=“uncounted”). 각 항목을 누르면 해당 기능이 쓰인 슬라이드로 이동한다. 사용법은 keynote/GUIDE.md 참고.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="references" class="slide level2 refs" data-visibility="uncounted">
+<h2><span class="kicker">References</span> 참고문헌</h2>
+<div class="reflist">
+<p>AIGA (2017). <em>AIGA Designer 2025</em>. educators.aiga.org</p>
+<p>Block, P. (1993). <em>Stewardship: Choosing Service over Self-Interest</em>. Berrett-Koehler.</p>
+<p>Boyer, B., Cook, J. W. &amp; Steinberg, M. (2013). <em>Legible Practises: Six stories about the craft of stewardship</em>. Helsinki: Sitra.</p>
+<p>Brighton 05-06-07 (2008). <em>Design Issues</em>, 24(1), 91–93. MIT Press.</p>
+<p>Buchanan, R. (1992). Wicked Problems in Design Thinking. <em>Design Issues</em>, 8(2), 5–21.</p>
+<p>Davis, J. H., Schoorman, F. D. &amp; Donaldson, L. (1997). Toward a Stewardship Theory of Management. <em>Academy of Management Review</em>, 22(1), 20–47.</p>
+<p>Design Council (2021). <em>Beyond Net Zero: A Systemic Design Approach</em>.</p>
+<p>Eckert, J. (2017). The Y-Shaped Designer: Connective Competences as Key to Collaboration across Disciplines. <em>Journal of Education and Learning</em>, 6(4), 137–144.</p>
+<p>Eckert, J. (2017). The Agile Artifact. <em>Universal Journal of Management</em>, 5(5), 236–242.</p>
+<p>Eckert, J. (2018). Leading the Conversation – Why Design Education should care more about Leadership and Stewardship in Design. Cumulus Paris.</p>
+<p>Eckert, J. (2021). Stewardship in Design. janeckert.ch/blog</p>
+<p>Eckert, J. A. (2026). <em>Stewardship in Design Education: Future-Proofing the Eco-Social Curriculum</em>. Lived Places Publishing.</p>
+<p>Eckert, J. A. (2025–). nominute.city, post-growth eco-social urban transformation.</p>
+<p>Hallsworth, M. (2011). <em>System Stewardship: The future of policy making?</em> Institute for Government.</p>
+<p>Maldonado, T. (1970). <em>La Speranza Progettuale</em>. Einaudi.</p>
+<p>Montréal Design Declaration (2017). World Design Summit. designdeclaration.org</p>
+<p>Moreno, C. et al.&nbsp;(2021). Introducing the “15-Minute City”. <em>Smart Cities</em>, 4(1), 93–111.</p>
+<p>Osborne, D. &amp; Gaebler, T. (1992). <em>Reinventing Government</em>. Addison-Wesley.</p>
+<p>Ostrom, E. (1990). <em>Governing the Commons</em>. Cambridge University Press.</p>
+<p>Papanek, V. (1971). <em>Design for the Real World</em>. Pantheon.</p>
+<p>Raworth, K. (2017). <em>Doughnut Economics</em>. Random House.</p>
+<p>Rodgers, P. A. et al.&nbsp;(2019). The Lancaster Care Charter. <em>Design Issues</em>, 35(1), 73–77.</p>
+<p>대전디자인진흥원 (2024). 『2024년 도시디자인 리빙랩 성과공유회』.</p>
+</div>
+</section>
+<section id="credits" class="slide level2 scrollable credits" data-visibility="uncounted">
+<h2><span class="kicker">Image Credits</span> 이미지 출처</h2>
+<table class="tb cr caption-top">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">파일</th>
+<th data-quarto-table-cell-role="th">저작자 / 내용</th>
+<th data-quarto-table-cell-role="th">라이선스</th>
+<th data-quarto-table-cell-role="th">출처</th>
+</tr>
+<tr class="even">
+<td>amsterdam.jpg</td>
+<td>Massimo Catarinella</td>
+<td>CC BY-SA 3.0</td>
+<td>Commons: KeizersgrachtReguliersgrachtAmsterdam.jpg</td>
+</tr>
+<tr class="odd">
+<td>barcelona_superblock.jpg</td>
+<td>Cataleirxs</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Superilla_del_barri_de_Sant_Antoni,_Barcelona.jpg</td>
+</tr>
+<tr class="even">
+<td>barcelona_superblock2.jpg</td>
+<td>Cataleirxs</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Carrer_Consell_de_Cent_de_Barcelona,_tram_de_la_Superilla_de_</td>
+</tr>
+<tr class="odd">
+<td>bologna.jpg</td>
+<td>FrancescoLama</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Bologna_Portici_di_Via_dei_Mille.jpg</td>
+</tr>
+<tr class="even">
+<td>book.png</td>
+<td>Stewardship in Design Education (cover)</td>
+<td>© Lived Places Publishing</td>
+<td>fulcrum.org</td>
+</tr>
+<tr class="odd">
+<td>brighton.jpg</td>
+<td>Steve Daniels</td>
+<td>CC BY-SA 2.0</td>
+<td>Commons: Brighton_Palace_Pier_and_beach_-_geograph.org.uk_-_7833500.jp</td>
+</tr>
+<tr class="even">
+<td>codesign_workshop.jpg</td>
+<td>Jan Dittrich (WMDE)</td>
+<td>CC BY 4.0</td>
+<td>Commons: TechnicalWishlist_Workshop_Search_16-18_Munich_StickyNotesWal</td>
+</tr>
+<tr class="odd">
+<td>copenhagen_mindlab.jpg</td>
+<td>Jakub Hałun</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Nyhavn,_Copenhagen,_20220618_1726_7351.jpg</td>
+</tr>
+<tr class="even">
+<td>doughnut.png</td>
+<td>DoughnutEconomics</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Doughnut_(economic_model).jpg</td>
+</tr>
+<tr class="odd">
+<td>forest_steward.jpg</td>
+<td>Michal Klajban</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Sun_getting_through_fog_in_the_New_Zealand_bush,_Bryant_Range</td>
+</tr>
+<tr class="even">
+<td>helsinki.jpg</td>
+<td>Tyg728</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Helsinki_Senate_Square_20170130.jpg</td>
+</tr>
+<tr class="odd">
+<td>je_curric.jpg</td>
+<td>Jan Eckert, Stewardship Curriculum</td>
+<td>© Jan Eckert</td>
+<td>janeckert.ch/blog/stewardship-in-design</td>
+</tr>
+<tr class="even">
+<td>je_mirror.jpg</td>
+<td>Jan Eckert, Four Areas of Stewardship in Design</td>
+<td>© Jan Eckert</td>
+<td>janeckert.ch/blog/stewardship-in-design</td>
+</tr>
+<tr class="odd">
+<td>london_policy.jpg</td>
+<td>Txllxt TxllxT</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: London_-_Whitehall_-_View_South_I.jpg</td>
+</tr>
+<tr class="even">
+<td>maldonado.jpg</td>
+<td>Pietro Luca Cassarino</td>
+<td>CC BY-SA 3.0</td>
+<td>Commons: Toms_Maldonado_Milano_2014.jpg</td>
+</tr>
+<tr class="odd">
+<td>medellin.jpg</td>
+<td>JoranL</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: Biblioteca_de_Espaa_and_Metrocable_02.jpg</td>
+</tr>
+<tr class="even">
+<td>montreal.jpg</td>
+<td>Taxiarchos228</td>
+<td>CC BY 3.0</td>
+<td>Commons: Montreal_-_QC_-_Skyline.jpg</td>
+</tr>
+<tr class="odd">
+<td>nm_satoakichi.jpg</td>
+<td>Satoakichi</td>
+<td>© Jan Albert Eckert 2025</td>
+<td>nominute.city</td>
+</tr>
+<tr class="even">
+<td>nm_tadasu.jpg</td>
+<td>Tadasu-Gawara, Kyoto</td>
+<td>© Jan Albert Eckert 2025</td>
+<td>nominute.city</td>
+</tr>
+<tr class="odd">
+<td>ostrom.jpg</td>
+<td>US Embassy Sweden</td>
+<td>CC BY 2.0</td>
+<td>Commons: Nobel_Laureate_Elinor_Ostrom_(Economics)_2_(4171860780).jpg</td>
+</tr>
+<tr class="even">
+<td>papanek.jpg</td>
+<td>Rochester Institute of Technology</td>
+<td>Public domain</td>
+<td>Commons: Victor_Papanek,_RIT_NandE_Vol13Num3_1981_Jan22_Complete.jpg</td>
+</tr>
+<tr class="odd">
+<td>paris_15min.jpg</td>
+<td>Jacques Paquier</td>
+<td>CC BY 2.0</td>
+<td>Commons: Rue_de_Rivoli_(50022920567).jpg</td>
+</tr>
+<tr class="even">
+<td>scdh_sim.jpg</td>
+<td>SCDH Bülach hospital simulation</td>
+<td>© SCDH</td>
+<td>vitality.swiss/en/articles/2024/scdh</td>
+</tr>
+<tr class="odd">
+<td>scdh_xr.jpg</td>
+<td>SCDH XR simulation area</td>
+<td>© SCDH</td>
+<td>vitality.swiss/en/articles/2024/scdh</td>
+</tr>
+<tr class="even">
+<td>streetmoves.jpg</td>
+<td>Elsa Soläng / Vinnova &amp; ArkDes (Street Moves)</td>
+<td>Press image - all rights reserved; editorial/educational use</td>
+<td>globetrender.com/2021/01/21/street-moves-sweden-one-minute-city/</td>
+</tr>
+<tr class="odd">
+<td>wales.jpg</td>
+<td>Rosser1954</td>
+<td>CC BY-SA 4.0</td>
+<td>Commons: The_Senedd,_Cardiff_Bay,_South_Wales._View_from_the_east.jpg</td>
+</tr>
+<tr class="even">
+<td>whanganui.jpg</td>
+<td>Duane Wilkins</td>
+<td>CC BY 3.0</td>
+<td>Commons: Photo_taken_in_Whanganui_-_panoramio_-_Duane_Wilkins_(1).jpg</td>
+</tr>
+<tr class="odd">
+<td>ll_ws6.jpg</td>
+<td>2024 대전 도시디자인 리빙랩 현장</td>
+<td>대전디자인진흥원</td>
+<td>성과공유회 자료집 (2024)</td>
+</tr>
+</tbody>
+</table>
+<div class="xs mt2">
+<p>교육 목적 사용. Wikimedia Commons 이미지는 각 CC 라이선스 조건(저작자 표시·동일조건변경허락)을 따름. © 표기 이미지는 강의 내 인용 목적으로만 사용.</p>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>공공거버넌스와 리더십 2026 · 이현성</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="deck_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="deck_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="deck_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="deck_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "cubic-bezier(.2,.7,.2,1)",
+'autoAnimateDuration': 1.2,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"numbers":true},
+'chalkboard': {"buttons":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <div id="fx-laser"></div>
+    <canvas id="fx-sparkle"></canvas>
+    <script>
+    /* ==========================================================================
+       Keynote FX runtime for Quarto Reveal.js
+       - 슬라이드 전환: 슬라이드의 vt="cube" (data-vt) → View Transitions API
+       - 텍스트 빌드: .t-chars / .t-words / .t-type 를 글자·단어로 나눈다
+       - 연속 빌드: 프래그먼트에 after="400" → 앞 빌드 뒤 400ms에 자동 실행
+       - 숫자 카운터: .count[data-to][data-from][data-dur]
+       - 스파클: 프래그먼트 .b-sparkle 또는 슬라이드 안 .sparkle-auto
+       - 레이저 포인터: L 키 / 토론 타이머: .timer 클릭 또는 T 키
+       ========================================================================== */
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var printMode = /print-pdf/.test(location.search);
+      var vtOff = /[?&]vt=off/.test(location.search);  /* ?vt=off: 전환 효과 끄기 */
+
+      /* ---------- 텍스트 나누기 ---------- */
+      function split(el, mode) {
+        var i = 0;
+        var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+        var nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(function (node) {
+          var frag = document.createDocumentFragment();
+          node.nodeValue.split(/(\s+)/).forEach(function (tok) {
+            if (!tok) return;
+            if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(tok)); return; }
+            var w = document.createElement('span');
+            w.className = 'wd';
+            if (mode === 'words') { w.style.setProperty('--i', i++); w.textContent = tok; }
+            else {
+              Array.from(tok).forEach(function (c) {
+                var s = document.createElement('span');
+                s.className = 'ch'; s.textContent = c; s.style.setProperty('--i', i++);
+                w.appendChild(s);
+              });
+            }
+            frag.appendChild(w);
+          });
+          node.parentNode.replaceChild(frag, node);
+        });
+      }
+      function splitAll() {
+        document.querySelectorAll('.t-chars, .t-type').forEach(function (el) { split(el, 'chars'); });
+        document.querySelectorAll('.t-words').forEach(function (el) { split(el, 'words'); });
+      }
+
+      /* ---------- 숫자 카운터 ---------- */
+      function count(el) {
+        var to = parseFloat(el.dataset.to), from = parseFloat(el.dataset.from || 0);
+        var dur = parseFloat(el.dataset.dur || 1600), t0 = null;
+        if (reduce || printMode) { el.textContent = to; return; }
+        el.textContent = from;
+        requestAnimationFrame(function step(t) {
+          if (t0 === null) t0 = t;
+          var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(from + (to - from) * e);
+          if (p < 1) requestAnimationFrame(step);
+        });
+      }
+      function hiddenInFragment(el) { var f = el.closest('.fragment'); return f && !f.classList.contains('visible'); }
+
+      /* ---------- 스파클 ---------- */
+      var cv = document.getElementById('fx-sparkle'), cx = cv.getContext('2d'), parts = [], running = false;
+      var COLORS = ['#A8D5A2', '#FFFFFF', '#2F6B2C', '#EEF5EC', '#013D00'];
+      function sparkle(el, n) {
+        if (reduce || printMode) return;
+        var r = el.getBoundingClientRect();
+        cv.width = innerWidth; cv.height = innerHeight;
+        for (var k = 0; k < (n || 90); k++) {
+          parts.push({
+            x: r.left + Math.random() * r.width, y: r.top + Math.random() * r.height,
+            vx: (Math.random() - .5) * 9, vy: -Math.random() * 9 - 2, s: 3 + Math.random() * 7,
+            r: Math.random() * 6, vr: (Math.random() - .5) * .3, life: 0, max: 60 + Math.random() * 50,
+            c: COLORS[k % COLORS.length]
+          });
+        }
+        if (!running) { running = true; requestAnimationFrame(tick); }
+      }
+      function tick() {
+        cx.clearRect(0, 0, cv.width, cv.height);
+        parts = parts.filter(function (p) { return p.life < p.max; });
+        parts.forEach(function (p) {
+          p.life++; p.x += p.vx; p.y += p.vy; p.vy += .22; p.vx *= .985; p.r += p.vr;
+          cx.save(); cx.globalAlpha = 1 - p.life / p.max; cx.translate(p.x, p.y); cx.rotate(p.r);
+          cx.fillStyle = p.c; cx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s); cx.restore();
+        });
+        if (parts.length) requestAnimationFrame(tick); else { running = false; cx.clearRect(0, 0, cv.width, cv.height); }
+      }
+
+      /* ---------- 레이저 포인터 ---------- */
+      var laser = document.getElementById('fx-laser');
+      document.addEventListener('mousemove', function (e) { laser.style.left = e.clientX + 'px'; laser.style.top = e.clientY + 'px'; });
+
+      /* ---------- 토론 타이머 ---------- */
+      var timers = new Map();
+      function fmt(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+      function toggleTimer(el) {
+        var st = timers.get(el) || { left: parseInt(el.dataset.min || 10, 10) * 60, id: null };
+        if (st.id) { clearInterval(st.id); st.id = null; el.classList.remove('running'); }
+        else {
+          if (st.left <= 0) st.left = parseInt(el.dataset.min || 10, 10) * 60;
+          el.classList.remove('done'); el.classList.add('running');
+          st.id = setInterval(function () {
+            st.left--; el.textContent = fmt(st.left);
+            if (st.left <= 0) { clearInterval(st.id); st.id = null; el.classList.remove('running'); el.classList.add('done'); sparkle(el, 120); }
+          }, 1000);
+        }
+        timers.set(el, st);
+      }
+
+      /* ---------- Reveal 연결 ---------- */
+      function start() {
+        var R = window.Reveal;
+        if (!R) return;
+        splitAll();
+        document.querySelectorAll('.timer').forEach(function (el) {
+          el.textContent = fmt(parseInt(el.dataset.min || 10, 10) * 60);
+          el.addEventListener('click', function (e) { e.stopPropagation(); toggleTimer(el); });
+        });
+
+        var vtOK = !!document.startViewTransition && !reduce && !printMode && !vtOff;
+        function ready() {
+          if (!vtOK) R.configure({ transition: 'fade', backgroundTransition: 'fade' });
+          onEnter(R.getCurrentSlide());
+          R.addKeyBinding({ keyCode: 76, key: 'L', description: '레이저 포인터 켜기/끄기' }, function () {
+            document.documentElement.classList.toggle('laser-on');
+          });
+          R.addKeyBinding({ keyCode: 84, key: 'T', description: '이 슬라이드의 타이머 시작/정지' }, function () {
+            var t = R.getCurrentSlide().querySelector('.timer'); if (t) toggleTimer(t);
+          });
+        }
+        if (R.isReady()) ready(); else R.on('ready', ready);
+
+        /* 슬라이드 진입 */
+        function onEnter(slide) {
+          slide.querySelectorAll('.count').forEach(function (el) {
+            if (hiddenInFragment(el)) el.textContent = el.dataset.from || 0; else count(el);
+          });
+          slide.querySelectorAll('.sparkle-auto').forEach(function (el) {
+            setTimeout(function () { if (R.getCurrentSlide() === slide) sparkle(el, 140); }, parseInt(el.dataset.delay || 600, 10));
+          });
+        }
+        R.on('slidechanged', function (ev) { onEnter(ev.currentSlide); });
+
+        /* 프래그먼트: 카운터·스파클·연속 빌드 */
+        R.on('fragmentshown', function (ev) {
+          ev.fragments.forEach(function (f) {
+            (f.classList.contains('count') ? [f] : Array.from(f.querySelectorAll('.count'))).forEach(count);
+            if (f.classList.contains('b-sparkle')) setTimeout(function () { sparkle(f, 110); }, 250);
+          });
+          var slide = R.getCurrentSlide();
+          var next = Array.from(slide.querySelectorAll('.fragment:not(.visible)'))
+            .sort(function (a, b) { return (+a.dataset.fragmentIndex) - (+b.dataset.fragmentIndex); })[0];
+          if (next && next.dataset.after !== undefined) {
+            setTimeout(function () { if (R.getCurrentSlide() === slide && !next.classList.contains('visible')) R.nextFragment(); },
+              parseInt(next.dataset.after || 0, 10));
+          }
+        });
+
+        /* View Transitions: Keynote식 슬라이드 전환 */
+        var inside = false, pending = false;
+        R.on('beforeslidechange', function (e) {
+          if (!vtOK || inside || !R.isReady() || R.isOverview()) return;
+          /* 전환 콜백이 아직 실행되지 않았으면 입력을 무시한다 (이전 위치 기준 계산 방지) */
+          if (pending) { e.preventDefault(); return; }
+          var cur = R.getCurrentSlide(), tgt = R.getSlide(e.indexh, e.indexv || 0);
+          if (!cur || !tgt || cur === tgt) return;
+          if (cur.hasAttribute('data-auto-animate') && tgt.hasAttribute('data-auto-animate')) return;
+          var ci = R.getIndices(cur), ti = R.getIndices(tgt);
+          var fwd = ti.h > ci.h || (ti.h === ci.h && (ti.v || 0) > (ci.v || 0));
+          var type = (fwd ? tgt : cur).getAttribute('data-vt') || 'dissolve';
+          e.preventDefault();
+          var html = document.documentElement;
+          html.setAttribute('data-vt', type);
+          html.style.setProperty('--vt-dir', fwd ? 1 : -1);
+          var h = e.indexh, v = e.indexv, origin = e.origin;
+          pending = true;
+          var t;
+          try {
+            t = document.startViewTransition(function () { inside = true; try { R.slide(h, v, undefined, origin); } finally { inside = false; pending = false; } });
+          } catch (err) { pending = false; html.removeAttribute('data-vt'); inside = true; R.slide(h, v, undefined, origin); inside = false; return; }
+          t.finished.finally(function () { pending = false; if (html.getAttribute('data-vt') === type) html.removeAttribute('data-vt'); });
+        });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "복사완료!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "복사완료!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+<a class="spd-back" href="../../index.html#board" aria-label="SPD Lab 강의 목록으로">SPD Lab · 강의 목록으로</a>
+<style>.spd-back{position:fixed;left:16px;top:14px;z-index:9999;font:500 12px/1 "Noto Sans KR",sans-serif;color:#86868b;text-decoration:none;background:rgba(255,255,255,.82);padding:7px 10px;transition:color .25s}.spd-back:hover{color:#ff6b1a}@media print{.spd-back{display:none}}</style>
+</body></html>
