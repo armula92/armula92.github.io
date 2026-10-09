@@ -339,3 +339,28 @@
     msg.textContent = "보내는 중…";
   });
 })();
+
+/* 공공디자인 실험실 소개 팝업 (lab/index.html) */
+(function () {
+  var open = document.getElementById("labOpen"), sheet = document.getElementById("labSheet");
+  if (!open || !sheet) return;
+  var frame = document.getElementById("labFrame"), close = document.getElementById("labClose");
+  function show(e) {
+    if (e && (e.metaKey || e.ctrlKey || e.shiftKey)) return;   // 새 탭 열기는 그대로
+    if (e) e.preventDefault();
+    if (!frame.getAttribute("src")) frame.src = "lab/";
+    sheet.hidden = false;
+    document.body.classList.add("lab-lock");
+    requestAnimationFrame(function () { sheet.classList.add("open"); });
+    setTimeout(function () { try { frame.focus(); } catch (x) {} }, 300);
+  }
+  function hide() {
+    sheet.classList.remove("open");
+    document.body.classList.remove("lab-lock");
+    setTimeout(function () { sheet.hidden = true; open.focus(); }, 350);
+  }
+  open.addEventListener("click", show);
+  close.addEventListener("click", hide);
+  frame.addEventListener("load", function () { try { frame.contentWindow.focus(); } catch (x) {} });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sheet.hidden) hide(); });
+})();

@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261005b">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261009a">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ResearchOrganization","name":"Socio-Public Design Lab (SPD Lab)","alternateName":"홍익대학교 공공디자인전공 이현성 교수 연구실","url":"https://www.armula.com/","logo":"https://www.armula.com/assets/img/hero-01.jpg","parentOrganization":{"@type":"CollegeOrUniversity","name":"홍익대학교 Hongik University"},"founder":{"@type":"Person","name":"이현성 LEE Hyunsung","jobTitle":"교수"},"address":{"@type":"PostalAddress","streetAddress":"와우산로 94","addressLocality":"마포구","addressRegion":"서울특별시","addressCountry":"KR"}}
   </script>
@@ -43,6 +43,7 @@
       <span class="lang notranslate" translate="no" role="group" aria-label="사이트 번역"><button type="button" data-lang="ko" title="한국어">KO</button><button type="button" data-lang="en" title="English">EN</button><button type="button" data-lang="ja" title="日本語">JP</button><button type="button" data-lang="zh-CN" title="中文">CN</button></span>
       <a href="hipd.html" class="nav-hipd"><i></i>HIPD</a>
     </nav>
+    <a href="lab/" class="lab-mark" id="labOpen" aria-haspopup="dialog" aria-controls="labSheet" title="공공디자인 실험실 소개"><i aria-hidden="true"></i><span class="sr-only">공공디자인 실험실 소개 보기</span></a>
     <button class="menu-btn" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
@@ -220,7 +221,7 @@
 
         <div class="cv">
           <h4 class="rv">Research Interests</h4>
-          <p class="tags rv"><span>공공디자인 거버넌스</span><span>사회문제해결 디자인</span><span>ESG 공공디자인</span><span>공공가치 지표</span><span>Policy by Design</span><span>AI 기반 연구방법론</span></p>
+          <p class="tags rv"><span>공공디자인 거버넌스</span><span>공공안전디자인</span><span>사회문제해결 디자인</span><span>ESG 공공디자인</span><span>공공가치 지표</span><span>Policy by Design</span><span>AI 기반 연구방법론</span></p>
 
           <h4 class="rv">Selected Activities &amp; Honors</h4>
           <ul>
@@ -671,6 +672,15 @@
   </div>
 </footer>
 
+<!-- ================= 공공디자인 실험실 소개 (popup) ================= -->
+<div class="lab-sheet" id="labSheet" role="dialog" aria-modal="true" aria-label="공공디자인 실험실 소개" hidden>
+  <div class="lab-bar">
+    <span class="lab-title"><i aria-hidden="true"></i>공공디자인 실험실 · Public Design Lab</span>
+    <span class="lab-tools"><a href="lab/" target="_blank" rel="noopener">새 창으로 보기</a><button type="button" class="lab-close" id="labClose" aria-label="닫기"><span></span><span></span></button></span>
+  </div>
+  <iframe id="labFrame" title="공공디자인 실험실 소개 슬라이드" allow="fullscreen" allowfullscreen></iframe>
+</div>
+
 <!-- ================= Professor CV (overlay) ================= -->
 <div class="cv-sheet" id="cvSheet" role="dialog" aria-modal="true" aria-labelledby="cvTitle" hidden>
   <div class="cv-inner">
@@ -896,6 +906,6 @@
 <script src="assets/js/data.js?v=20261001a"></script>
 <script src="assets/js/gallery-data.js?v=20261001a"></script>
 <script src="assets/js/fb-data.js?v=20261003c"></script>
-<script src="assets/js/main.js?v=20261003d"></script>
+<script src="assets/js/main.js?v=20261009a"></script>
 </body>
 </html>
