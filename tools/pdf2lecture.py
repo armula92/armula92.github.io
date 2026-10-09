@@ -375,6 +375,7 @@ PAGE = """<!DOCTYPE html>
 
 <script src="../assets/js/main.js?v={ver}"></script>
 <script src="lecture.js?v={ver}"></script>
+<script src="../assets/js/protect.js?v={ver}"></script>
 </body>
 </html>
 """

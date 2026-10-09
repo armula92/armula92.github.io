@@ -949,20 +949,15 @@
 </section>
 <section id="agile-pd" class="slide level2" data-vt="push">
 <h2><span class="kicker">Agile × Public Design</span> 애자일 <span class="g">×</span> 공공디자인</h2>
-<div class="gal" style="left:104px;top:230px;width:1392px;height:400px;grid-template-columns:1fr 1fr 1fr 1.25fr">
-  <div class="gi"><img src="img/gn_night.jpg" alt=""><div class="gc">야간 환경 실험<span>강남구 공공디자인 실험실</span></div></div>
-  <div class="gi"><img src="img/gn_shadow_full.jpg" alt=""><div class="gc">쉐도우 스페이스<span>강남구 공공디자인 실험실</span></div></div>
-  <div class="gi"><img src="img/gn_kiosk.jpg" alt=""><div class="gc">시민 참여형 시설물 실험<span>강남구 공공디자인 실험실</span></div></div>
-  <div class="gi"><img src="img/gn_grid.jpg" alt=""><div class="gc">도시실험 연계 공공디자인<span>강남구 공공디자인 실험실</span></div></div>
+<div class="gal" style="left:104px;top:220px;width:820px;height:500px;grid-template-columns:1fr">
+  <div class="gi"><img src="img/gn_night.jpg" alt="야간 환경 실험"><div class="gc">야간 환경 실험</div></div>
 </div>
-<div class="abs" style="left:104px;top:670px;width:1392px">
-<div class="split" style="gap:72px">
+<div class="abs" style="left:980px;top:240px;width:516px">
 <div class="lead rise d3" style="font-size:24px">
 <p>공공 가치 향상을 위한 도시실험 연계 공공디자인. 지역에 맞는 공공디자인 의제와 주체를 <strong>지속적으로 실험하고 실행</strong>해 문제 해결형 공공디자인을 이끈다.</p>
 </div>
-<div class="note fragment b-wipe" style="font-size:23px">
+<div class="note fragment b-wipe mt4" style="font-size:23px">
 <p>시민들의 쉽고 빠른 실행 참여, 새로운 공공디자인 거버넌스</p>
-</div>
 </div>
 </div>
 </section>
@@ -3329,6 +3324,24 @@
         });
       }
       if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+    })();
+    </script>
+    <script>
+    (function () {
+      "use strict";
+      var css = "html,body{-webkit-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}" +
+                "img,svg,video{-webkit-user-drag:none;user-drag:none}" +
+                "input,textarea,[contenteditable]{-webkit-user-select:text;user-select:text}";
+      var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+      function editable(t) { return t && (t.closest ? t.closest("input,textarea,[contenteditable]") : null); }
+      ["contextmenu", "copy", "cut", "dragstart", "selectstart"].forEach(function (ev) {
+        document.addEventListener(ev, function (e) { if (!editable(e.target)) e.preventDefault(); }, true);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (!(e.ctrlKey || e.metaKey)) return;
+        var k = (e.key || "").toLowerCase();
+        if ("cxsua".indexOf(k) > -1 && k.length === 1 && !editable(e.target)) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
     })();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">

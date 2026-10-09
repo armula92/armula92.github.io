@@ -111,7 +111,7 @@
   .lx-box { padding: 20px 18px; }
 }
 
-/* lecture images are shown inline only (no raw-file links); text can be copied and pages printed */
+/* lecture images are shown inline only (no raw-file links); copying is blocked by assets/js/protect.js, printing is allowed */
 .lx-protected img { -webkit-user-drag: none; }
 
 /* ---------- print: black on white, content only ---------- */
