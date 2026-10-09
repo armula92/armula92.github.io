@@ -357,9 +357,9 @@
   function hide() {
     sheet.classList.remove("open");
     document.body.classList.remove("lab-lock");
-    setTimeout(function () { sheet.hidden = true; open.focus(); }, 350);
+    setTimeout(function () { sheet.hidden = true; }, 350);
   }
-  open.addEventListener("click", show);
+  [].forEach.call(document.querySelectorAll("#labOpen, [data-lab-open]"), function (el) { el.addEventListener("click", show); });
   close.addEventListener("click", hide);
   frame.addEventListener("load", function () { try { frame.contentWindow.focus(); } catch (x) {} });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sheet.hidden) hide(); });

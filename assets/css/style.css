@@ -993,10 +993,11 @@ html, body { top: 0 !important; }
 /* ---------- 공공디자인 실험실: 헤더 브랜드 + 팝업 ---------- */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .lab-mark { position: absolute; z-index: 45; top: calc(var(--header-h) + 14px); right: var(--gutter); display: block; }
-.lab-mark i { display: block; width: 88px; height: 86px; background: #fff; -webkit-mask: url(../img/lab-brand.svg) center / contain no-repeat; mask: url(../img/lab-brand.svg) center / contain no-repeat; transition: background-color .25s, transform .35s var(--ease); transform-origin: right top; }
+.lab-mark i { display: block; width: 176px; height: 171px; background: #fff; -webkit-mask: url(../img/lab-brand.svg) center / contain no-repeat; mask: url(../img/lab-brand.svg) center / contain no-repeat; transition: background-color .25s, transform .35s var(--ease); transform-origin: right top; }
 .lab-mark:hover i, .lab-mark:focus-visible i { background: var(--orange); transform: scale(1.06); }
 .lab-mark:focus-visible { outline: 1px solid var(--ink-3); outline-offset: 6px; }
-@media (max-width: 640px) { .lab-mark { top: calc(var(--header-h) + 10px); } .lab-mark i { width: 64px; height: 62px; } }
+@media (max-width: 960px) { .lab-mark i { width: 140px; height: 136px; } }
+@media (max-width: 640px) { .lab-mark { top: calc(var(--header-h) + 10px); } .lab-mark i { width: 112px; height: 109px; } }
 body.lab-lock { overflow: hidden; }
 .lab-sheet { position: fixed; inset: 0; z-index: 110; display: flex; flex-direction: column; background: rgba(6, 6, 7, .96); opacity: 0; transition: opacity .35s var(--ease); }
 .lab-sheet.open { opacity: 1; }
@@ -1014,3 +1015,8 @@ body.lab-lock { overflow: hidden; }
 .lab-close:hover span { background: var(--orange); }
 .lab-sheet iframe { flex: 1; width: 100%; border: 0; background: #000; }
 @media (max-width: 640px) { .lab-title { font-size: 12.5px; } .lab-tools a { display: none; } }
+
+/* Design Trend 마지막 칸: 공공디자인 실험실 */
+.prof-trend-grid a.trend-lab { justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px; }
+.trend-lab i { display: block; width: 100%; height: 80px; background: var(--ink-2); -webkit-mask: url(../img/lab-brand.svg) center / contain no-repeat; mask: url(../img/lab-brand.svg) center / contain no-repeat; transition: background-color .25s, transform .35s var(--ease); }
+.prof-trend-grid a.trend-lab:hover i, .prof-trend-grid a.trend-lab:focus-visible i { background: var(--orange); transform: scale(1.06); }
