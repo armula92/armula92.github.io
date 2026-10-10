@@ -1043,5 +1043,3 @@ body.lab-lock { overflow: hidden; }
 .trend-lab i { display: block; width: 100%; height: 80px; background: var(--ink-2); -webkit-mask: url(../img/lab-brand.svg) center / contain no-repeat; mask: url(../img/lab-brand.svg) center / contain no-repeat; transition: background-color .25s, transform .35s var(--ease); }
 .prof-trend-grid a.trend-lab:hover i, .prof-trend-grid a.trend-lab:focus-visible i { background: var(--orange); transform: scale(1.06); }
 
-/* YouTube 영상 블록이 독립 섹션일 때 (교수 소개를 About 위로 옮김, 2026-10-10) */
-.prof-videos-sec .prof-videos { margin-top: 0; padding-top: 0; border-top: 0; }
