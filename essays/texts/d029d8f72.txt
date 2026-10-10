@@ -1,0 +1,130 @@
+ESG 공공디자인 – 1. 사회를 위한 디자인 
+ESG Public Design : Social by Public Design
+Ⅰ. 사회를 위한 디자인의 서막.
+“ 위트레흐트 매니페스토 (Utrecht Manifesto) ”
+Design for the Good Society, Utrecht Manifest 2005-2015
+By Victor Margolin, Alfredo Brillembourg, Alastair Fuad-Luke,
+Peter-Paul Verbeek, Guy Julier, Alison Clarke and Willem van Weelden
+2005년부터 2015년까지 네덜란드 위트레흐트에서는 사회 혁신의 촉매제로서 디자인의 역할과 
+소셜 디자인을 주제로 한 5번의 비엔날레가 개최되었다. 이를 기반으로 2015년 6월에 10가지 
+기본 원칙을 열거한 선언문을 발표하였는데 Max Bruinsma는 "Design for good society"라
+는 발간물을 통해 내용을 정리하였다.
+위트레흐트 매니페스토에서는 디자인이 전문가들만의 영역이 아니라 우리 일상 생활과 연결되
+어 사회에 공헌할 수 있는 일상디자인 문화로 확산되어야 한다고 선언하였다. (2005-2015)
+The ten theses of the Utrecht Manifesto
+1. Engage with Society
+2. Design Socially
+3. Act Sustainably
+4. Connect Ethics and Aesthetics
+5. Aim for Commitment
+6. Be Critical
+7. Be Transparent
+8. Be Supportive and Modest
+9. Be Persistently Radical
+10. Take Responsibility Together
+2017년 Montreal Design Declaration에서는 사회를 위한 디자인의 실현을 위해 지역, 국가 
+및 국제 수준의 디자인 문제에 대한 전략적 리더십의 필요성과 이를 통해 디자인을 고려하는 
+거버넌스 모델, 정치적 의제 및 정책의 필요성을 선언하였다. 
+이후 2019년 Design Declaration Summit 디자인 선언에서는 디자인이 사람, 건강, 부, 행
+복, 사회와 환경에 영향을 미치는 중요성과 디자인 가치에 대해 직관적으로 알고 있는 것을 
+증빙하기 위한 데이터의 중요성을 강조하였다.
+
+그림 1 Montreal Design Declaration
+Ⅱ. 사회를 위한 공공디자인
+1. POP(Public Outdoor Plaza) project
+그림 2 POP(Public Outdoor Plaza) project C hicago Department of Planning and 
+Development (DPD)
+
+POP(Public Outdoor Plaza) Court는 시카고 DPD가 주도하여 엔데믹 시대 지역 활성화를 
+위해 활용도가 낮은 공간을 지역 공공커뮤니티가 활용할 수 있도록 디자인하는 민관협력 프로
+젝트이다. 제안공모방식으로 진행되는 POP Court는 저소득지역에 위치한 공간을 최대 
+500,000달러를 지원하며 전체 최대 12억달러의 예산 기획을 가지고 있다. POP 이니셔티브는 
+DPD 커미셔너 Maurice Cox의 총괄하에 초기 약 10~15개의 파일럿 POP가 도시 전역에 조
+성되고 있다.
+POP Court는 엔데믹시대에 공공공간의 활성화와 안전한 커뮤니티, 공평한 경제 회복 및 지
+원을 위한 시카고 공공공간의 야심찬 회복 복구 전략의 일부이며 새로운 공공공간의 디자인 
+방식이다.
+2. Piazze Aperte 프로젝트
+Piazze Aperte 프로젝트의 일환으로 진행된 밀라노 아페르테 광장디자인은 Spoleto-Venini
+의 초등학교 앞 교차로에 있는 광장으로 교차로의 규모가 너무 크고 교통량이 많은데 비해  
+작은 보행로 때문에 생기는 문제를 Piazze Aperte 프로젝트 프로그램을 통해 주민들의 요구
+를 충족하는 사회적 기능이 강화된 장소로 리-디자인하였다 
+OPEN SQUARES 프로젝트의 주요 목표는 다음과 같다.
+1. 보행자를 위한 보다 안전한 공간
+2. 학교의 부모가 자녀를 기다릴 수 있는 장소
+3. 지역 사회의 노인들이 하루 종일 쉴 수 있는 장소
+그림 3 Piazze Aperte 프로젝트 OPEN SQUARES by Vestre
+
+3. Thermal fountains in Baden and Ennetbaden
+스위스 Baden과 Ennetbaden 중앙 광장에 설치된 두 개의 개방형 공공온천은 최소 38°C 이
+상 천연 온천수가 공급되는데 매일 오전 7시부터 오후 10시까지 공공에게 개방된다고 한다.
+두 공공온천에 대한 공공접근을 개방한 것은 자연의 선물을 모두가 자유롭게 즐길 수 있도록 
+사람들에게 돌려주어야 한다는 공공성에 대한 디자인적이 실현이다.
+바덴(Baden)과 에네트바덴(Ennetbaden)의 공공온천을 리:디자인하여 고대 공동체 목욕 전통
+을 되살림과 동시에 공공 공간의 사용이 공동웰빙에 긍정적 영향을 미칠 수 있도록 기획하였
+고 무엇보다 지역의 자연적 조건과 정체성을 살린 풍토성 기반의 버네큘라 콘텐츠 디자인으로
+도 볼 수 있다.
+본 공공영역의 디자인은 지역 자원에 대한 접근 방법과 도시에서 물이 어떻게 건강을 회복하
+고 사람들을 하나로 모으는 핵심 요소인지 보여주고 있다.
+본 공공온천 디자인은 유럽피안 공공공간 어워드를 수상하였다.
+그림 4 Manheged by Bagni Popolari Association
+4. Parking House Lüders
+덴마크 코펜하겐의 Parking House Lüders는 도시의 필수시설인 주차장을 초세대 공간으로 
+탈바꿈하였다. 주차장 외관을 수직녹화하고, 광장과 옥상을 연결하고, 옥상은 지역주민 모두를 
+위한 전망대이자 커뮤니티 공간으로 만들었다.
+이 공간은 누구나 접근가능하며 즐길 수 있는 공간이다. 계단은 광장과 지붕을 대각선으로 연
+결하며 이용들은 이 외부계단을 통해 언제든 옥상 놀이공간에 접근할 수 있다. 더불어 놀이공
+간 조성부터 운영, 운동지도까지 지역 휘트니스 센터 전문가가 참여하였고 이러한 결합을 통
+해 생활SOC시설에 불과했던 주차건물옥상이 지역의 통합세대가 사용가능한 랜드마크이자 누
+구나 사용할 수 있는 공공공간으로 디자인 되었다.
+
+그림 5 덴마크 코펜하겐 Parking House Lüders
+5. Vilnius’ mobile courtyards
+리투아니아 빌니우스의 이동식 공공공간(Vilnius’ mobile courtyards)은 평범한 거리의 공공
+공간을 사람들이 멈춰서 놀고 싶어하는 사회적 공공장소로 바꾸는 것을 목표로 한다.
+이 작은 공공 공간은 쉼터, 벤치, 플렌터, 스케이트보드, 하프 파이프 및 의자로 구성되어 있
+는데 임시적인 동네 마당은 도시의 특정 공공 공간을 사회적으로 되살리고 변화의 촉매역할을 
+한 다음 다른 곳으로 이동하여 같은 역할을 수행하는 Nomad-Mobille Public Sapce의 역할
+을 수행한다. Naugardukas Street에 실험적 시범설치를 통해 이 모바일 공공플랫폼은 거리
+를 공공의 아늑한 공공 공간과 같은 곳으로 바꾸는 기능을 검증하였다.
+그림 6 Vilnius’ mobile courtyards
+
+6. Restorative Ground _ A Napping Corner in Hudson Square.
+A Napping Corner라는 재미있는 별명을 가진 장소 실험같은 공공공간 Restorative 
+Ground는 민간 기업과 함께 거리와 보도에 벤치을 설치하는 사회공헌 프로그램인 DOT의 
+Street Seats Program을 통해 하인즈(Hines)에서 10만달러의 예산지원을 통해 설치되었다.
+디자인을 담당한 WIP Collaborative는 장애 운동가, 자폐증 옹호자, 여성, 십대 및 어린이를 
+대상으로 연구 및 인터뷰를 실시하여 감각적 요구, 신체적 능력 및 연령을 고려하는 포괄적인 
+디자인을 만들었다. WIP는 또한 주민들과 근처에 있는 어린이 미술관을 포함한 허드슨 스퀘
+어 커뮤니티와 협력적 거버넌스를 구축해 진행하였다.
+Restorative Ground는 거리가 기반 시설로써 기능뿐만 아니라 사회적 역할을 어떻게 지원할 
+수 있는가에 대한 대안을 보여주었고 공공장소의 디자인을 통해 신경 다양성을 위한 공간을 
+어떻게 디자인할 수 있는지, 신경다양성을 위해 공공환경이 어떻게 더 광범위한 용도를 수용
+함으로써 대중의 요구를 더 잘 충족할 수 있는지를 보여주고 있다.
+그림 7 Restorative Ground _ A Napping Corner in Hudson Square. by WIP 
+Collaborative
+7. Alexandria Park Tiny Home Village
+'버릴 수 있는 공간은 없다'는 철학을 가지고 있는 Lehrer Architects에 의해 디자인 된 
+Alexandria Park Tiny Home Village는 노숙자들의 임시 거주지촌이다. 접근하기 어렵고 사
+용되지 않던 170번 고속도로 진입로 근처의 가장자리 완충 공간에 좁고 긴 형태로 자리잡고 
+있다. Alexandria Park Tiny Home Village는 103개의 소형 노숙자 주택과 최대 200명을 
+수용할 수 있는 규모이다. 색채디자인이 매우 화려한 것이 특징인데 안전색채로 주로 사용되
+는 노란색, 파란색, 빨간색 등 채도 높은 원색의 대각선 패턴 등으로 구성된 환경색채는 경각
+심을 불러일으키는 매력적인 효과를 만들어낸다. 대체적인 평은 노숙자 보호소 같은 느낌이 
+아니라 젊은 대학 기숙사 같은 분위기라는 평이 많은데 이러한 디자인은 이 곳에 살 사람들이 
+겪어온 트라우마를 고려한 디자인이라 한다.
+
+그림 8 Alexandria Park Tiny Home Village by Lehrer Architects
+Ⅲ. 사회를 위한 디자인의 가치 
+공공디자인 진흥법 제 10조 공공디자인 사업의 원칙을 보면 제일 먼저 기술되어 있는 부분이 
+‘공공의 이익과 안전을 위해..’이다. 다양한 공공시설물, 매체 인프라를 통해 사회적 안전을 확
+보하는 것은 공공디자인의 궁극적이면서 가장 중요한 가치이다. 더욱이 공공기관의 공공가치
+와 관련된 ESG 공시 항목에 ‘안전‧환경, 사회공헌’을 신설 확대한 것은 이제 ESG가 기업의 
+투자 기준만이 아닌 공공영역에서의 지속가능한 사회를 위해 추구해야 할 비전으로 문화화 되
+어 간다는 것을 보여준다.
+공공디자인 진흥종합 계획에서도 이용하기 편리한 공공공간 및 공공용품 디자인에 대한 세부 
+방안이 마련되어 있어 모든 이를 위한 배려, 안전을 지켜주고, 편리한 활동을 지원하는 공공
+디자인의 개념은 정리되어 있다. 사회를 위한 ESG 공공디자인은 공공의 안전과 편의, 배려 
+등의 공공가치를 창출할 수 있는 지속가능한 캠페인, 공공 굿즈, 선한 영향력을 공동체와 나
+누는 공공활동프로그램, 노약자 및 고령인구를 배려하는 고령친화 놀이터, 안전마을 만들기 
+등 기존 공공디자인 사업으로 쉽게 연계되고 실현 가능하다.
