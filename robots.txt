@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# SPD Lab. 논문 연구 도구 시리즈 PDF는 검색에서 제외 (사이트 링크로만 열람)
+Disallow: /assets/docs/
 
 Sitemap: https://www.armula.com/sitemap.xml
