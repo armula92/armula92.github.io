@@ -139,3 +139,9 @@
 .lx-back { transition: color .25s, border-color .25s; }
 .lx-back:hover { color: var(--orange); border-bottom-color: var(--orange); }
 .lx-author a:hover, .lx-refs a:hover, .lx-body p a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+
+/* student reader (tools/reader2lecture.py) */
+.lx-sec-lead { margin: 0 0 8px; }
+.lx-box p { font-size: 15px; line-height: 1.8; color: #cfcfcd; font-weight: 300; }
+.lx-table small { display: block; margin-top: 4px; font-size: 12.5px; color: var(--ink-3); }
+.lx-colophon { margin-top: 56px; }
