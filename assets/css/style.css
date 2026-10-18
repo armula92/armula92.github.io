@@ -468,8 +468,29 @@ section { position: relative; }
 .notice-list div p { display: inline; font-size: 16.5px; }
 .notice-list .place { font-size: 13px; color: var(--ink-2); letter-spacing: normal; }
 .notice-list .place::before { content: "장소 "; color: var(--ink-3); }
+/* 논문 연구 도구 시리즈 (Board 아래, 아이콘 없이 다섯 권) */
+.tool-series { margin-top: clamp(64px, 8vw, 104px); }
+.tool-list { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 32px; border-top: 1px solid var(--line-strong); }
+.tool { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 26px 20px 22px; }
+.tool:first-child { padding-left: 0; }
+.tool + .tool { border-left: 1px solid var(--line); }
+.tool::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
+.tool small { font-size: 12.5px; font-weight: 500; color: var(--ink-3); letter-spacing: normal; }
+.tool b { font-size: 16px; font-weight: 600; line-height: 1.45; letter-spacing: normal; margin-top: 10px; word-break: keep-all; }
+.tool span { font-size: 11px; letter-spacing: normal; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; }
+.tool em { display: inline-flex; align-items: center; gap: 12px; font-style: normal; font-size: 12.5px; font-weight: 500; color: var(--ink-2); margin-top: auto; padding-top: 18px; letter-spacing: normal; }
+.tool em .arrow { width: 28px; height: 1px; background: currentColor; position: relative; transition: width .35s var(--ease); }
+.tool em .arrow::after { content: ""; position: absolute; right: 0; top: -3px; width: 6px; height: 6px; border-right: 1px solid currentColor; border-top: 1px solid currentColor; transform: rotate(45deg); }
+.tool small, .tool b, .tool em { transition: color .25s; }
+.tool:hover::before, .tool:focus-visible::before { transform: scaleX(1); }
+.tool:hover small, .tool:hover b, .tool:hover em,
+.tool:focus-visible small, .tool:focus-visible b, .tool:focus-visible em { color: var(--orange); }
+.tool:hover em .arrow, .tool:focus-visible em .arrow { width: 48px; }
 @media (max-width: 960px) {
   .board-grid { grid-template-columns: 1fr; }
+  .tool-list { grid-template-columns: repeat(3, 1fr); }
+  .tool:nth-child(4) { padding-left: 0; border-left: 0; }
+  .tool:nth-child(n+4) { padding-top: 8px; }
   .footer-connect { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
@@ -484,6 +505,8 @@ section { position: relative; }
   .course-col .course { border-bottom: 0; padding-bottom: 12px; }
   .course-col, .course-col + .course-col { border-bottom: 1px solid var(--line); padding: 0; }
   .course-past { padding: 0 0 22px; }
+  .tool-list { grid-template-columns: 1fr; }
+  .tool, .tool + .tool, .tool:nth-child(n+4) { padding: 22px 0; border-left: 0; border-bottom: 1px solid var(--line); }
 }
 
 /* ---------- Reveal ---------- */
