@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>전자책 | 2026 정책을 위한 공공디자인</title>
+<meta name="description" content="2026 정책을 위한 공공디자인 포럼 아카이브 책자를 책장을 넘기며 보는 전자책. 공공디자인, 정책의 언어가 되다.">
+<meta name="author" content="포럼 발제자 일동">
+<meta property="og:title" content="전자책 | 2026 정책을 위한 공공디자인">
+<meta property="og:description" content="포럼 아카이브 책자 144쪽을 책장을 넘기며 봅니다.">
+<meta property="og:image" content="https://www.armula.com/forum/2026-policy-by-design/img/og.jpg">
+<meta name="theme-color" content="#0C2142">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root { --navy: #0C2142; --coral: #FD4F52; --ink: #1D1D1F; --stage: #26262A; --top: 56px; --bar: 52px;
+  --sans: 'Pretendard Variable', 'Pretendard', -apple-system, 'Apple SD Gothic Neo', sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--stage); color: #fff; font-family: var(--sans); overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, select, input { font: inherit; color: inherit; }
+.top { position: fixed; inset: 0 0 auto 0; height: var(--top); background: var(--navy); display: flex; align-items: center;
+  gap: 18px; padding: 0 20px; z-index: 5; font-size: 14px; }
+.brand { font-weight: 600; white-space: nowrap; }
+.brand b { font-weight: 300; margin-right: 4px; }
+.tag { color: rgba(255,255,255,.6); white-space: nowrap; }
+.sp { flex: 1; }
+.toc { background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.45); padding: 4px 22px 4px 0; max-width: 300px;
+  appearance: none; -webkit-appearance: none; border-radius: 0; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, #fff 50%), linear-gradient(135deg, #fff 50%, transparent 50%);
+  background-position: right 6px center, right 1px center; background-size: 5px 5px; background-repeat: no-repeat; }
+.toc option { color: var(--ink); }
+.html-link { white-space: nowrap; }
+.html-link:hover, .brand:hover { text-decoration: underline; text-underline-offset: 4px; }
+.stage { position: fixed; inset: var(--top) 0 var(--bar) 0; display: flex; align-items: center; justify-content: center; }
+#book { margin: 0 auto; }
+.pg { background: #fff; }
+.pg img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.nav { position: fixed; top: 50%; transform: translateY(-50%); width: 48px; height: 96px; border: 0; background: transparent;
+  color: rgba(255,255,255,.75); font-size: 34px; font-weight: 200; cursor: pointer; z-index: 4; }
+.nav:hover { color: #fff; }
+.nav.prev { left: 8px; } .nav.next { right: 8px; }
+.bar { position: fixed; inset: auto 0 0 0; height: var(--bar); display: flex; align-items: center; gap: 16px; padding: 0 20px;
+  font-size: 13px; color: rgba(255,255,255,.75); background: var(--stage); }
+.bar input[type=range] { flex: 1; min-width: 0; accent-color: var(--coral); }
+.count { min-width: 76px; text-align: right; font-variant-numeric: tabular-nums; color: #fff; }
+.btn { border: 1px solid rgba(255,255,255,.45); background: transparent; padding: 5px 12px; cursor: pointer; border-radius: 0; }
+.btn:hover { background: #fff; color: var(--ink); }
+.hint { white-space: nowrap; }
+@media (max-width: 760px) {
+  .tag, .hint, .nav, .fs, .html-link { display: none; }
+  .top { gap: 12px; padding: 0 14px; font-size: 13px; }
+  .toc { max-width: 42vw; }
+}
+@media (prefers-reduced-motion: reduce) { .nav { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../"><b>2026</b> 정책을 위한 공공디자인</a>
+  <span class="tag">전자책</span>
+  <span class="sp"></span>
+  <label><span hidden>차례</span><select class="toc" aria-label="차례로 가기">
+    <option value="">차례로 가기</option>
+    <option value="1">표지 (1쪽)</option>
+    <option value="4">포럼 현장 (4쪽)</option>
+    <option value="7">차례 (7쪽)</option>
+    <option value="9">책을 펴내며 (9쪽)</option>
+    <option value="11">포럼 개요 (11쪽)</option>
+    <option value="13">1부 사회 갈등 예방 그리고 디자인 (13쪽)</option>
+    <option value="15">1장 분리형 흡연부스를 통한 민원 해결 / 이미정 (15쪽)</option>
+    <option value="33">2장 공중 보건 정보 디자인: 담배 유해 성분 표기 / 정수지 (33쪽)</option>
+    <option value="51">2부 공공정책 그리고 디자인 (51쪽)</option>
+    <option value="53">3장 서울의 공공디자인과 정책 / 김주연 (53쪽)</option>
+    <option value="77">4장 PbD: Policy by Design / 이현성 (77쪽)</option>
+    <option value="101">5장 City as Campus: 부산형 공공디자인 교육모델 / 장주영 (101쪽)</option>
+    <option value="119">6장 WDC 부산과 해양정책을 위한 디자인 / 이성필 (119쪽)</option>
+    <option value="137">맺음말 정책의 언어가 된다는 것 (137쪽)</option>
+    <option value="139">포럼을 마치며 (139쪽)</option>
+    <option value="140">언론 보도 (140쪽)</option>
+    <option value="142">판권 (142쪽)</option>
+  </select></label>
+  <a class="html-link" href="../">HTML로 읽기 ›</a>
+</header>
+<main class="stage" id="stage"><div id="book"><div class="pg" data-density="hard"><img data-src="p/1.webp" alt="1쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/2.webp" alt="2쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/3.webp" alt="3쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/4.webp" alt="4쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/5.webp" alt="5쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/6.webp" alt="6쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/7.webp" alt="7쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/8.webp" alt="8쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/9.webp" alt="9쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/10.webp" alt="10쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/11.webp" alt="11쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/12.webp" alt="12쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/13.webp" alt="13쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/14.webp" alt="14쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/15.webp" alt="15쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/16.webp" alt="16쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/17.webp" alt="17쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/18.webp" alt="18쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/19.webp" alt="19쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/20.webp" alt="20쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/21.webp" alt="21쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/22.webp" alt="22쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/23.webp" alt="23쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/24.webp" alt="24쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/25.webp" alt="25쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/26.webp" alt="26쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/27.webp" alt="27쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/28.webp" alt="28쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/29.webp" alt="29쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/30.webp" alt="30쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/31.webp" alt="31쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/32.webp" alt="32쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/33.webp" alt="33쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/34.webp" alt="34쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/35.webp" alt="35쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/36.webp" alt="36쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/37.webp" alt="37쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/38.webp" alt="38쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/39.webp" alt="39쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/40.webp" alt="40쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/41.webp" alt="41쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/42.webp" alt="42쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/43.webp" alt="43쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/44.webp" alt="44쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/45.webp" alt="45쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/46.webp" alt="46쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/47.webp" alt="47쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/48.webp" alt="48쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/49.webp" alt="49쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/50.webp" alt="50쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/51.webp" alt="51쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/52.webp" alt="52쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/53.webp" alt="53쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/54.webp" alt="54쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/55.webp" alt="55쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/56.webp" alt="56쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/57.webp" alt="57쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/58.webp" alt="58쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/59.webp" alt="59쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/60.webp" alt="60쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/61.webp" alt="61쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/62.webp" alt="62쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/63.webp" alt="63쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/64.webp" alt="64쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/65.webp" alt="65쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/66.webp" alt="66쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/67.webp" alt="67쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/68.webp" alt="68쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/69.webp" alt="69쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/70.webp" alt="70쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/71.webp" alt="71쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/72.webp" alt="72쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/73.webp" alt="73쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/74.webp" alt="74쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/75.webp" alt="75쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/76.webp" alt="76쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/77.webp" alt="77쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/78.webp" alt="78쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/79.webp" alt="79쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/80.webp" alt="80쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/81.webp" alt="81쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/82.webp" alt="82쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/83.webp" alt="83쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/84.webp" alt="84쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/85.webp" alt="85쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/86.webp" alt="86쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/87.webp" alt="87쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/88.webp" alt="88쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/89.webp" alt="89쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/90.webp" alt="90쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/91.webp" alt="91쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/92.webp" alt="92쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/93.webp" alt="93쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/94.webp" alt="94쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/95.webp" alt="95쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/96.webp" alt="96쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/97.webp" alt="97쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/98.webp" alt="98쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/99.webp" alt="99쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/100.webp" alt="100쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/101.webp" alt="101쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/102.webp" alt="102쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/103.webp" alt="103쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/104.webp" alt="104쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/105.webp" alt="105쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/106.webp" alt="106쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/107.webp" alt="107쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/108.webp" alt="108쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/109.webp" alt="109쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/110.webp" alt="110쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/111.webp" alt="111쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/112.webp" alt="112쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/113.webp" alt="113쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/114.webp" alt="114쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/115.webp" alt="115쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/116.webp" alt="116쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/117.webp" alt="117쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/118.webp" alt="118쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/119.webp" alt="119쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/120.webp" alt="120쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/121.webp" alt="121쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/122.webp" alt="122쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/123.webp" alt="123쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/124.webp" alt="124쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/125.webp" alt="125쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/126.webp" alt="126쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/127.webp" alt="127쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/128.webp" alt="128쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/129.webp" alt="129쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/130.webp" alt="130쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/131.webp" alt="131쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/132.webp" alt="132쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/133.webp" alt="133쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/134.webp" alt="134쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/135.webp" alt="135쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/136.webp" alt="136쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/137.webp" alt="137쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/138.webp" alt="138쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/139.webp" alt="139쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/140.webp" alt="140쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/141.webp" alt="141쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/142.webp" alt="142쪽" width="1240" height="1500" decoding="async"></div><div class="pg"><img data-src="p/143.webp" alt="143쪽" width="1240" height="1500" decoding="async"></div><div class="pg" data-density="hard"><img data-src="p/144.webp" alt="144쪽" width="1240" height="1500" decoding="async"></div></div></main>
+<button class="nav prev" aria-label="앞 쪽">‹</button><button class="nav next" aria-label="다음 쪽">›</button>
+<footer class="bar">
+  <span class="hint">← → 키, 쪽 끝을 끌거나 눌러 넘기기</span>
+  <input type="range" min="1" max="144" value="1" aria-label="쪽 이동">
+  <span class="count"><b>1</b> / 144</span>
+  <button class="btn fs" type="button">전체 화면</button>
+</footer>
+<script src="page-flip-2.0.7.browser.js"></script>
+<script>
+(() => {
+  const N = 144, RATIO = 1240 / 1500;
+  const stage = document.getElementById('stage'), el = document.getElementById('book');
+  const range = document.querySelector('.bar input'), count = document.querySelector('.count b');
+  const toc = document.querySelector('.toc');
+  const pages = [...el.querySelectorAll('.pg')];
+  // 펼친 면 앞뒤 쪽만 불러온다
+  const load = i => { for (let k = Math.max(0, i - 4); k <= Math.min(N - 1, i + 6); k++) {
+      const img = pages[k].querySelector('img'); if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; } } };
+  // 넓은 화면은 펼침면, 좁은 화면(휴대폰, 세로 창)은 한 쪽. 라이브러리는 책 폭이 최소 쪽 폭의 두 배보다 좁으면 한 쪽으로 보인다
+  const isPortrait = () => window.innerWidth <= 760 || (stage.clientWidth - 120) < (stage.clientHeight - 28) * RATIO * 1.3;
+  const fit = portrait => {
+    const W = stage.clientWidth - (portrait ? 16 : 120), Hh = stage.clientHeight - 28;
+    const pw = Math.floor(Math.min(Hh * RATIO, portrait ? W : W / 2));
+    el.style.width = (portrait ? pw : pw * 2) + 'px';
+    return pw;
+  };
+  const start = Math.min(N, Math.max(1, parseInt((location.hash.match(/p(\d+)/) || [])[1] || '1', 10))) - 1;
+  load(start);
+  const portrait = isPortrait();
+  const pw = fit(portrait);
+  const book = new St.PageFlip(el, {
+    width: pw, height: Math.round(pw / RATIO), size: 'stretch', minWidth: portrait ? pw : Math.floor(pw / 2),
+    maxWidth: 1400, minHeight: 200, maxHeight: 1800,
+    showCover: true, usePortrait: true, mobileScrollSupport: false, flippingTime: 750, maxShadowOpacity: .35,
+    startPage: start, autoSize: true, showPageCorners: true, disableFlipByClick: false
+  });
+  book.loadFromHTML(pages);
+  const show = i => { load(i); range.value = i + 1; count.textContent = i + 1;
+    history.replaceState(null, '', '#p' + (i + 1)); };
+  show(start);
+  book.on('flip', e => show(e.data));
+  book.on('changeOrientation', () => load(book.getCurrentPageIndex()));
+  document.querySelector('.prev').onclick = () => book.flipPrev();
+  document.querySelector('.next').onclick = () => book.flipNext();
+  range.oninput = () => { const i = range.value - 1; load(i); count.textContent = range.value; };
+  range.onchange = () => { const i = range.value - 1; load(i); book.turnToPage(i); show(i); };
+  toc.onchange = () => { if (!toc.value) return; const i = toc.value - 1; load(i); book.flip(i); toc.value = ''; };
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('select, input')) return;
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); book.flipNext(); }
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); book.flipPrev(); }
+    if (e.key === 'Home') book.turnToPage(0), show(0);
+    if (e.key === 'End') book.turnToPage(N - 1), show(N - 1);
+  });
+  document.querySelector('.fs').onclick = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  // 창 크기가 바뀌면 다시 맞추고, 펼침면과 한 쪽 보기가 바뀌면 그 쪽에서 다시 연다
+  let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => {
+    if (isPortrait() !== portrait) return location.reload();
+    fit(portrait); book.update(); }, 200); });
+})();
+</script>
+</body>
+</html>
