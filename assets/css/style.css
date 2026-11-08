@@ -1055,12 +1055,13 @@ html, body { top: 0 !important; }
 .forum-mark { top: calc(var(--header-h) + 14px + 137px + 26px + 93px + 26px); }
 @media (max-width: 960px) { .forum-mark { top: calc(var(--header-h) + 14px + 109px + 20px + 78px + 20px); } }
 /* 포럼 책자의 전자책(책장 넘겨 보기): 포럼 표시 바로 아래 */
-.forum-book { position: absolute; z-index: 45; top: calc(var(--header-h) + 14px + 137px + 26px + 93px + 26px + 93px + 10px); right: var(--gutter); width: 141px; text-align: center; color: #fff; font-size: 13px; font-weight: 500; letter-spacing: normal; transition: color .25s; }
-.forum-book:hover, .forum-book:focus-visible { color: var(--orange); }
-@media (max-width: 960px) { .forum-book { top: calc(var(--header-h) + 14px + 109px + 20px + 78px + 20px + 78px + 8px); width: 112px; font-size: 12px; } }
+.forum-book { position: absolute; z-index: 45; top: calc(var(--header-h) + 14px + 137px + 26px + 93px + 26px + 93px + 10px); right: var(--gutter); width: 141px; display: flex; flex-direction: column; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; letter-spacing: normal; line-height: 1.2; }
+.forum-book a { color: #fff; transition: color .25s; white-space: nowrap; }
+.forum-book a:hover, .forum-book a:focus-visible { color: var(--orange); }
+@media (max-width: 960px) { .forum-book { top: calc(var(--header-h) + 14px + 109px + 20px + 78px + 20px + 78px + 8px); width: 112px; font-size: 12px; gap: 6px; } }
 @media (max-width: 640px) { .forum-mark { top: calc(var(--header-h) + 10px + 87px + 14px + 64px + 14px); } }
 @media (max-width: 640px) and (max-height: 740px) { .forum-mark { top: calc(var(--header-h) + 10px + 87px + 14px); right: calc(var(--gutter) + 90px + 14px); } }
-@media (max-width: 640px) { .forum-book { top: calc(var(--header-h) + 10px + 87px + 14px + 64px + 14px + 64px + 6px); width: 90px; font-size: 11.5px; } }
+@media (max-width: 640px) { .forum-book { top: calc(var(--header-h) + 10px + 87px + 14px + 64px + 14px + 64px + 6px); width: 90px; font-size: 11.5px; gap: 5px; } }
 @media (max-width: 640px) and (max-height: 740px) { .forum-book { top: calc(var(--header-h) + 10px + 87px + 14px + 64px + 6px); right: calc(var(--gutter) + 90px + 14px); } }
 body.lab-lock { overflow: hidden; }
 .lab-sheet { position: fixed; inset: 0; z-index: 110; display: flex; flex-direction: column; background: rgba(6, 6, 7, .96); opacity: 0; transition: opacity .35s var(--ease); }
