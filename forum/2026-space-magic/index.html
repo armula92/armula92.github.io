@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>공간마법 아카이브북 | 공공디자인 페스티벌 2026</title>
+<meta name="description" content="공공디자인 페스티벌 2026 학술 포럼 「공간마법: 공간으로 만드는 공공가치」 아카이브북을 책장을 넘기며 보는 전자책.">
+<meta name="author" content="공간마법 발제자 일동">
+<meta property="og:type" content="book">
+<meta property="og:title" content="공간마법 아카이브북">
+<meta property="og:description" content="공간으로 만드는 공공가치. 공공디자인 페스티벌 2026 학술 포럼 아카이브 114쪽을 책장을 넘기며 봅니다.">
+<meta property="og:image" content="https://www.armula.com/forum/2026-space-magic/og.jpg">
+<meta property="og:url" content="https://www.armula.com/forum/2026-space-magic/">
+<meta name="theme-color" content="#0048B0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 레이아웃: 한 화면 뷰어. 위 막대(책 이름, 차례, 쪽 보기) / 가운데 책 펼침면 / 아래 쪽 이동 막대. 각진 모서리, 선과 상자 없음. */
+:root {
+  --bg: #F5F5F7;
+  --panel: #FFFFFF;
+  --ink: #1D1D1F;
+  --ink2: #515154;
+  --ink3: #86868B;
+  --line: #D2D2D7;
+  --accent: #0048B0;
+  --shade: rgba(29, 29, 31, .22);
+  --scrim: rgba(29, 29, 31, .35);
+  --sans: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161617; --panel: #1F1F21; --ink: #F5F5F7; --ink2: #C7C7CC; --ink3: #8E8E93;
+    --line: #3A3A3C; --accent: #6E9EEB; --shade: rgba(0, 0, 0, .55); --scrim: rgba(0, 0, 0, .55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161617; --panel: #1F1F21; --ink: #F5F5F7; --ink2: #C7C7CC; --ink3: #8E8E93;
+  --line: #3A3A3C; --accent: #6E9EEB; --shade: rgba(0, 0, 0, .55); --scrim: rgba(0, 0, 0, .55);
+  color-scheme: dark;
+}
+@property --dim { syntax: '<number>'; inherits: true; initial-value: 0; }
+* { box-sizing: border-box; border-radius: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--sans);
+  word-break: keep-all; overflow: hidden; -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.app {
+  height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; grid-template-columns: minmax(0, 1fr);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* 위 막대 */
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 18px 6px; }
+.name { display: flex; align-items: baseline; gap: 14px; min-width: 0; }
+.name b { font-size: 22px; font-weight: 700; letter-spacing: -0.035em; white-space: nowrap; }
+.name span { font-size: 14px; color: var(--ink3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.02em; }
+.tools { display: flex; align-items: center; gap: 22px; flex: none; }
+.tool { font-size: 14px; font-weight: 600; color: var(--ink2); padding-block: 6px; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 6px; }
+.tool:hover { color: var(--accent); }
+.tool[aria-pressed="true"] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+.tool svg { width: 16px; height: 16px; }
+
+/* 책 무대 */
+.stage { position: relative; min-height: 0; display: grid; place-items: center; overflow: hidden; touch-action: pan-y; }
+.stage.zoom { overflow: auto; place-items: start center; touch-action: auto; }
+.book {
+  position: relative; width: calc(var(--pw) * var(--cols)); height: var(--pw);
+  perspective: calc(var(--pw) * 4); transition: transform .6s cubic-bezier(.45, .05, .25, 1);
+  user-select: none; -webkit-user-select: none;
+}
+.stage.zoom .book { margin-block: 24px; }
+.slot, .leaf { position: absolute; top: 0; width: var(--pw); height: var(--pw); }
+.slot.l { left: 0; }
+.slot.r { left: var(--pw); }
+.slot img, .face img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; pointer-events: none; }
+.slot:not(:empty), .leaf { box-shadow: 0 18px 40px -14px var(--shade), 0 2px 6px -2px var(--shade); }
+.leaf { transform-style: preserve-3d; z-index: 3; }
+.leaf[hidden] { display: none !important; }
+.face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.face.back { transform: rotateY(180deg); }
+.face::after { content: ""; position: absolute; inset: 0; background: #000; opacity: var(--dim, 0); pointer-events: none; }
+
+.turn {
+  position: absolute; top: 50%; translate: 0 -50%; z-index: 5; width: 48px; height: 96px;
+  display: grid; place-items: center; color: var(--ink3);
+}
+.turn:hover { color: var(--accent); }
+.turn:disabled { opacity: 0; pointer-events: none; }
+.turn svg { width: 22px; height: 40px; }
+.turn.prev { left: 0; }
+.turn.next { right: 0; }
+.stage.zoom .turn { display: none; }
+
+/* 아래 쪽 이동 막대 */
+.foot { display: flex; align-items: center; gap: 20px; padding-block: 8px max(16px, env(safe-area-inset-bottom, 0px)); }
+.where { font-size: 14px; color: var(--ink2); white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; flex: 0 1 32%; letter-spacing: -0.02em; }
+.where b { color: var(--ink); font-weight: 600; }
+.scrub { flex: 1; min-width: 80px; -webkit-appearance: none; appearance: none; height: 24px; background: transparent; cursor: pointer; }
+.scrub::-webkit-slider-runnable-track { height: 2px; background: var(--line); }
+.scrub::-moz-range-track { height: 2px; background: var(--line); }
+.scrub::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; margin-top: -5px; background: var(--accent); border: 0; }
+.scrub::-moz-range-thumb { width: 12px; height: 12px; background: var(--accent); border: 0; border-radius: 0; }
+.num { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; letter-spacing: -0.02em; }
+.num span { color: var(--ink3); font-weight: 400; }
+
+/* 차례 패널 */
+.scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 20; }
+.panel {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(460px, 100%); z-index: 21; background: var(--panel);
+  overflow-y: auto; padding: max(28px, env(safe-area-inset-top, 0px)) max(32px, env(safe-area-inset-right, 0px)) 40px 32px;
+}
+.panel h2 { font-size: 13px; font-weight: 600; color: var(--accent); margin: 0; letter-spacing: 0; }
+.panel h3 { font-size: 30px; font-weight: 700; letter-spacing: -0.035em; margin: 4px 0 28px; }
+.close { position: absolute; top: max(24px, env(safe-area-inset-top, 0px)); right: max(24px, env(safe-area-inset-right, 0px)); width: 36px; height: 36px; display: grid; place-items: center; color: var(--ink2); }
+.close:hover { color: var(--accent); }
+.toc { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.toc button { width: 100%; display: grid; grid-template-columns: 76px 1fr auto; gap: 12px; text-align: left; padding-block: 8px; align-items: baseline; }
+.toc .lab { font-size: 13px; color: var(--ink3); }
+.toc .t { font-size: 16px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.35; }
+.toc .a { display: block; font-size: 13px; font-weight: 400; color: var(--ink3); margin-top: 3px; letter-spacing: -0.02em; }
+.toc .pg { font-size: 14px; color: var(--ink3); font-variant-numeric: tabular-nums; }
+.toc button:hover .t, .toc li.on .t { color: var(--accent); }
+.toc .part { padding-top: 14px; }
+.toc .part .t { font-size: 14px; font-weight: 700; color: var(--ink2); }
+
+/* 쪽 보기 */
+.grid {
+  position: fixed; inset: 0; z-index: 21; background: var(--bg); overflow-y: auto;
+  padding: max(24px, env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-right, 0px)) 48px max(24px, env(safe-area-inset-left, 0px));
+}
+.grid header { display: flex; justify-content: space-between; align-items: center; margin: 0 auto 24px; max-width: 1280px; }
+.grid header b { font-size: 24px; font-weight: 700; letter-spacing: -0.035em; }
+.grid .close { position: static; }
+.spreads { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 28px 20px; }
+.sp { display: grid; gap: 8px; text-align: left; }
+.sp .pair { display: flex; justify-content: center; aspect-ratio: 2 / 1; max-width: 100%; }
+.sp img { width: 50%; height: 100%; object-fit: contain; background: #fff; box-shadow: 0 8px 18px -10px var(--shade); }
+.sp span { font-size: 13px; color: var(--ink3); text-align: center; font-variant-numeric: tabular-nums; }
+.sp:hover span, .sp.on span { color: var(--accent); font-weight: 600; }
+.sp:hover img { transform: translateY(-2px); transition: transform .2s; }
+
+@media (max-width: 760px) {
+  .name span, .tool .lbl { display: none; }
+  .tools { gap: 20px; }
+  #btnMode, #btnFull, .home { display: none; }
+  .bar { padding-block: 14px 4px; }
+  .turn { width: 36px; }
+  .where { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book, .sp:hover img { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="bar">
+    <div class="name"><b>공간마법</b><span>공간으로 만드는 공공가치 · 공공디자인 페스티벌 2026 학술 포럼 아카이브</span></div>
+    <nav class="tools" aria-label="보기 도구">
+      <button class="tool" id="btnToc" type="button" aria-label="차례" aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M2 4h12M2 8h12M2 12h8"/></svg><span class="lbl">차례</span></button>
+      <button class="tool" id="btnGrid" type="button" aria-label="쪽 보기" aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5"/><rect x="9" y="2" width="5" height="5"/><rect x="2" y="9" width="5" height="5"/><rect x="9" y="9" width="5" height="5"/></svg><span class="lbl">쪽 보기</span></button>
+      <button class="tool" id="btnMode" type="button" aria-label="펼침면으로 보기" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="3" width="6" height="10"/><rect x="8.5" y="3" width="6" height="10"/></svg><span class="lbl" id="modeLbl">펼침면</span></button>
+      <button class="tool" id="btnZoom" type="button" aria-label="확대" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M5 7h4M7 5v4"/></svg><span class="lbl">확대</span></button>
+      <a class="tool" id="btnPdf" href="space-magic-archive.pdf" download="아카이브북_공간마법_공공디자인 페스티벌_배포용.pdf" title="아카이브북_공간마법_공공디자인 페스티벌_배포용.pdf"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M2.5 13.5h11"/></svg><span class="lbl">PDF (12MB)</span></a>
+      <button class="tool" id="btnFull" type="button" aria-label="전체 화면"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg><span class="lbl">전체 화면</span></button>
+      <a class="tool home" href="https://www.armula.com/">SPD Lab ›</a>
+    </nav>
+  </header>
+
+  <main class="stage" id="stage">
+    <button class="turn prev" id="prev" type="button" aria-label="앞 쪽"><svg viewBox="0 0 22 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 2L2 20l18 18"/></svg></button>
+    <div class="book" id="book" aria-live="polite">
+      <div class="slot l" id="slotL"></div>
+      <div class="slot r" id="slotR"></div>
+      <div class="leaf" id="leaf" hidden><div class="face front" id="front"></div><div class="face back" id="back"></div></div>
+    </div>
+    <button class="turn next" id="next" type="button" aria-label="다음 쪽"><svg viewBox="0 0 22 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 2l18 18L2 38"/></svg></button>
+  </main>
+
+  <footer class="foot">
+    <div class="where" id="where"></div>
+    <input class="scrub" id="scrub" type="range" min="1" max="114" value="1" aria-label="쪽 이동">
+    <div class="num" id="num"></div>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="panel" id="panel" role="dialog" aria-label="차례" hidden>
+  <button class="close" id="closeToc" type="button" aria-label="닫기"><svg width="18" height="18" viewBox="0 0 18 18" stroke="currentColor" stroke-width="1.6"><path d="M2 2l14 14M16 2L2 16"/></svg></button>
+  <h2>Contents</h2>
+  <h3>차례</h3>
+  <ol class="toc" id="toc"></ol>
+</aside>
+<section class="grid" id="grid" role="dialog" aria-label="쪽 보기" hidden>
+  <header><b>쪽 보기</b><button class="close" id="closeGrid" type="button" aria-label="닫기"><svg width="18" height="18" viewBox="0 0 18 18" stroke="currentColor" stroke-width="1.6"><path d="M2 2l14 14M16 2L2 16"/></svg></button></header>
+  <div class="spreads" id="spreads"></div>
+</section>
+
+<script>
+(() => {
+  const N = 114;
+  const TOC = [
+    {
+      "p": 1,
+      "t": "표지"
+    },
+    {
+      "p": 4,
+      "t": "포럼 현장"
+    },
+    {
+      "p": 7,
+      "t": "차례"
+    },
+    {
+      "p": 9,
+      "t": "인사말",
+      "a": "한국공간디자인학회 회장 임진이"
+    },
+    {
+      "p": 10,
+      "t": "공간은 어떻게 일상을 바꾸는가",
+      "a": "머리말"
+    },
+    {
+      "p": 12,
+      "t": "포럼 개요"
+    },
+    {
+      "p": 13,
+      "t": "Part 1 발제",
+      "part": true
+    },
+    {
+      "p": 15,
+      "t": "도시를 처방하는 공간 마법",
+      "lab": "Chapter 1",
+      "a": "주하나  [사회적 처방 x 공간마법]"
+    },
+    {
+      "p": 33,
+      "t": "안전한 산업공간을 위한 디자인 마법",
+      "lab": "Chapter 2",
+      "a": "이주호  [산업안전 x 공간마법]"
+    },
+    {
+      "p": 61,
+      "t": "함께 만드는 공간: 디자인을 통해 만드는 오티즘 마법",
+      "lab": "Chapter 3",
+      "a": "윤정은  [장애예술 x 공간마법]"
+    },
+    {
+      "p": 75,
+      "t": "치유공간, 살고 싶어지는 힐링공간의 마법",
+      "lab": "Chapter 4",
+      "a": "유승종  [인지건강 x 공간마법]"
+    },
+    {
+      "p": 97,
+      "t": "Part 2 종합토론",
+      "part": true
+    },
+    {
+      "p": 99,
+      "t": "디자인은 사람과 사회를 어떻게 연결하는가",
+      "lab": "Chapter 5",
+      "a": "주하나, 이주호, 윤정은, 유승종  [종합토론]"
+    },
+    {
+      "p": 105,
+      "t": "결과물에서 일상의 조건으로",
+      "a": "맺음말"
+    },
+    {
+      "p": 107,
+      "t": "포럼을 마치며"
+    },
+    {
+      "p": 112,
+      "t": "판권"
+    }
+  ];
+  const $ = id => document.getElementById(id);
+  const stage = $("stage"), book = $("book"), slotL = $("slotL"), slotR = $("slotR");
+  const leaf = $("leaf"), front = $("front"), back = $("back");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const src = n => `p/${n}.webp`;
+  const img = n => { const i = new Image(); i.src = src(n); i.alt = `${n}쪽`; i.decoding = "async"; i.draggable = false; return i; };
+  const fill = (el, n) => { el.replaceChildren(...(n ? [img(n)] : [])); };
+
+  let cur = 1, spread = true, userMode = null, zoom = false, anim = null, done = null, pw = 400;
+
+  const spreadOf = p => p === 1 ? [null, 1] : p % 2 === 0 ? [p, p + 1 <= N ? p + 1 : null] : [p - 1, p];
+  const view = () => spread ? spreadOf(cur) : [cur, null];
+  const sectionOf = p => { let s = TOC[0]; for (const x of TOC) if (x.p <= p) s = x; return s; };
+
+  function layout() {
+    const auto = innerWidth >= 760 && innerWidth / Math.max(1, innerHeight) > 1.05;
+    spread = userMode === null ? auto : userMode === "spread";
+    const side = innerWidth < 760 ? 36 : 56;
+    const availW = stage.clientWidth - side * 2, availH = stage.clientHeight - 16;
+    pw = Math.max(120, Math.floor(spread ? Math.min(availH, availW / 2) : Math.min(availH, availW)));
+    if (zoom) pw = Math.floor(pw * 2);
+    book.style.setProperty("--pw", pw + "px");
+    book.style.setProperty("--cols", spread ? 2 : 1);
+    $("btnMode").setAttribute("aria-pressed", spread ? "true" : "false");
+    $("modeLbl").textContent = spread ? "펼침면" : "한 쪽";
+  }
+
+  function shift() {
+    if (!spread) return "translateX(0)";
+    const [L, R] = view();
+    return !L ? `translateX(${-pw / 2}px)` : !R ? `translateX(${pw / 2}px)` : "translateX(0)";
+  }
+
+  function render() {
+    const [L, R] = view();
+    fill(slotL, L); fill(slotR, spread ? R : null);
+    book.style.transform = shift();
+    status();
+    preload();
+  }
+
+  function status() {
+    const [L, R] = view();
+    const shown = [L, R].filter(Boolean);
+    $("num").innerHTML = `${shown.join("–")} <span>/ ${N}</span>`;
+    const s = sectionOf(shown[shown.length - 1]);
+    $("where").innerHTML = s.lab ? `${s.lab} <b>${s.t}</b>` : `<b>${s.t}</b>`;
+    $("scrub").value = cur;
+    $("prev").disabled = (L ?? R) <= 1;
+    $("next").disabled = Math.max(...shown) >= N;
+    try { history.replaceState(null, "", "#p" + cur); } catch (e) {}
+  }
+
+  function preload() {
+    const [L, R] = view(); const base = R || L;
+    for (let n = Math.max(1, base - 3); n <= Math.min(N, base + 4); n++) { const i = new Image(); i.src = src(n); }
+  }
+
+  function finishAnim() {
+    if (anim) { const a = anim; anim = null; a.onfinish = null; a.cancel(); }
+    if (done) { const d = done; done = null; d(); }
+  }
+
+  function go(dir) {
+    finishAnim();
+    const [L, R] = view();
+    if (!spread) {
+      const n = cur + dir; if (n < 1 || n > N) return;
+      cur = n; render();
+      if (!reduce) slotL.firstChild?.animate([{ opacity: 0, transform: `translateX(${dir * 28}px)` }, { opacity: 1, transform: "none" }], { duration: 380, easing: "cubic-bezier(.2,.7,.2,1)" });
+      return;
+    }
+    if (dir > 0) {
+      if (!R || R >= N) return;
+      const L2 = R + 1, R2 = R + 2 <= N ? R + 2 : null;
+      cur = L2;
+      if (reduce) return render();
+      fill(slotR, R2); fill(front, R); fill(back, L2);
+      flip("right");
+      book.style.transform = shift();
+      status(); preload();
+      done = () => { leaf.hidden = true; fill(slotL, L2); };
+    } else {
+      if (!L) return;
+      const R2 = L - 1, L2 = R2 === 1 ? null : R2 - 1;
+      cur = R2;
+      if (reduce) return render();
+      fill(slotL, L2); fill(front, L); fill(back, R2);
+      flip("left");
+      book.style.transform = shift();
+      status(); preload();
+      done = () => { leaf.hidden = true; fill(slotR, R2); };
+    }
+  }
+
+  function flip(side) {
+    leaf.hidden = false;
+    leaf.style.left = side === "right" ? pw + "px" : "0px";
+    leaf.style.transformOrigin = side === "right" ? "left center" : "right center";
+    const to = side === "right" ? -180 : 180;
+    const k = [
+      { transform: "rotateY(0deg)" },
+            { transform: `rotateY(${to}deg)` },
+    ];
+    anim = leaf.animate(k, { duration: 760, easing: "cubic-bezier(.45,.05,.3,1)" });
+    anim.onfinish = () => { anim = null; finishAnim(); };
+    front.animate([{ "--dim": 0 }, { "--dim": .18 }], { duration: 380, fill: "none" });
+    back.animate([{ "--dim": .18, offset: .5 }, { "--dim": 0 }], { duration: 760, fill: "none" });
+  }
+
+  function jump(n) {
+    finishAnim();
+    cur = Math.min(N, Math.max(1, n));
+    render();
+    if (!reduce) book.animate([{ opacity: .4 }, { opacity: 1 }], { duration: 260 });
+  }
+
+  // 차례
+  const toc = $("toc");
+  TOC.forEach(x => {
+    const li = document.createElement("li");
+    if (x.part) li.className = "part";
+    const b = document.createElement("button"); b.type = "button";
+    b.innerHTML = `<span class="lab">${x.lab || ""}</span><span class="t">${x.t}${x.a ? `<span class="a">${x.a}</span>` : ""}</span><span class="pg">${x.p}</span>`;
+    b.onclick = () => { closeAll(); jump(x.p); };
+    li.append(b); toc.append(li);
+  });
+  // 쪽 보기
+  const spreads = $("spreads");
+  const pairs = [[null, 1]]; for (let p = 2; p <= N; p += 2) pairs.push([p, p + 1 <= N ? p + 1 : null]);
+  pairs.forEach(([L, R]) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "sp"; b.dataset.p = L || R;
+    const pair = document.createElement("div"); pair.className = "pair";
+    [L, R].filter(Boolean).forEach(n => { const i = document.createElement("img"); i.loading = "lazy"; i.src = `t/${n}.webp`; i.alt = `${n}쪽`; pair.append(i); });
+    const s = document.createElement("span"); s.textContent = [L, R].filter(Boolean).join("–");
+    b.append(pair, s);
+    b.onclick = () => { closeAll(); jump(L || R); };
+    spreads.append(b);
+  });
+
+  function openToc() {
+    const s = sectionOf(view().filter(Boolean).pop());
+    [...toc.children].forEach((li, i) => li.classList.toggle("on", TOC[i] === s));
+    $("scrim").hidden = false; $("panel").hidden = false; $("closeToc").focus();
+  }
+  function openGrid() {
+    const vis = view().filter(Boolean);
+    let on = null;
+    [...spreads.children].forEach(b => { const hit = vis.includes(+b.dataset.p); b.classList.toggle("on", hit); if (hit) on = b; });
+    $("grid").hidden = false; on?.scrollIntoView({ block: "center" }); $("closeGrid").focus();
+  }
+  function closeAll() { $("scrim").hidden = true; $("panel").hidden = true; $("grid").hidden = true; }
+
+  $("btnToc").onclick = openToc;
+  $("btnGrid").onclick = openGrid;
+  $("closeToc").onclick = $("closeGrid").onclick = $("scrim").onclick = closeAll;
+  $("btnMode").onclick = () => { finishAnim(); userMode = spread ? "single" : "spread"; layout(); render(); };
+  $("btnZoom").onclick = () => {
+    finishAnim(); zoom = !zoom; stage.classList.toggle("zoom", zoom);
+    $("btnZoom").setAttribute("aria-pressed", zoom); layout(); render(); stage.scrollTo(0, 0);
+  };
+  $("btnFull").onclick = () => {
+    const d = document;
+    try {
+      if (d.fullscreenElement) d.exitFullscreen?.().catch(() => {});
+      else d.documentElement.requestFullscreen?.().catch(() => {});
+    } catch (e) {}
+  };
+  $("prev").onclick = () => go(-1);
+  $("next").onclick = () => go(1);
+  $("scrub").oninput = e => jump(+e.target.value);
+
+  // 책을 눌러 넘기기, 밀어 넘기기
+  let sx = null, sy = 0, moved = false;
+  book.addEventListener("pointerdown", e => { sx = e.clientX; sy = e.clientY; moved = false; });
+  book.addEventListener("pointerup", e => {
+    if (sx === null || zoom) { sx = null; return; }
+    const dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) return go(dx < 0 ? 1 : -1);
+    if (Math.abs(dx) < 8 && Math.abs(dy) < 8) {
+      const r = book.getBoundingClientRect();
+      go(e.clientX - r.left < r.width / 2 ? -1 : 1);
+    }
+  });
+
+  addEventListener("keydown", e => {
+    if (e.target.tagName === "INPUT" && e.key.startsWith("Arrow")) return;
+    const open = !$("panel").hidden || !$("grid").hidden;
+    if (e.key === "Escape") return closeAll();
+    if (open) return;
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(1); }
+    else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); go(-1); }
+    else if (e.key === "Home") jump(1);
+    else if (e.key === "End") jump(N);
+  });
+
+  const fromHash = () => { const m = /^#p(\d+)$/.exec(location.hash); return m ? +m[1] : null; };
+  addEventListener("hashchange", () => { const n = fromHash(); if (n && n !== cur) jump(n); });
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { finishAnim(); layout(); render(); }, 120); });
+
+  cur = Math.min(N, Math.max(1, fromHash() || 1));
+  layout(); render();
+})();
+</script>
+</body>
+</html>
